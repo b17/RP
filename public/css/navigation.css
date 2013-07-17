@@ -1,0 +1,28 @@
+.clickable-div-like-button {
+    height: 16pt;
+    width: 16pt;
+    border-radius: 50%;
+    background: dimgrey;
+    float: left;
+    text-align: center;
+    font-family: consolas;
+    color: #000000;
+
+}
+
+.clickable-div-like-button:hover {
+    cursor: pointer;
+}
+
+.selected-button {
+    background: slategray;
+    color: #ffffff;
+
+    text-shadow: #000000;
+}
+
+#nav-group {
+    margin: auto;
+    width: 10%;
+
+}

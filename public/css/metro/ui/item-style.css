@@ -1,0 +1,95 @@
+div.item-container {
+    width: 130pt;
+    padding-left: 5pt;
+    padding-right: 5pt;
+    height: 350pt;
+    max-height: 350pt;
+
+    display: inline-block;
+    box-shadow: 3px 3px 3px 3pt darkgray;
+    margin: 15pt;
+    vertical-align: top;
+
+}
+
+rotation-class-listener:hover {
+    background-color: #ffffff;
+
+}
+
+.rotation-class-listener a:hover {
+    text-decoration: none;
+}
+
+div.rotation-class-listener {
+    width: 100%;
+    height: auto;
+    margin-top: 10pt;
+
+}
+
+div.item-text {
+
+    margin: 5pt 5pt 10pt;
+    text-align: justify;
+
+}
+
+div.item-tag-panel .icon {
+    display: inline;
+    height: 32pt;
+    width: 32pt;
+
+}
+
+.item-title {
+    margin-top: 10pt;;
+    text-align: center;
+    font-family: consolas,cursive;
+    font-size: 14pt;
+
+    color: #880000;
+    height: 100pt;
+
+}
+
+div.item-image-container img {
+    width: 100%;
+}
+
+.item-title:hover {
+    color: #110000;
+    text-decoration: none;
+
+}
+
+a:hover {
+    text-decoration: none
+}
+
+.item-tag-panel {
+    position: relative;
+    vertical-align: bottom;
+    height: auto;
+
+}
+
+.place-consumer {
+    height: 100%;
+}
+
+.item-info-big-header {
+    padding-top: 15pt;
+    font-size: 18px;
+}
+
+.wrapped-image {
+    height: 170pt;
+    width: 100%;
+    margin-top: 5pt;
+    box-shadow: 0 0 1pt 1pt #000000;
+}
+
+.wrapped-image:hover {
+    box-shadow: 0 0 4pt 4pt lightblue;
+}

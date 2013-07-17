@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Registration</title>
+    <META http-equiv="content-type" content="text/html; charset=windows-1251">
+
+
+    <script src="js/prod/jquery.js"></script>
+
+
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-link.css"/>
+    <link type="text/css" rel="stylesheet" href="css/metro/ui/item-style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+
+
+    <!--Start of rotation-->
+    <link type="text/css" rel="stylesheet" href="css/rotation.css">
+    <link rel="stylesheet" type="text/css" href="css/register.css"/>
+    <!--End of rotation-->
+
+</head>
+<body style="overflow: auto">
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <form class="navbar-search pull-left padding-left-middle">
+            <input type="text" class="search-query" placeholder="Search">
+        </form>
+        <div class="container">
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li><a class="nav-link" href="admin.html">Administrate</a></li>
+
+                    <li><a class="nav-link" href="___.html">Feed</a></li>
+                    <li><a class="nav-link" href="tags.html">Tags</a></li>
+                    <li><a class="nav-link" href="#login" role="button" data-toggle="modal">Login</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Modal frame for login-->
+<!--Modal frame for login-->
+<div id="login" class="modal hide fade wight-300">
+    <button type="button" class="close" style="padding-right: 5pt;padding-top: 5pt" data-dismiss="modal"
+            aria-hidden="true">X
+    </button>
+    <div class="modal-header">
+        <h2>Login</h2>
+    </div>
+    <div class="modal-body wight-250">
+        <div>
+            <form class="form-inline" method="post" action="login">
+
+                <input class="wight-100 margin-bot-middle" type="text" placeholder="login(email)">
+                <input class="wight-100 margin-bot-middle" type="password" placeholder="password">
+                <input type="submit" value="Log In" class="btn-link"> or <a href="registration.html"
+                                                                            class="btn-link">register</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="page-root">
+    <div class="register-block">
+
+        <img src="img/web_services.png" class="image-registration">
+
+        <form method="post" action="register">
+            <div>
+                <input class="wight-100" type="text" placeholder="first name" name="first_name">
+                <input class="wight-100" type="text" placeholder="last name" name="last_name">
+
+            </div>
+            <input class="wight-100" type="email" placeholder="e-mail (required)" required
+                   onchange=" email_check(this.value)">
+            <input class="wight-100" type="password" placeholder="password (required)" required>
+
+            <div class="pull-left">
+                <label>I Accept <a href="termls.ogf.use.html">terms of use</a>
+                    <input type="checkbox" required name="is_accepted" title="You should accept this rules">
+                </label>
+
+
+            </div>
+            <input type="submit" value="register">
+
+        </form>
+    </div>
+</div>
+</body>
+</html>

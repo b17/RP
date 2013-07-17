@@ -1,0 +1,194 @@
+.tag-home {
+    height: 100%;
+    display: inline-block;
+    width: 60%;
+}
+
+.multiple-big-tag-container {
+    height: 220px;
+    width: 335px;
+    display: inline-block;
+
+}
+
+.multiple-big-tag-container div {
+    height: 210px;
+    width: 160px;
+    display: inline-block;
+}
+
+.multiple-small-tag-container {
+    height: 220px;
+    width: 160px;
+    background: #a466c2;
+}
+
+.multiple-small-tag-container div {
+    height: 210px;
+    width: 75px;
+    background: tan;
+}
+
+.tag-image-holder {
+    background: #00ACF6;
+    height: 80pt;
+    width: 130pt;
+    margin: 3pt;
+    box-shadow: 0pt 0pt 2pt 2pt #000000;
+    display: inline-block;
+}
+
+.tag-table {
+    display: inline-block;
+}
+
+.tag-last-selection {
+
+    vertical-align: top;
+    border-left-color: dimgray;
+    min-width: 250pt;
+    height: 100%;
+    display: inline-block;
+    box-shadow: 0 0 2pt 2pt #aeaeae;
+}
+
+.tag-name {
+    margin-left: 10pt;
+    margin-top: 10pt;
+    color: #ffffff;
+    text-align: left;
+
+}
+
+.tag-name:hover {
+    cursor: pointer;
+}
+
+.latest-tag-selection {
+    width: 100%;
+    background: #fbeed5;
+    box-shadow: 0 0 1pt 1pt dimgrey;
+    margin-top: 5pt;
+    vertical-align: middle;
+    height: auto;
+}
+
+.last-tag-image-container img {
+    height: 60pt;
+    text-align: left;
+    margin-top: 3pt;
+    margin-bottom: 3pt;
+}
+
+.last-tag-desc {
+    width: auto;
+    display: inline-block;
+
+}
+
+.last-tag-image-container {
+    height: 100%;
+    text-align: left;
+
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.last-tag-item-container {
+    text-align: left;
+    vertical-align: middle;
+    width: 300pt;
+    padding-left: 5pt;
+
+}
+
+.latest-tag-link {
+    text-decoration: none;
+    color: darkslategray;
+    text-align: center;
+}
+
+.latest-tag-link:hover {
+    text-decoration: no-underline;
+    color: #000000;
+    text-decoration-line: no-underline;
+
+}
+
+.last-tag-title {
+    text-align: left;
+}
+
+.last-tag-small-desc {
+    text-decoration-line: none;
+    text-align: left;
+}
+
+.tag-header {
+    background-color: lightslategray;
+    text-shadow: #002a80;
+
+}
+
+.starred {
+    background-color: #f2f2f2;
+    margin-bottom: 3pt;
+    box-shadow: 0 0 1pt 1pt dimgrey;
+    margin-top: 5pt;
+    vertical-align: middle;
+}
+
+.see-more-history-tags {
+    width: auto;
+    height: 20pt;
+    background-color: #aeaeae;
+    text-align: center;
+    font-size: xx-large;
+    vertical-align: middle;
+    margin-bottom: 3pt;
+    margin-top: 3pt;
+}
+
+.see-more-starred-tags {
+    width: auto;
+    height: 20pt;
+    background-color: #aeaeae;
+    text-align: center;
+    font-size: xx-large;
+    vertical-align: middle;
+    margin-top: 3pt;
+    margin-bottom: 3pt;
+
+}
+
+.dot {
+    background-color: darkslategray;
+    border-radius: 50%;
+    height: 16pt;
+    width: 16pt;
+    display: inline-block;
+}
+
+.no-underline:hover {
+    text-decoration: none;
+
+}
+
+.tag-list-image-size {
+    width: 100pt;
+    height: 80pt;
+}
+
+.selected-tag {
+    box-shadow: 0 0 3pt 3pt peru;
+}
+
+
+
+
+
+
+
+
