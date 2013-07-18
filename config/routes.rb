@@ -1,11 +1,21 @@
 Untitled8::Application.routes.draw do
-  get "root/feed"
 
-  get "root/tag"
+  get "secure/login"
+  controller :root do
+    get 'tag' => :all_tags
+    get 'tag/:id' => :tag
+    get 'random' => :rand
+  end
 
-  get "feed/go"
+  controller :admin do
+    get "admin" => :view
+    post "delete" => :delete
+    post "disable" => :disable
+  end
 
-  get "feed/list"
+  controller :secure do
+    post "login" => :login
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -58,6 +68,7 @@ Untitled8::Application.routes.draw do
   # just remember to delete public/___.html.
   #root :to => 'welcome#index'
   root :to => 'root#feed'
+
 
   # See how all your routes lay out with "rake routes"
 
