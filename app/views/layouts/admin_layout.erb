@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Untitled8</title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body style="text-align: left">
+<%= render 'shared/header' %>
+<div style="width: 100%; text-align: center; padding-top:2%"><h2 class="page-name">Admin page</h2></div>
+<div class="main-frame">
+  <div class="navigation-part">
+    <div class="nav-button height-middle selected" data-defpart="announce-part" style="width: 100%">
+      <div>Add announce</div>
+    </div>
+    <div class="nav-button height-middle" data-defpart="my-announces-part" style="width: 100%">
+      <div>My announces</div>
+    </div>
+    <div class="nav-button height-middle" data-defpart="statistic-part" style="width: 100%">
+      <div>Text statistic</div>
+    </div>
+    <div class="nav-button height-middle " data-defpart="map-part" style="width: 100%">
+      <div>Map statistic</div>
+    </div>
+    <div class="nav-button height-middle " data-defpart="calendar-part" style="width: 100%">
+      <div>My calendar</div>
+    </div>
+  </div>
+  <%= yield %>
+</div>
+</body>
+</html>

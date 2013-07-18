@@ -8,9 +8,12 @@ Untitled8::Application.routes.draw do
   end
 
   controller :admin do
-    get "admin" => :view
-    post "delete" => :delete
-    post "disable" => :disable
+    get "admin" => :p_view
+    get "admin/add" => :p_add
+
+    post "delete" => :c_delete
+    post "disable" => :c_disable
+
   end
 
   controller :secure do
