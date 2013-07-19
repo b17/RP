@@ -82,11 +82,6 @@ body {
     color: #ffffff;
 }
 
-.no-link-style:hover {
-    text-decoration: none;
-    color: #ffffff;
-}
-
 .padding-left-middle {
     padding-left: 15pt;
 }

@@ -82,16 +82,12 @@ body {
     color: #ffffff;
 }
 
-div.nav-button a {
-    text-decoration: none;
-    color: #dadada;
-}
-
-div.nav-button a:hover {
-    color: #dadada;
-}
-
 .no-link-style:hover {
+    text-decoration: no-underline !important;
+    color: #000000;
+}
+
+.admin-link {
     text-decoration: none;
     color: #ffffff;
 }
