@@ -1,5 +1,11 @@
 Untitled8::Application.routes.draw do
 
+  resources :users
+
+
+  resources :tags
+
+
   get "admin/p_add"
 
   get "admin/p_my_announces"
