@@ -1,5 +1,27 @@
 Untitled8::Application.routes.draw do
 
+  get "admin/p_add"
+
+  get "admin/p_my_announces"
+
+  get "admin/p_text_stats"
+
+  get "admin/p_map_stats"
+
+  get "admin/p_calendar"
+
+  get "admin/c_add"
+
+  get "admin/c_delete"
+
+  get "admin/c_disable"
+
+  get "admin/p_edit"
+
+  get "secure/login"
+
+  get "secure/logout"
+
   get "secure/login"
   controller :root do
     get 'tag' => :all_tags
@@ -9,15 +31,23 @@ Untitled8::Application.routes.draw do
 
   controller :admin do
     get "admin" => :p_view
-    get "admin/add" => :p_add
 
     post "delete" => :c_delete
     post "disable" => :c_disable
+    get "calendar" => :p_calendar
+    get "announce" => :p_my_announces
+    get "stats" => :p_text_stats
+    get "maps" => :p_map_stats
+    get "calendar" => :p_calendar
+    get "add" => :p_add
+
 
   end
 
   controller :secure do
     post "login" => :login
+    get "logout" => :logout
+    get "fail" => :fail
   end
 
   # The priority is based upon order of creation:

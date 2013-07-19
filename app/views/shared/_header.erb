@@ -6,13 +6,20 @@
     <div class="container">
       <div class="nav-collapse">
         <ul class="nav">
-          <li><a class="nav-link" href="/admin">Administrate</a></li>
 
-          <li><a class="nav-link" href="/">Feed</a></li>
-          <li><a class="nav-link" href="tag">Tags</a></li>
-          <li><a class="nav-link" href="#login" role="button" data-toggle="modal">Login</a>
-          </li>
 
+
+
+          <% if (session[:user_role]=='admin') %>
+              <li><a class="nav-link" href="/admin">Admin</a></li>
+              <li><a class="nav-link" href="/">Feed</a></li>
+              <li><a class="nav-link" href="tag">Tags</a></li>
+              <li><a class="nav-link" href="logout" role="link">Logout - 2</a></li>
+          <% else %>
+              <li><a class="nav-link" href="/">Feed</a></li>
+              <li><a class="nav-link" href="tag">Tags</a></li>
+              <li><a class="nav-link" href="#login" role="button" data-toggle="modal">Login</a></li>
+          <% end %>
         </ul>
       </div>
 

@@ -82,6 +82,15 @@ body {
     color: #ffffff;
 }
 
+div.nav-button a {
+    text-decoration: none;
+    color: #dadada;
+}
+
+div.nav-button a:hover {
+    color: #dadada;
+}
+
 .no-link-style:hover {
     text-decoration: none;
     color: #ffffff;

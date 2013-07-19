@@ -3,31 +3,59 @@
 <head>
   <title>Untitled8</title>
   <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= stylesheet_link_tag "admin", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body style="text-align: left">
+<body style="text-align: center; width: 90%; margin: 7% auto 0;">
 <%= render 'shared/header' %>
-<div style="width: 100%; text-align: center; padding-top:2%"><h2 class="page-name">Admin page</h2></div>
+<div style="width: 100%; text-align: center; padding-top:2%">
+  <h2 class="page-name"><%= params[:action] %> , Admin page</h2>
+</div>
 <div class="main-frame">
   <div class="navigation-part">
-    <div class="nav-button height-middle selected" data-defpart="announce-part" style="width: 100%">
-      <div>Add announce</div>
+    <div class="nav-button height-middle
+      <% if params[:action]=='p_add' %> selected
+      <% end %>" data-defpart="announce-part" style="width: 100%">
+      <a href="<%= add_path %>">
+        <div>Add announce</div>
+      </a>
     </div>
-    <div class="nav-button height-middle" data-defpart="my-announces-part" style="width: 100%">
-      <div>My announces</div>
+    <div class="nav-button height-middle
+      <% if params[:action]=='p_my_announces' %> selected
+      <% end %>" data-defpart="my-announces-part" style="width: 100%">
+      <a href="<%= announce_path %>">
+        <div>My announces</div>
+      </a>
     </div>
-    <div class="nav-button height-middle" data-defpart="statistic-part" style="width: 100%">
-      <div>Text statistic</div>
+    <div class="nav-button height-middle
+      <% if params[:action]=='p_text_stats' %> selected
+      <% end %>" data-defpart="statistic-part" style="width: 100%">
+      <a href="<%= stats_path %>">
+        <div>Text statistic</div>
+      </a>
     </div>
-    <div class="nav-button height-middle " data-defpart="map-part" style="width: 100%">
-      <div>Map statistic</div>
+    <div class="nav-button height-middle
+      <% if params[:action]=='p_map_stats' %> selected
+      <% end %>" data-defpart="map-part" style="width: 100%">
+      <a href="<%= maps_path %>">
+        <div>Map statistic</div>
+      </a>
     </div>
-    <div class="nav-button height-middle " data-defpart="calendar-part" style="width: 100%">
-      <div>My calendar</div>
+    <div class="nav-button height-middle
+      <% if params[:action]=='p_calendar' %> selected
+      <% end %>" data-defpart="calendar-part" style="width: 100%">
+      <a href="<%= calendar_path %>">
+        <div>My calendar</div>
+      </a>
     </div>
   </div>
-  <%= yield %>
+  <div class="content-part" id="announce-part">
+    <%= yield %>
+    <pre>
+    <%= params %>
+  </pre>
+  </div>
 </div>
 </body>
 </html>
