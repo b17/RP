@@ -1,0 +1,33 @@
+<h1>Listing announces</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Desc</th>
+    <th>Lg</th>
+    <th>Lt</th>
+    <th>Main img url</th>
+    <th>Date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @announces.each do |announce| %>
+  <tr>
+    <td><%= announce.title %></td>
+    <td><%= announce.desc %></td>
+    <td><%= announce.lg %></td>
+    <td><%= announce.lt %></td>
+    <td><%= announce.main_img_url %></td>
+    <td><%= announce.date %></td>
+    <td><%= link_to 'Show', announce %></td>
+    <td><%= link_to 'Edit', edit_announce_path(announce) %></td>
+    <td><%= link_to 'Destroy', announce, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Announce', new_announce_path %>
