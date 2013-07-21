@@ -1,7 +1,7 @@
 .main-frame {
     width: 100%;
-    background-color: rgba(0, 191, 255, 0.1);
     display: inline-table;
+    background: rgb(246, 245, 242);
 }
 
 .navigation-part {
@@ -9,6 +9,7 @@
     min-width: 180pt;
     height: auto;
     display: table-cell;
+    padding-left: 10pt;
 }
 
 .content-part {
@@ -22,7 +23,6 @@
 
 .white {
     color: #ffffff;
-
 }
 
 .black {

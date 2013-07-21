@@ -83,13 +83,22 @@ body {
 }
 
 .no-link-style:hover {
-    text-decoration: no-underline !important;
-    color: #000000;
+    text-decoration: none;
+    /*color: #000000;*/
+}
+
+.white-link-style {
+    color: #ffffff;
+}
+
+.white-link-style:hover {
+    color: #ffffff;
+    text-decoration: underline;
 }
 
 .admin-link {
     text-decoration: none;
-    color: #ffffff;
+    color: #333;
 }
 
 .padding-left-middle {
