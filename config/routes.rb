@@ -1,5 +1,8 @@
 Untitled8::Application.routes.draw do
 
+  #resources :announces
+
+
   resources :users
 
 
@@ -29,6 +32,7 @@ Untitled8::Application.routes.draw do
   get "secure/logout"
 
   get "secure/login"
+
   controller :root do
     get 'tag' => :all_tags
     get 'tag/:id' => :tag
@@ -36,10 +40,8 @@ Untitled8::Application.routes.draw do
   end
 
   controller :admin do
-    get "admin" => :p_view
+    get "admin" => :welcome
 
-    post "delete" => :c_delete
-    post "disable" => :c_disable
     get "calendar" => :p_calendar
     get "announce" => :p_my_announces
     get "stats" => :p_text_stats
@@ -47,13 +49,22 @@ Untitled8::Application.routes.draw do
     get "calendar" => :p_calendar
     get "add" => :p_add
 
+    post "delete" => :c_delete
+    post "disable" => :c_disable
+
 
   end
+
 
   controller :secure do
     post "login" => :login
     get "logout" => :logout
     get "fail" => :fail
+  end
+
+
+  controller :announces do
+
   end
 
   # The priority is based upon order of creation:

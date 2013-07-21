@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Places: Ukraine, Vinnitsa</title>
+  <title>
+    <% if session[:country]!=nil %>
+        <%= session[:country] %>
+        <% if session[:city]!=nil %>
+            <%= ": #{session[:city]}" %>
+        <% end %>
+    <% else %>
+        <%= "Places" %>
+    <% end %>
+  </title>
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
