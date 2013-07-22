@@ -84,21 +84,7 @@ body {
 
 .no-link-style:hover {
     text-decoration: none;
-    /*color: #000000;*/
-}
-
-.white-link-style {
     color: #ffffff;
-}
-
-.white-link-style:hover {
-    color: #ffffff;
-    text-decoration: underline;
-}
-
-.admin-link {
-    text-decoration: none;
-    color: #333;
 }
 
 .padding-left-middle {
@@ -114,3 +100,50 @@ body {
 
 }
 
+.footer-info {
+    text-align: center;
+    margin: 0 auto;
+
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.news {
+    height: 500pt;
+    width: 300pt;
+    min-width: 200pt;
+    margin-top: 40pt;
+
+}
+
+.wight-70pc {
+    width: 70%;
+}
+
+.vertical {
+    vertical-align: middle;
+}
+
+.vertical {
+    vertical-align: middle;
+}
+
+.style-tag {
+    padding: 5pt;
+    color: #000000;
+}
+
+.style-tag:hover {
+    background-color: #000000;
+    color: #ffffff;
+}

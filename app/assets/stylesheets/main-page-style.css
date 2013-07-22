@@ -1,5 +1,5 @@
 .page-root {
-    width: 90%;
+    width: 100%;
     /*margin: 0 auto;*/
 
 }
@@ -69,7 +69,8 @@
     display: inline;
     padding: 5pt;
     text-align: left;
-    width: 90%;
+    min-width: 660pt;
+    max-width: 660pt;
 
 }
 
@@ -87,5 +88,45 @@
     padding-right: 5pt;
 }
 
+.news-image {
 
+    width: 100pt;
+    height: auto;
+    max-height: 100pt;
+}
+
+.news-item {
+    width: 300pt;
+}
+
+.article-short {
+}
+
+
+.white-link-style {
+    color: #ffffff;
+}
+
+.white-link-style:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.admin-link {
+    text-decoration: none;
+    color: #333;
+}
+
+.padding-left-middle {
+    padding-left: 15pt;
+}
+
+.wight-100p {
+    width: 100pt;
+}
+
+.crackable:hover {
+    cursor: pointer;
+
+}
 

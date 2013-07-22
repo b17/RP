@@ -1,2 +1,48 @@
-<h1>Admin#p_add</h1>
-<p>Find me in app/views/admin/p_add.html.erb</p>
+<div class="content-part" id="announce-part">
+  <div class="black" style="margin-bottom: 10pt;">New</div>
+
+
+  <div class="new-item-description">
+
+
+    <form method="post" action="#" style="text-align: left;">
+      <input type="submit"
+             class="btn-success height-middle wight-middle pull-right action-publish unavailable red-placeholder"
+             id="btn-publish" value="PUBLISH">
+      <input type="text" name="new-item-title" id="new-item-title" oninput="tracker(this)"
+             placeholder="Title(customers will see this first)">
+      <input type="datetime" class="datepicker hasDatepicker" title="Starting"
+             placeholder="Date ( 26/01/2013 )">
+
+      <div id="info-list">
+        <div class="info-block">
+          <input class="sub-title" type="text" placeholder="Title like:'ACTORS:' or 'LOCATION:' "><br>
+          <textarea class="sub-desc" placeholder="Small header description"></textarea>
+
+          <div class="file_button_container"><input type="file" title="value"/></div>
+
+          <div class="item-control">
+            <div class="remove-info-block inline-block delete"></div>
+          </div>
+
+        </div>
+
+
+        <div class="info-block">
+          <input class="sub-title" type="text" placeholder="Title like:'ACTORS:' or 'LOCATION:' "><br>
+          <textarea class="sub-desc" placeholder="Small header description"></textarea>
+
+          <div class="file_button_container"><input type="file"/></div>
+          <div class="item-control">
+            <div class="remove-info-block inline-block delete"></div>
+          </div>
+        </div>
+
+        <div id="desc-bot-border"></div>
+      </div>
+    </form>
+  </div>
+
+  <div class="add-info-block inline-block "></div>
+
+</div>
