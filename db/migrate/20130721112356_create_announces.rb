@@ -3,6 +3,7 @@ class CreateAnnounces < ActiveRecord::Migration
     create_table :announces do |t|
       t.string :title
       t.string :desc
+      t.date :action_date
       t.float :lg
       t.float :lt
       t.string :main_img_url

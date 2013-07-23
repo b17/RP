@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20130721112356) do
   create_table "announces", :force => true do |t|
     t.string   "title"
     t.string   "desc"
+    t.date     "action_date"
     t.float    "lg"
     t.float    "lt"
     t.string   "main_img_url"

@@ -1,22 +1,26 @@
 <div class="content-part" id="my-announces-part">
   <div class="btn-info pull-left wight-100p add-button crackable">Add</div>
   <div class="black">Active announces</div>
-  <div class="announces-list text-align: left;">
-    <div class="announces-list-element">
-      <div class="list-element-text inline-block"><a href="announceinfo.html?id=12">Closed party in New York
-        pizza</a></div>
+  <% for item in @all %>
 
-      <div class="pull-right control-block-size inline-block">
-        <a href="to_trash/?id=12"><img class="selectable-image" src="img/delete-64.png"
-                                       alt="Editing" title="Disable it and move to trash folder"></a>
+      <div class="announces-list text-align: left;">
+        <div class="announces-list-element">
+          <div class="list-element-text inline-block"><a href="/info/<%= item.id %>"><%= item.title %></div>
+
+          <div class="pull-right control-block-size inline-block">
+            <a href="to_trash/?id=12"><img class="selectable-image" src="img/delete-64.png"
+                                           alt="Editing" title="Disable it and move to trash folder"></a>
+          </div>
+          <div class="pull-right control-block-size inline-block">
+            <a href="edit/?id=12"><img class="selectable-image" src="img/edit_property-64.png"
+                                       alt="Editing" title="Change this announce"></a>
+          </div>
+          <div class="pull-right date ">30/06/2013 - 19:00</div>
+
+
+        </div>
       </div>
-      <div class="pull-right control-block-size inline-block">
-        <a href="edit/?id=12"><img class="selectable-image" src="img/edit_property-64.png"
-                                   alt="Editing" title="Change this announce"></a>
-      </div>
-      <div class="pull-right date ">30/06/2013 - 19:00</div>
 
+  <% end %>
 
-    </div>
-  </div>
 </div>

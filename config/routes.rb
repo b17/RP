@@ -7,7 +7,7 @@ Untitled8::Application.routes.draw do
 
 
   resources :tags
-
+  get "announces/create"
 
   get "admin/p_add"
 
@@ -48,9 +48,11 @@ Untitled8::Application.routes.draw do
     get "maps" => :p_map_stats
     get "calendar" => :p_calendar
     get "add" => :p_add
+    get "info/:id" => :info
 
     post "delete" => :c_delete
     post "disable" => :c_disable
+    post "c_add" => :c_add
 
 
   end
@@ -64,7 +66,7 @@ Untitled8::Application.routes.draw do
 
 
   controller :announces do
-
+    get "addsomenew" => :create
   end
 
   # The priority is based upon order of creation:
