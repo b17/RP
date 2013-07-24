@@ -4,8 +4,7 @@
 
 </pre>
 <h2><%= @item.title %></h2>
-
-<img style="height: 100pt;width: 100pt" src="<%= Rails.root.join (@item.main_img_url) %>">
-<%= image_tag @item.main_img_url %>
+<img style="height: 100pt;width: 100pt" src="/<%=@item.main_img_url%>">
+<%= image_tag (@item.main_img_url) %>
 <h4><%= @item.action_date %></h4>
 <h4><%= @item.desc %></h4>

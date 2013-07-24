@@ -1,7 +1,6 @@
 class RootController < ApplicationController
   require 'geocoder'
 
-
   def feed
     init
 

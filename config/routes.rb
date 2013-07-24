@@ -51,7 +51,7 @@ Untitled8::Application.routes.draw do
     get "info/:id" => :info
 
     post "delete" => :c_delete
-    post "disable" => :c_disable
+    post "disable/:id" => :c_disable
     post "c_add" => :c_add
 
 

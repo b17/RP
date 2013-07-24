@@ -14,8 +14,6 @@ class AdminController < ApplicationController
     end
     @path=Rails.root
     @item=selected_item
-
-
   end
 
   def p_add
@@ -56,6 +54,11 @@ class AdminController < ApplicationController
   end
 
   def c_disable
+    id= params[:id];
+    item = Announce.find id
+    unless item.nil?
+      #item.
+    end
   end
 
   def p_edit
