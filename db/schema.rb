@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20130721112356) do
     t.float    "lt"
     t.string   "main_img_url"
     t.datetime "event_date"
+    t.integer  "user_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end

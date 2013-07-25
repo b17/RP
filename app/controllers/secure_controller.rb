@@ -5,14 +5,15 @@ class SecureController < ApplicationController
     #redirect_to :failed_login
     #@meta=request
     #session[:user_role]='core-admin'
-    session[:user_id]=1
-    session[:user_role]='admin'
+    session[:id]=2
+    session[:role]='admin'
     redirect_to :back
   end
 
 
   def logout
-    session[:user_role]='guest'
+    session[:role]='guest'
+    session[:id]=nil
     redirect_to :back
   end
 

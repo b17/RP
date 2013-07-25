@@ -1,7 +1,6 @@
 class AdminController < ApplicationController
   include AdminHelper
   layout 'admin_layout'
-  id = 1
 
   def welcome
 
@@ -21,7 +20,7 @@ class AdminController < ApplicationController
   end
 
   def p_my_announces
-    @all = Announce.all
+    @all = Announce.find_all_by_user_id session[:id]
   end
 
   def p_text_stats
@@ -37,13 +36,21 @@ class AdminController < ApplicationController
     @params=request.params
     image = params[:announce][:image]
     logger.print image
-    image_path =save_image image
     item = Announce.new
+
+    unless   image.nil?
+      image_path =save_image image
+      item.main_img_url=image_path
+    end
+
     item.title=@params[:announce][:title]
     item.action_date=@params[:announce][:date]
     item.desc=@params[:announce][:desc]
-    item.main_img_url=image_path
+    item.user_id=session[:id]
     item.save
+
+
+
 
     redirect_to :announce
     #render 'util/show_param'
@@ -54,7 +61,7 @@ class AdminController < ApplicationController
   end
 
   def c_disable
-    id= params[:id];
+    id= params[:id]
     item = Announce.find id
     unless item.nil?
       #item.

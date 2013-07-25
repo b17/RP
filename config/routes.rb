@@ -69,6 +69,13 @@ Untitled8::Application.routes.draw do
     get "addsomenew" => :create
   end
 
+
+  controller :image do
+    get "announces/:id/front_img" => :announce_images
+    get "show/:id" => :show
+
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

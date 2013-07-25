@@ -8,7 +8,7 @@
         <ul class="nav">
 
 
-          <% if (session[:user_role]=='admin') %>
+          <% if session[:role]=='admin' %>
               <li><a class="nav-link" href="/admin">Admin</a></li>
               <li><a class="nav-link" href="/">Feed</a></li>
               <li><a class="nav-link" href="tag">Tags</a></li>
@@ -24,7 +24,7 @@
       <!--<div class="container pull-right">-->
         <!--<div class="nav-collapse">-->
           <!--<ul class="nav">-->
-            <!--<% if (session[:user_role]=='admin') %>-->
+            <!--<% if (session[:role]=='admin') %>-->
                 <!--<li><a class="nav-link" href="logout" role="link">logout</a></li>-->
             <!--<% else %>-->
                 <!--<li><a class="nav-link pull-right" href="#login" role="button" data-toggle="modal">login</a></li>-->

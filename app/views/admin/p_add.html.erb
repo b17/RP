@@ -3,23 +3,23 @@
 
 
   <div class="new-item-description">
+    <%= form_tag(c_add_path, method: 'post', enctype: 'multipart/form-data', style: 'text-align: left;') do %>
+        <input type="submit"
+               class="btn-success height-middle wight-middle pull-right action-publish unavailable red-placeholder"
+               id="btn-publish" value="PUBLISH">
+        <input type="text" name="announce[title]" id="new-item-title" oninput="tracker(this)"
+               placeholder="Title(customers will see this first)">
+        <input name="announce[date]" type="datetime" class="datepicker hasDatepicker" title="Starting"
+               placeholder="Date ( 26/01/2013 )">
+
+        <textarea name="announce[desc]" class="sub-desc" placeholder="Small header description"></textarea>
+        <br>
+        <input name="announce[image]" type="file" title="Image"/>
+
+        <div id="desc-bot-border"></div>
 
 
-    <form method="post" action="<%= c_add_path %>" style="text-align: left;" enctype="multipart/form-data">
-      <input type="submit"
-             class="btn-success height-middle wight-middle pull-right action-publish unavailable red-placeholder"
-             id="btn-publish" value="PUBLISH">
-      <input type="text" name="announce[title]" id="new-item-title" oninput="tracker(this)"
-             placeholder="Title(customers will see this first)">
-      <input name="announce[date]" type="datetime" class="datepicker hasDatepicker" title="Starting"
-             placeholder="Date ( 26/01/2013 )">
-
-      <textarea name="announce[desc]" class="sub-desc" placeholder="Small header description"></textarea>
-      <br>
-      <input name="announce[image]" type="file" title="Image"/>
-
-      <div id="desc-bot-border"></div>
-    </form>
+    <% end %>
   </div>
 
 </div>
