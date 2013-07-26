@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 gem 'geocoder', :git => 'git://github.com/alexreisner/geocoder.git', :ref => '5ec9a28c'
 gem 'carrierwave', '0.9.0'
+#gem 'paperclip', '3.5.0'
+#gem 'rmagick', '2.13.2'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

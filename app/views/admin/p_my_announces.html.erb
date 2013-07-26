@@ -1,3 +1,7 @@
+<pre>
+  <%= debug(params) %>
+</pre>
+
 <div class="content-part" id="my-announces-part">
   <a href="<%= add_path %>">
     <div class="btn-info pull-left wight-100p add-button crackable">Add</div>
@@ -5,26 +9,57 @@
 
   <div class="black">Active announces</div>
 
-  <% for item in @all %>
+  <% unless @active.nil? %>
+      <h3>Active</h3>
+      <% for item in @active %>
 
-      <div class="announces-list text-align: left;">
-        <div class="announces-list-element">
-          <div class="list-element-text inline-block"><a href="/info/<%= item.id %>"><%= item.title %></div>
+          <div class="announces-list text-align: left;">
+            <div class="announces-list-element">
+              <div class="list-element-text inline-block"><a href="/info/<%= item.id %>"><%= item.title %></div>
 
-          <div class="pull-right control-block-size inline-block">
-            <a href="to_trash/?id=12"><img class="selectable-image" src="img/delete-64.png"
-                                           alt="Editing" title="Disable it and move to trash folder"></a>
+              <div class="pull-right control-block-size inline-block">
+                <a href="trash/<%= item.id %>"><img class="selectable-image" src="img/delete-64.png"
+                                                    alt="Editing" title="Disable it and move to trash folder"></a>
+              </div>
+              <div class="pull-right control-block-size inline-block">
+                <a href="edit/<%= item.id %>"><img class="selectable-image" src="img/edit_property-64.png"
+                                                   alt="Editing" title="Change this announce"></a>
+              </div>
+              <div class="pull-right date ">30/06/2013 - 19:00</div>
+
+
+            </div>
           </div>
-          <div class="pull-right control-block-size inline-block">
-            <a href="edit/?id=12"><img class="selectable-image" src="img/edit_property-64.png"
-                                       alt="Editing" title="Change this announce"></a>
-          </div>
-          <div class="pull-right date ">30/06/2013 - 19:00</div>
 
-
-        </div>
-      </div>
-
+      <% end %>
   <% end %>
+
+
+
+  <% unless @disabled.nil? %>
+      <h3>Disabled</h3>
+      <% for item in @disabled %>
+
+          <div class="announces-list text-align: left;">
+            <div class="announces-list-element">
+              <div class="list-element-text inline-block"><a href="/info/<%= item.id %>"><%= item.title %></div>
+
+              <div class="pull-right control-block-size inline-block">
+                <a href="trash/<%= item.id %>"><img class="selectable-image" src="/css/styled-img/add-48.png"
+                                                    alt="Editing" title="Activate it"></a>
+              </div>
+              <div class="pull-right control-block-size inline-block">
+                <a href="edit/<%= item.id %>"><img class="selectable-image" src="img/edit_property-64.png"
+                                                   alt="Editing" title="Change this announce"></a>
+              </div>
+              <div class="pull-right date ">30/06/2013 - 19:00</div>
+
+
+            </div>
+          </div>
+
+      <% end %>
+  <% end %>
+
 
 </div>

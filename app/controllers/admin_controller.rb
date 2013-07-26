@@ -1,6 +1,8 @@
 class AdminController < ApplicationController
   include AdminHelper
+
   layout 'admin_layout'
+
 
   def welcome
 
@@ -13,6 +15,8 @@ class AdminController < ApplicationController
     end
     @path=Rails.root
     @item=selected_item
+    image_uploader = ImageUploader.new
+    @image=image_uploader.retrieve_from_store!(selected_item.main_img_url)
   end
 
   def p_add
@@ -20,7 +24,9 @@ class AdminController < ApplicationController
   end
 
   def p_my_announces
-    @all = Announce.find_all_by_user_id session[:id]
+    @active=Announce.all
+    #@active = Announce.where(:id => session[:id], :disabled => false)
+    @disabled = Announce.where(:id => session[:id], :disabled => true)
   end
 
   def p_text_stats
@@ -40,7 +46,6 @@ class AdminController < ApplicationController
 
     unless image.nil?
       save_image image
-      item.main_img_url
     end
 
     item.title=@params[:announce][:title]
@@ -51,18 +56,24 @@ class AdminController < ApplicationController
 
 
     redirect_to :announce
-    #render 'util/show_param'
 
   end
 
   def c_delete
+    redirect_to :back
   end
 
   def c_disable
     id= params[:id]
     item = Announce.find id
     unless item.nil?
-      #item.
+      if session['id']==item.user_id
+        item.disabled=true
+        item.save
+        redirect_to :back
+      else
+        redirect_to :home
+      end
     end
   end
 

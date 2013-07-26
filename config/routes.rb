@@ -49,9 +49,9 @@ Untitled8::Application.routes.draw do
     get "calendar" => :p_calendar
     get "add" => :p_add
     get "info/:id" => :info
+    get "trash/:id" => :c_disable
 
     post "delete" => :c_delete
-    post "disable/:id" => :c_disable
     post "c_add" => :c_add
 
 
