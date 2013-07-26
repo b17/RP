@@ -38,9 +38,9 @@ class AdminController < ApplicationController
     logger.print image
     item = Announce.new
 
-    unless   image.nil?
-      image_path =save_image image
-      item.main_img_url=image_path
+    unless image.nil?
+      save_image image
+      item.main_img_url
     end
 
     item.title=@params[:announce][:title]
@@ -48,8 +48,6 @@ class AdminController < ApplicationController
     item.desc=@params[:announce][:desc]
     item.user_id=session[:id]
     item.save
-
-
 
 
     redirect_to :announce
