@@ -50,6 +50,7 @@ Untitled8::Application.routes.draw do
     get "add" => :p_add
     get "info/:id" => :info
     get "trash/:id" => :c_disable
+    get "activate/:id" => :c_activate
 
     post "delete" => :c_delete
     post "c_add" => :c_add

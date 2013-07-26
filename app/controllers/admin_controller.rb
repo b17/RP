@@ -1,5 +1,6 @@
 class AdminController < ApplicationController
   include AdminHelper
+  include SecureHelper
 
   layout 'admin_layout'
 
@@ -24,9 +25,8 @@ class AdminController < ApplicationController
   end
 
   def p_my_announces
-    @active=Announce.all
-    #@active = Announce.where(:id => session[:id], :disabled => false)
-    @disabled = Announce.where(:id => session[:id], :disabled => true)
+    @active = Announce.where(:user_id => session[:id], :disabled => false)
+    @disabled = Announce.where(:user_id => session[:id], :disabled => true)
   end
 
   def p_text_stats
@@ -67,7 +67,7 @@ class AdminController < ApplicationController
     id= params[:id]
     item = Announce.find id
     unless item.nil?
-      if session['id']==item.user_id
+      if session[:id]==item.user_id
         item.disabled=true
         item.save
         redirect_to :back
@@ -79,5 +79,18 @@ class AdminController < ApplicationController
 
   def p_edit
   end
+
+  def c_activate
+    id=params[:id]
+    item=Announce.find_by session[:id]
+    if item.user_id==id
+      item.disabled=false
+      item.save
+    else
+      redirect_to :home
+    end
+
+  end
+
 
 end
