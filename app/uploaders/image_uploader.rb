@@ -1,7 +1,8 @@
 # encoding: utf-8
 
 class ImageUploader < CarrierWave::Uploader::Base
-  attr_accessible user_id
+
+  attr_accessor :user_id
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick

@@ -17,6 +17,7 @@ class AdminController < ApplicationController
     @path=Rails.root
     @item=selected_item
     image_uploader = ImageUploader.new
+    image_uploader.user_id=session[:id].to_s
     @image=image_uploader.retrieve_from_store!(selected_item.main_img_url)
     @image_name=selected_item.main_img_url
   end
@@ -46,7 +47,7 @@ class AdminController < ApplicationController
     item = Announce.new
 
     unless image.nil?
-      item.main_img_url = save_image image
+      item.main_img_url = save_image image, session[:id]
     end
 
     item.title=@params[:announce][:title]
@@ -79,6 +80,40 @@ class AdminController < ApplicationController
   end
 
   def p_edit
+    id=params[:id]
+    item = Announce.find id
+    if item.user_id==session[:id]
+      @item=item
+    else
+      redirect_to :home
+    end
+
+  end
+
+
+  def c_edit
+    @params=request.params
+    item = Announce.find params[:announce][:id]
+    if item.nil?
+      redirect_to :to
+    elsif session[:id]==item.user_id
+      #check if new image available
+      image = params[:announce][:image]
+      unless image.nil?
+        item.main_img_url = save_image image, session[:id]
+      end
+
+      item.title=@params[:announce][:title]
+      item.action_date=@params[:announce][:date]
+      item.desc=@params[:announce][:desc]
+      item.user_id=session[:id]
+      item.save
+      redirect_to :announce
+    else
+      redirect_to :permission_not_allowed
+    end
+
+
   end
 
   def c_activate

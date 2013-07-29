@@ -41,7 +41,7 @@ Untitled8::Application.routes.draw do
     get 'tag' => :all_tags
     get 'tag/:id' => :tag
     get 'random' => :rand
-    get 'announce/:id'=>announce
+    get 'announce/:id' => :announce
   end
 
   controller :admin do
@@ -56,9 +56,11 @@ Untitled8::Application.routes.draw do
     get "info/:id" => :info
     get "trash/:id" => :c_disable
     get "activate/:id" => :c_activate
+    get "edit/:id" => :p_edit
 
     post "delete" => :c_delete
     post "c_add" => :c_add
+    post "c_edit" => :c_edit
 
 
   end

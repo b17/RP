@@ -132,6 +132,11 @@
 .sub-desc {
     margin-bottom: 10pt;
     width: 300pt;
+    margin-left: 5pt;
+}
+
+.margin-left-5pt {
+    margin-left: 5pt;
 }
 
 .add-info-block {

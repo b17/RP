@@ -1,2 +1,28 @@
-<h1>Admin#p_edit</h1>
-<p>Find me in app/views/admin/p_edit.html.erb</p>
+<div class="content-part" id="announce-part">
+  <div class="black" style="margin-bottom: 10pt;">Edit</div>
+
+
+  <div class="new-item-description">
+    <%= form_tag(c_edit_path, method: 'post', enctype: 'multipart/form-data', style: 'text-align: left;') do %>
+        <input name="announce[id]" type="hidden" value="<%= @item.id %>">
+        <input type="submit"
+               class="btn-success height-middle wight-middle pull-right action-publish unavailable red-placeholder"
+               id="btn-publish" value="PUBLISH">
+        <input type="text" name="announce[title]" id="new-item-title" oninput="tracker(this)"
+               placeholder="Title(customers will see this first)" value="<%= @item.title %>">
+        <input name="announce[date]" type="datetime" class="datepicker hasDatepicker" title="Starting"
+               placeholder="Date ( 26/01/2013 )" value="<%= @item.action_date %>">
+
+        <textarea name="announce[desc]" class="sub-desc" placeholder="Small header description"><%= @item.desc %></textarea>
+        <br>
+        <img class="margin-left-5pt" src="/<%= @item.main_img_url.presence|| "img/no_image.jpg" %>" style="width: 200pt;height: 133pt" alt="Current image">
+
+        <input class="margin-left-5pt" name="announce[image]" type="file" title="Image"/>
+
+        <div id="desc-bot-border"></div>
+
+
+    <% end %>
+  </div>
+
+</div>
