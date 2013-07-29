@@ -14,7 +14,7 @@ class SecureController < ApplicationController
   def logout
     session[:role]='guest'
     session[:id]=nil
-    redirect_to :back
+    redirect_to :home
   end
 
   def fail

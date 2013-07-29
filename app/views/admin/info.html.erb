@@ -1,10 +1,10 @@
 <h2><%= @item.title %></h2>
 <pre>
    <%= @image.inspect %>
+   <%= @image_name.inspect %>
  </pre>
 
-<img style="height: 100pt;width: 100pt" src="show/<%= @item.id %>">
+<img style="height: 100pt;width: 100pt" src="/<%= @image_name %>">
 
-<%= image_tag @image %>
 <h4><%= @item.action_date %></h4>
 <h4><%= @item.desc %></h4>

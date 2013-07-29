@@ -18,6 +18,7 @@ class AdminController < ApplicationController
     @item=selected_item
     image_uploader = ImageUploader.new
     @image=image_uploader.retrieve_from_store!(selected_item.main_img_url)
+    @image_name=selected_item.main_img_url
   end
 
   def p_add
@@ -45,7 +46,7 @@ class AdminController < ApplicationController
     item = Announce.new
 
     unless image.nil?
-      save_image image
+      item.main_img_url = save_image image
     end
 
     item.title=@params[:announce][:title]
@@ -82,10 +83,11 @@ class AdminController < ApplicationController
 
   def c_activate
     id=params[:id]
-    item=Announce.find_by session[:id]
-    if item.user_id==id
+    item=Announce.find id
+    if item.user_id==session[:id]
       item.disabled=false
       item.save
+      redirect_to :back
     else
       redirect_to :home
     end

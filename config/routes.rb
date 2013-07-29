@@ -1,5 +1,7 @@
 Untitled8::Application.routes.draw do
 
+  get "fail/not_found"
+
   #resources :announces
 
 
@@ -33,10 +35,13 @@ Untitled8::Application.routes.draw do
 
   get "secure/login"
 
+  get "home" => 'root#feed'
+
   controller :root do
     get 'tag' => :all_tags
     get 'tag/:id' => :tag
     get 'random' => :rand
+    get 'announce/:id'=>announce
   end
 
   controller :admin do
@@ -70,7 +75,11 @@ Untitled8::Application.routes.draw do
     get "addsomenew" => :create
   end
 
-
+  controller :fail do
+    get "miss" => :not_found
+    get "not_found" => :not_found
+    get "404" => :not_found
+  end
   controller :image do
     get "announces/:id/front_img" => :announce_images
     get "show/:id" => :show

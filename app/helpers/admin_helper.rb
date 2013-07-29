@@ -5,7 +5,7 @@ module AdminHelper
     unless file.nil?
       image_uploader = ImageUploader.new
       image_uploader.store! file
-      file.original_filename
+      File.join(image_uploader.store_dir, file.original_filename)
     end
   end
 

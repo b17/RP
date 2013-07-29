@@ -17,12 +17,17 @@ class RootController < ApplicationController
   end
 
   def rand
-    #@random_list=get_rand
+    @random_list=Announce.where(:disabled => false)
   end
 
   def get_tag_name id
     #feetch from the base
     'fruits'
+  end
+
+  def announce
+    id= params[:id]
+    @announce= Announce.find id
   end
 
   def init

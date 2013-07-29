@@ -22,9 +22,9 @@ ActiveRecord::Schema.define(:version => 20130726133229) do
     t.string   "main_img_url"
     t.datetime "event_date"
     t.integer  "user_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.boolean  "disabled"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.boolean  "disabled",     :default => false, :null => false
   end
 
   create_table "tags", :force => true do |t|
