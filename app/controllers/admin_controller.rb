@@ -41,7 +41,7 @@ class AdminController < ApplicationController
   end
 
   def c_add
-    @params=request.params
+    params=request.params
     image = params[:announce][:image]
     logger.print image
     item = Announce.new
@@ -50,9 +50,9 @@ class AdminController < ApplicationController
       item.main_img_url = save_image image, session[:id]
     end
 
-    item.title=@params[:announce][:title]
-    item.action_date=@params[:announce][:date]
-    item.desc=@params[:announce][:desc]
+    item.title=params[:announce][:title]
+    item.action_date=params[:announce][:actiondate]
+    item.desc=params[:announce][:desc]
     item.user_id=session[:id]
     item.save
 
@@ -62,7 +62,16 @@ class AdminController < ApplicationController
   end
 
   def c_delete
-    redirect_to :back
+    id=params[:id]
+    item= Announce.find id
+
+    if  item.user_id==session[:id]
+      Announce.delete(item)
+      redirect_to :back
+    else
+      redirect_to :auth_fail
+    end
+
   end
 
   def c_disable

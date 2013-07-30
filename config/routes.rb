@@ -1,13 +1,10 @@
 Untitled8::Application.routes.draw do
 
+  resources :news
+
+
   get "fail/not_found"
-
-  #resources :announces
-
-
   resources :users
-
-
   resources :tags
   get "announces/create"
 
@@ -57,8 +54,8 @@ Untitled8::Application.routes.draw do
     get "trash/:id" => :c_disable
     get "activate/:id" => :c_activate
     get "edit/:id" => :p_edit
+    get "delete/:id" => :c_delete
 
-    post "delete" => :c_delete
     post "c_add" => :c_add
     post "c_edit" => :c_edit
 

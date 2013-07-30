@@ -69,12 +69,18 @@ body {
     cursor: pointer;
 }
 
-.image-gold-size {
+.image-gold-size-with_minus_margin {
     width: 200pt;
     height: 133pt;
     margin-top: -30pt;
     z-index: 1;
 
+}
+
+.image-gold-size {
+    width: 200pt;
+    height: 133pt;
+    z-index: 1;
 }
 
 .no-link-style {

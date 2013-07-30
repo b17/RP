@@ -1,16 +1,11 @@
-<pre>
-  <%= debug(params) %>
-</pre>
-
 <div class="content-part" id="my-announces-part">
+  <div>
+    <h3 class="inline-block">Active</h3>
+  </div>
   <a href="<%= add_path %>">
     <div class="btn-info pull-left wight-100p add-button crackable">Add</div>
-  </a>
-
-  <div class="black">Active announces</div>
-
+  </a><br>
   <% unless @active.nil? %>
-      <h3>Active</h3>
       <% for item in @active %>
 
           <div class="announces-list text-align: left;">
@@ -33,9 +28,6 @@
 
       <% end %>
   <% end %>
-
-
-
   <% unless @disabled.nil? %>
       <h3>Disabled</h3>
       <% for item in @disabled %>
@@ -43,17 +35,24 @@
           <div class="announces-list text-align: left;">
             <div class="announces-list-element">
               <div class="list-element-text inline-block"><a href="/info/<%= item.id %>"><%= item.title %></div>
-
+              <div class="pull-right inline-block close">
+                <a href="delete/<%= item.id %>"><img src="img/delete_forever.png"
+                                                     style="position: fixed;;margin-top: -5pt; width: 20pt;height: 20pt;"></a>
+              </div>
               <div class="pull-right control-block-size inline-block">
                 <a href="activate/<%= item.id %>"><img class="selectable-image" src="/css/styled-img/add-48.png"
-                                                    alt="Editing" title="Activate it"></a>
+                                                       alt="Editing" title="Activate it"></a>
               </div>
               <div class="pull-right control-block-size inline-block">
                 <a href="edit/<%= item.id %>"><img class="selectable-image" src="img/edit_property-64.png"
                                                    alt="Editing" title="Change this announce"></a>
               </div>
               <div class="pull-right date">30/06/2013 - 19:00</div>
-
+              <div title="Delete forever" class="inline-block close height-middle padding-right-big">
+                <a href="delete/<%= item.id %>">
+                  <img src="img/delete_forever.png"
+                       style="width: 30pt;height: 30pt;"></a>
+              </div>
 
             </div>
           </div>

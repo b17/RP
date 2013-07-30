@@ -11,11 +11,11 @@
           <% if session[:role]=='admin' %>
               <li><a class="nav-link" href="/admin">Admin</a></li>
               <li><a class="nav-link" href="/">Feed</a></li>
-              <li><a class="nav-link" href="tag">Tags</a></li>
+              <li><a class="nav-link" href="/tag">Tags</a></li>
               <li><a class="nav-link" href="logout" role="link">logout</a></li>
           <% else %>
               <li><a class="nav-link" href="/">Feed</a></li>
-              <li><a class="nav-link" href="tag">Tags</a></li>
+              <li><a class="nav-link" href="/tag">Tags</a></li>
               <li><a class="nav-link pull-right" href="#login" role="button" data-toggle="modal">login</a></li>
           <% end %>
         </ul>

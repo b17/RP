@@ -12,16 +12,14 @@
                placeholder="Title(customers will see this first)" value="<%= @item.title %>">
         <input name="announce[date]" type="datetime" class="datepicker hasDatepicker" title="Starting"
                placeholder="Date ( 26/01/2013 )" value="<%= @item.action_date %>">
-
+        <br>
         <textarea name="announce[desc]" class="sub-desc" placeholder="Small header description"><%= @item.desc %></textarea>
         <br>
-        <img class="margin-left-5pt" src="/<%= @item.main_img_url.presence|| "img/no_image.jpg" %>" style="width: 200pt;height: 133pt" alt="Current image">
+        <img class="margin-left-5pt" src="<%= @item.main_img_url.presence|| "img/no_image.jpg" %>" style="width: 200pt;height: 133pt" alt="Current image">
 
         <input class="margin-left-5pt" name="announce[image]" type="file" title="Image"/>
 
         <div id="desc-bot-border"></div>
-
-
     <% end %>
   </div>
 

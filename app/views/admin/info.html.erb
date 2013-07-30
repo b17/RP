@@ -1,10 +1,7 @@
+<a class="pull-left" href="/edit/<%= @item.id %>">Edit</a>
+<br>
 <h2><%= @item.title %></h2>
-<pre>
-   <%= @image.inspect %>
-   <%= @image_name.inspect %>
- </pre>
-
-<img style="height: 100pt;width: 100pt" src="/<%= @image_name %>">
+<img class="image-gold-size" src="<%= @image_name %>">
 
 <h4><%= @item.action_date %></h4>
 <h4><%= @item.desc %></h4>

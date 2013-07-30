@@ -69,7 +69,7 @@ body {
     cursor: pointer;
 }
 
-.image-gold-size {
+.image-gold-size-with_minus_margin {
     width: 200pt;
     height: 133pt;
     margin-top: -30pt;
