@@ -1,0 +1,2 @@
+module NewsManagerHelper
+end

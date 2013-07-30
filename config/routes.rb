@@ -1,5 +1,11 @@
 Untitled8::Application.routes.draw do
 
+  get "news_manager/view_news"
+
+  get "news_manager/add_news"
+
+  get "news_manager/edit_news"
+
   resources :news
 
 
@@ -81,8 +87,17 @@ Untitled8::Application.routes.draw do
   end
   controller :image do
     get "announces/:id/front_img" => :announce_images
-    get "show/:id" => :show
+    get 'show/:id' => :show
 
+  end
+
+
+  controller :superuser do
+    post 'manage/add' => :c_add_tag
+    post 'manage/tag/update' => :c_update_tag
+
+    get 'manage/tags/' => :p_view_tags
+    get 'manage/tags/:id/edit' => :p_edit_tag
   end
 
   # The priority is based upon order of creation:

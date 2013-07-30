@@ -10,6 +10,7 @@ class CreateAnnounces < ActiveRecord::Migration
       t.datetime :event_date
       t.integer :user_id
 
+
       t.timestamps
     end
   end

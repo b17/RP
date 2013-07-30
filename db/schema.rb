@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130726133229) do
+ActiveRecord::Schema.define(:version => 20130730213535) do
 
   create_table "announces", :force => true do |t|
     t.string   "title"
@@ -25,13 +25,17 @@ ActiveRecord::Schema.define(:version => 20130726133229) do
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
     t.boolean  "disabled",     :default => false, :null => false
+    t.integer  "tag_1",        :default => -1
+    t.integer  "tag_2",        :default => -1
+    t.integer  "tag_3",        :default => -1
   end
 
   create_table "tags", :force => true do |t|
     t.string   "name"
     t.string   "img_url"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "announce_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|
