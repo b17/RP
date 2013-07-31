@@ -147,3 +147,6 @@ body {
     background-color: #000000;
     color: #ffffff;
 }
+.fixed-size-50pt {
+    width: 50pt;
+}

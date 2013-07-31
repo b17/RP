@@ -170,3 +170,6 @@ body {
     padding-right: 20pt;
 
 }
+.fixed-size-50pt {
+    width: 50pt;
+}

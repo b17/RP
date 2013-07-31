@@ -4,9 +4,6 @@ class CreateTags < ActiveRecord::Migration
       t.string :name
       t.string :img_url
 
-      #foreign key
-      t.integer :announce_id
-
       t.timestamps
     end
   end

@@ -1,8 +1,8 @@
 class AddThreeTags < ActiveRecord::Migration
   def up
-    add_column :announces, :tag_1, :integer, :default => -1
-    add_column :announces, :tag_2, :integer, :default => -1
-    add_column :announces, :tag_3, :integer, :default => -1
+    add_column :announces, :tag_1, :string
+    add_column :announces, :tag_2, :string
+    add_column :announces, :tag_3, :string
   end
 
   def down

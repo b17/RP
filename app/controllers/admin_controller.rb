@@ -22,9 +22,6 @@ class AdminController < ApplicationController
     @image_name=selected_item.main_img_url
   end
 
-  def p_add
-
-  end
 
   def p_my_announces
     @active = Announce.where(:user_id => session[:id], :disabled => false)
@@ -40,6 +37,10 @@ class AdminController < ApplicationController
   def p_calendar
   end
 
+  def p_add
+    @tags=Tag.all
+  end
+
   def c_add
     params=request.params
     image = params[:announce][:image]
@@ -49,9 +50,47 @@ class AdminController < ApplicationController
     unless image.nil?
       item.main_img_url = save_image image, session[:id]
     end
+    #parse date
+    date = params[:announce][:date]
+    date_parse = Date.parse(date)
+    unless date_parse.nil?
+      item.action_date=date_parse
+    end
 
     item.title=params[:announce][:title]
-    item.action_date=params[:announce][:actiondate]
+
+    item.lt=params[:announce][:latitude].to_s.to_f
+    item.lg=params[:announce][:longitude].to_s.to_f
+
+    #Tags setting
+    #support only three tags
+    tag_1 = params[:announce][:tag_1]
+
+    if tag_1=='none'
+      item.tag_1= nil
+    else
+      item.tag_1= tag_1
+    end
+
+    tag_2 = params[:announce][:tag_2]
+
+    if tag_2=='none'
+      item.tag_2= nil
+    else
+      item.tag_2= tag_2
+    end
+
+
+    tag_3 = params[:announce][:tag_3]
+
+    if tag_3=='none'
+      item.tag_3= nil
+    else
+      item.tag_3= tag_3
+    end
+
+    #####################################
+
     item.desc=params[:announce][:desc]
     item.user_id=session[:id]
     item.save
@@ -113,7 +152,14 @@ class AdminController < ApplicationController
       end
 
       item.title=@params[:announce][:title]
-      item.action_date=@params[:announce][:date]
+      date = @params[:announce][:date]
+
+      date_parse = Date.parse(date)
+      unless date_parse.nil?
+        item.action_date=date_parse
+      end
+      #end
+
       item.desc=@params[:announce][:desc]
       item.user_id=session[:id]
       item.save

@@ -1,4 +1,6 @@
 class SuperuserController < ApplicationController
+  layout 'admin_layout'
+
   def p_view_tags
     @all_tags= Tag.all
   end

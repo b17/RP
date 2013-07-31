@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(:version => 20130730213535) do
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
     t.boolean  "disabled",     :default => false, :null => false
-    t.integer  "tag_1",        :default => -1
-    t.integer  "tag_2",        :default => -1
-    t.integer  "tag_3",        :default => -1
+    t.string   "tag_1",        :default => ""
+    t.string   "tag_2",        :default => ""
+    t.string   "tag_3",        :default => ""
   end
 
   create_table "tags", :force => true do |t|

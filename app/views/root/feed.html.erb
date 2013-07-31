@@ -2,17 +2,27 @@
   <div class="inline-block wight-70pc">
     <div class="breadcrumb-new"><a href="/">Most popular</a></div>
     <div id="announce-list">
-      <div class="item-wrapper">
-        <div class="header"><a href="#go-to-item" class="white-link-style">Free hair styler master!</a></div>
-        <img class="image-gold-size-with_minus_margin" src="img/mock/dsc8533_pp.jpg">
+      <% for item in @items %>
+          <div class="item-wrapper">
+            <div class="header"><a href="/details/<%= item.id %>" class="white-link-style"><%= item.title %></a>
+            </div>
+            <img class="image-gold-size-with_minus_margin" src="<%= item.main_img_url %>">
 
-        <div class="bot-header-tag-panel">
-          <i><a href="#?tag=health" class="style-tag">health</a></i>
-          <i><a href="index_new_style_tag.html" class="style-tag">hair</a></i>
-          <i><a href="index_new_style_tag.html" class="style-tag">free</a></i>
-        </div>
-      </div>
+            <div class="bot-header-tag-panel">
 
+              <% unless item.tag_1.nil? %>
+                  <i><a href="/tag/<%= item.tag_1 %>" class="style-tag"><%= item.tag_1 %></a></i>
+              <% end %>
+              <% unless item.tag_2.nil? %>
+                  <i><a href="/tag/<%= item.tag_2 %>" class="style-tag"><%= item.tag_2 %></a></i>
+              <% end %>
+              <% unless item.tag_3.nil? %>
+                  <i><a href="/tag/<%= item.tag_3 %>" class="style-tag"><%= item.tag_3 %></a></i>
+              <% end %>
+
+            </div>
+          </div>
+      <% end %>
 
 
     </div>

@@ -3,7 +3,7 @@ class RootController < ApplicationController
 
   def feed
     init
-
+    @items=Announce.all
   end
 
   def tag

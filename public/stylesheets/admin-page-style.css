@@ -132,8 +132,10 @@
 .sub-desc {
     margin-bottom: 10pt;
     width: 300pt;
-    margin-left: 5pt;
+
 }
+
+
 
 .margin-left-5pt {
     margin-left: 5pt;
@@ -237,7 +239,6 @@
     vertical-align: middle;
 
 }
-
 .element-hover {
     color: #ffffff;
     background-color: lightblue;

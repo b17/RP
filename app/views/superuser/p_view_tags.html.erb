@@ -1,20 +1,26 @@
 <input type="search" placeholder="search">
+<link type="text/css" href="/css/superuser-styles.css" media="all" rel="stylesheet">
 <div>Tags:
   <% @all_tags.size %></div>
-<div class="tag-listing-wrapper">
-  <% for tag in @all_tags %>
+
+<% for tag in @all_tags %>
+    <div class="tag-listing-wrapper">
+
       <div class="announces-list-element">
-        <div class="list-element-text inline-block"><a href="#search-all-with-this-tag">sport</a></div>
+        <div class="list-element-text inline-block fixed-size-50pt">
+          <a href="announceinfo.html?id=12"><%= tag.name %></a></div>
         <div class="inline-block" style="width: 10pt"></div>
         <div class="pull-right control-block-size inline-block">
-          <a href="tag/delete/12"><img class="selectable-image" src="img/delete-64.png"
+          <a href="tag/delete/12"><img class="selectable-image" src="/img/delete-64.png"
                                        alt="Editing" title="Disable it and move to trash folder"></a>
         </div>
         <div class="pull-right control-block-size inline-block">
-          <a href="edit/?id=12"><img class="selectable-image" src="img/edit_property-64.png"
+          <a href="edit/?id=12"><img class="selectable-image" src="/img/edit_property-64.png"
                                      alt="Editing" title="Change this announce"></a>
         </div>
         <div class="pull-right date ">30/06/2013 - 19:00</div>
+        <div class="inline-block"><img class="tag-list-item-height" src="<%= tag.img_url %>"></div>
+
       </div>
-  <% end %>
-</div>
+    </div>
+<% end %>
