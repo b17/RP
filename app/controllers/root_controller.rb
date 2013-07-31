@@ -8,7 +8,10 @@ class RootController < ApplicationController
 
   def tag
     init
-    @tag_name= get_tag_name request.params[:id]
+    tag = request.params[:id]
+    @tag_name=tag
+    announce = Announce.arel_table
+    @items_with_tag = Announce.where(announce[:tag_1].eq(tag).or(announce[:tag_2].eq(tag).or(announce[:tag_3].eq(tag))))
   end
 
   def all_tags

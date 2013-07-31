@@ -1,5 +1,30 @@
-<h1>Root#tag</h1>
-<p>Find me in app/views/root/tag.html.erb</p>
-
-<%= @params %>
 <h1><%= @tag_name %></h1>
+<div class="page-root">
+  <div class="inline-block wight-70pc">
+    <div id="announce-list">
+      <% for item in @items_with_tag %>
+          <div class="item-wrapper">
+            <div class="header"><a href="/details/<%= item.id %>" class="white-link-style"><%= item.title %></a>
+            </div>
+            <img class="image-gold-size-with_minus_margin" src="<%= item.main_img_url %>">
+
+            <div class="bot-header-tag-panel">
+
+              <% unless item.tag_1.nil? %>
+                  <i><a href="/tag/<%= item.tag_1 %>" class="style-tag"><%= item.tag_1 %></a></i>
+              <% end %>
+              <% unless item.tag_2.nil? %>
+                  <i><a href="/tag/<%= item.tag_2 %>" class="style-tag"><%= item.tag_2 %></a></i>
+              <% end %>
+              <% unless item.tag_3.nil? %>
+                  <i><a href="/tag/<%= item.tag_3 %>" class="style-tag"><%= item.tag_3 %></a></i>
+              <% end %>
+
+            </div>
+          </div>
+      <% end %>
+
+
+    </div>
+  </div>
+</div>
