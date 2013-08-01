@@ -1,9 +1,10 @@
 class RootController < ApplicationController
+  layout 'guest'
   require 'geocoder'
 
   def feed
     init
-    @items=Announce.all
+    @items=Announce.where(:disabled => false).limit(10)
   end
 
   def tag

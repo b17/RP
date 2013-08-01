@@ -48,7 +48,7 @@ Untitled8::Application.routes.draw do
   end
 
   controller :admin do
-    get "admin" => :welcome
+    get "admin" => :p_my_announces
 
     get "calendar" => :p_calendar
     get "announce" => :p_my_announces
@@ -96,8 +96,18 @@ Untitled8::Application.routes.draw do
     post 'manage/add' => :c_add_tag
     post 'manage/tag/update' => :c_update_tag
 
+    get 'manage' => :view
     get 'manage/tags/' => :p_view_tags
     get 'manage/tags/:id/edit' => :p_edit_tag
+
+    get 'manage/news/new' => :p_news_create
+    get 'manage/news/all' => :p_news_view
+    get 'manage/news/:id/edit/' => :p_news_edit
+
+    post 'manage/news/create' => :c_news_add
+    post 'manage/news/:id/update' => :c_news_update
+
+
   end
 
   # The priority is based upon order of creation:
@@ -111,7 +121,7 @@ Untitled8::Application.routes.draw do
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
 
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
+  # Sample resource route (maps HTTP verbs to controller actiqons automatically):
   #   resources :products
 
   # Sample resource route with options:

@@ -2,7 +2,7 @@ class AdminController < ApplicationController
   include AdminHelper
   include SecureHelper
 
-  layout 'admin_layout'
+  layout 'admin'
 
 
   def welcome

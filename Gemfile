@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'activesupport', '3.2.13'
 gem 'rails', '3.2.13'
 gem 'geocoder', :git => 'git://github.com/alexreisner/geocoder.git', :ref => '5ec9a28c'
 gem 'carrierwave', '0.9.0'

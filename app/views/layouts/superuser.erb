@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin page</title>
+  <%= stylesheet_link_tag "metrov-by-talkslab/bootstrap", :media => "all" %>
+  <%= stylesheet_link_tag "metrov-by-talkslab/bootstrap-fonts", :media => "all" %>
+  <%= stylesheet_link_tag "admin-page-style", :media => "all" %>
+  <%= stylesheet_link_tag "common", :media => "all" %>
+  <%= javascript_include_tag "jquery", :media => "all" %>
+  <%= javascript_include_tag "bootstrap", :media => "all" %>
+  <%= csrf_meta_tags %>
+</head>
+<body style="text-align: center; width: 90%; margin: 7% auto 0;">
+<%= render 'shared/header' %>
+<div style="width: 100%; text-align: center; padding-top:2%">
+  <h2 class="page-name"><%= params[:action] %> , Admin page</h2>
+</div>
+<div class="main-frame">
+  <div class="navigation-part">
+    <div class="nav-button height-middle
+      <% if params[:action]=='p_add' %> selected
+      <% end %>" data-defpart="announce-part" style="width: 100%">
+      <a class="admin-link no-link-style" href="<%= manage_news_all_path %>">
+        <div>News</div>
+      </a>
+    </div>
+    <div class="nav-button height-middle
+      <% if params[:action]=='p_my  _announces' %> selected
+      <% end %>" data-defpart="my-announces-part" style="width: 100%">
+      <a class="admin-link no-link-style" href="<%= manage_news_new_path %>">
+        <div>Add news</div>
+      </a>
+    </div>
+  </div>
+  <div class="content-part" id="announce-part">
+    <%= yield %>
+  </div>
+</div>
+</body>
+</html>

@@ -25,17 +25,16 @@ ActiveRecord::Schema.define(:version => 20130730213535) do
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
     t.boolean  "disabled",     :default => false, :null => false
-    t.string   "tag_1",        :default => ""
-    t.string   "tag_2",        :default => ""
-    t.string   "tag_3",        :default => ""
+    t.string   "tag_1"
+    t.string   "tag_2"
+    t.string   "tag_3"
   end
 
   create_table "tags", :force => true do |t|
     t.string   "name"
     t.string   "img_url"
-    t.integer  "announce_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
