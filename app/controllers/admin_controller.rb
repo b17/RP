@@ -10,16 +10,13 @@ class AdminController < ApplicationController
   end
 
   def info
-    selected_item = Announce.find(params[:id])
-    if selected_item.nil?
+    @item= Announce.find(params[:id])
+    if @item.nil?
       redirect_to :not_found
     end
     @path=Rails.root
-    @item=selected_item
-    image_uploader = ImageUploader.new
-    image_uploader.user_id=session[:id].to_s
-    @image=image_uploader.retrieve_from_store!(selected_item.main_img_url)
     @image_name=selected_item.main_img_url
+    #@back=request.
   end
 
 

@@ -46,11 +46,25 @@ class SuperuserController < ApplicationController
     @all_tags= Tag.all
   end
 
-  def p_add_tag
+  def p_create_tag
 
   end
 
-  def c_add_tag
+  def c_tag_add
+    name = params[:name]
+    image = params[:image]
+
+    if name.nil?&&image.nil?
+
+    else
+      tag_uploader = TagUploader.new
+      tag = Tag.new
+      tag.name=name
+      filename = tag_uploader.store! image
+      tag.img_url= filename
+      tag.save
+    end
+
 
   end
 

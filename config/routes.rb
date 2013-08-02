@@ -93,11 +93,13 @@ Untitled8::Application.routes.draw do
 
 
   controller :superuser do
-    post 'manage/add' => :c_add_tag
-    post 'manage/tag/update' => :c_update_tag
-
     get 'manage' => :view
+
     get 'manage/tags/' => :p_view_tags
+    get 'manage/tag/new' => :p_create_tag
+    post 'manage/tag/save_new' => :c_tag_add
+    post 'manage/tag/:id/update' => :c_update_tag
+
     get 'manage/tags/:id/edit' => :p_edit_tag
 
     get 'manage/news/new' => :p_news_create

@@ -1,0 +1,10 @@
+<div style="width: 200pt;" class="inline-block">
+  <%= form_tag(manage_tag_save_new_path, enctype: 'multipart/form-data') do %>
+      <input name="name" class="pull-left" type="text" placeholder="name" style="width:100%">
+      <hr>
+
+      <input name="image" class="pull-left" type="file" title="image(100x66 preferred)"><br>
+
+      <input class="pull-left" type="submit" value="add" style="width: 100%">
+  <% end %>
+</div>
