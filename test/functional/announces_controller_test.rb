@@ -18,7 +18,7 @@ class AnnouncesControllerTest < ActionController::TestCase
 
   test "should create announce" do
     assert_difference('Announce.count') do
-      post :create, announce: { date: @announce.date, desc: @announce.desc, lg: @announce.lg, lt: @announce.lt, main_img_url: @announce.main_img_url, title: @announce.title }
+      post :create, announce: { date: @announce.date, desc: @announce.desc, lg: @announce.lg, lt: @announce.lt, image: @announce.image, title: @announce.title }
     end
 
     assert_redirected_to announce_path(assigns(:announce))
@@ -35,7 +35,7 @@ class AnnouncesControllerTest < ActionController::TestCase
   end
 
   test "should update announce" do
-    put :update, id: @announce, announce: { date: @announce.date, desc: @announce.desc, lg: @announce.lg, lt: @announce.lt, main_img_url: @announce.main_img_url, title: @announce.title }
+    put :update, id: @announce, announce: { date: @announce.date, desc: @announce.desc, lg: @announce.lg, lt: @announce.lt, image: @announce.image, title: @announce.title }
     assert_redirected_to announce_path(assigns(:announce))
   end
 

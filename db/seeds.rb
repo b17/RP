@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 users = User.create("login" => "admin", 'password' => 'password', 'e_mail' => 'some@e.mail', 'first' => 'andrew')
-tags =Tag.create({name: 'sport', img_url: '/img/tag/sport_small.jpg'})
-tags =Tag.create({name: 'party', img_url: '/img/tag/party_small.jpg'})
-tags =Tag.create({name: 'health', img_url: '/img/tag/health_small.jpg'})
-tags =Tag.create({name: 'education', img_url: '/img/tag/education_small.jpg'})
+tags =Tag.create({name: 'sport', image: '/img/tag/sport_small.jpg'})
+tags =Tag.create({name: 'party', image: '/img/tag/party_small.jpg'})
+tags =Tag.create({name: 'health', image: '/img/tag/health_small.jpg'})
+tags =Tag.create({name: 'education', image: '/img/tag/education_small.jpg'})

@@ -6,7 +6,7 @@ class CreateAnnounces < ActiveRecord::Migration
       t.date :action_date
       t.float :lg
       t.float :lt
-      t.string :main_img_url
+      t.string :image
       t.datetime :event_date
       t.integer :user_id
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130730213535) do
+ActiveRecord::Schema.define(:version => 20130803025207) do
 
   create_table "announces", :force => true do |t|
     t.string   "title"
@@ -30,11 +30,28 @@ ActiveRecord::Schema.define(:version => 20130730213535) do
     t.string   "tag_3"
   end
 
+  create_table "news", :force => true do |t|
+    t.string   "title",                        :null => false
+    t.string   "short_info",                   :null => false
+    t.boolean  "disabled",   :default => true, :null => false
+    t.text     "content",                      :null => false
+    t.string   "image",                        :null => false
+    t.integer  "user_id",                      :null => false
+    t.float    "lt"
+    t.float    "lg"
+    t.string   "tag_1"
+    t.string   "tag_2"
+    t.string   "tag_3"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
   create_table "tags", :force => true do |t|
     t.string   "name"
-    t.string   "img_url"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "image"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "disabled",   :default => false
   end
 
   create_table "users", :force => true do |t|

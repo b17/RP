@@ -8,30 +8,24 @@
         <ul class="nav">
 
 
-          <% if session[:role]=='admin' %>
+          <% if session[:role]==:admin||:core_admin %>
+              <% if session[:role]==:admin||:core_admin %>
+                  <li><a class="nav-link" href="<%= manage_path %>">manage</a></li>
+              <% end %>
               <li><a class="nav-link" href="/admin">Admin</a></li>
-              <li><a class="nav-link" href="/">Feed</a></li>
-              <li><a class="nav-link" href="/tag">Tags</a></li>
-              <li><a class="nav-link" href="logout" role="link">logout</a></li>
+              <li><a class="nav-link" href="<%= home_path %>">Feed</a></li>
+              <li><a class="nav-link" href="<%= tags_path %>">Tags</a></li>
+              <li><a class="nav-link" href="<%= logout_path %>" role="link">logout</a></li>
           <% else %>
               <li><a class="nav-link" href="/">Feed</a></li>
               <li><a class="nav-link" href="/tag">Tags</a></li>
               <li><a class="nav-link pull-right" href="#login" role="button" data-toggle="modal">login</a></li>
           <% end %>
+
+
         </ul>
       </div>
 
-      <!--<div class="container pull-right">-->
-        <!--<div class="nav-collapse">-->
-          <!--<ul class="nav">-->
-            <!--<% if (session[:role]=='admin') %>-->
-                <!--<li><a class="nav-link" href="logout" role="link">logout</a></li>-->
-            <!--<% else %>-->
-                <!--<li><a class="nav-link pull-right" href="#login" role="button" data-toggle="modal">login</a></li>-->
-            <!--<% end %>-->
-          <!--</ul>-->
-        <!--</div>-->
-      <!--</div>-->
     </div>
   </div>
 </div>

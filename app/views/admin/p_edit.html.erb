@@ -15,7 +15,7 @@
         <br>
         <textarea name="announce[desc]" class="sub-desc" placeholder="Small header description"><%= @item.desc %></textarea>
         <br>
-        <img class="margin-left-5pt" src="<%= @item.main_img_url.presence|| "img/no_image.jpg" %>" style="width: 200pt;height: 133pt" alt="Current image">
+        <img class="margin-left-5pt" src="<%= @item.image.presence|| "img/no_image.jpg" %>" style="width: 200pt;height: 133pt" alt="Current image">
 
         <input class="margin-left-5pt" name="announce[image]" type="file" title="Image"/>
 

@@ -1,47 +1,11 @@
 Untitled8::Application.routes.draw do
-
-  get "news_manager/view_news"
-
-  get "news_manager/add_news"
-
-  get "news_manager/edit_news"
-
   resources :news
-
-
-  get "fail/not_found"
   resources :users
-  resources :tags
-  get "announces/create"
-
-  get "admin/p_add"
-
-  get "admin/p_my_announces"
-
-  get "admin/p_text_stats"
-
-  get "admin/p_map_stats"
-
-  get "admin/p_calendar"
-
-  get "admin/c_add"
-
-  get "admin/c_delete"
-
-  get "admin/c_disable"
-
-  get "admin/p_edit"
-
-  get "secure/login"
-
-  get "secure/logout"
-
-  get "secure/login"
 
   get "home" => 'root#feed'
 
   controller :root do
-    get 'tag' => :all_tags
+    get 'tags' => :all_tags
     get 'tag/:id' => :tag
     get 'random' => :rand
     get 'announce/:id' => :announce
@@ -94,21 +58,36 @@ Untitled8::Application.routes.draw do
 
   controller :superuser do
     get 'manage' => :view
+  end
 
-    get 'manage/tags/' => :p_view_tags
-    get 'manage/tag/new' => :p_create_tag
-    post 'manage/tag/save_new' => :c_tag_add
-    post 'manage/tag/:id/update' => :c_update_tag
 
-    get 'manage/tags/:id/edit' => :p_edit_tag
+  controller :tag do
+    get 'manage/tags/' => :p_all
 
-    get 'manage/news/new' => :p_news_create
-    get 'manage/news/all' => :p_news_view
-    get 'manage/news/:id/edit/' => :p_news_edit
+    get 'manage/tag/new' => :p_add
+    post 'manage/tag/save_new' => :c_save
 
-    post 'manage/news/create' => :c_news_add
-    post 'manage/news/:id/update' => :c_news_update
+    get 'manage/tags/:id/edit' => :p_edit
+    post 'manage/tag/:id/update' => :c_update
 
+    get 'manage/tags/:id/disable' => :c_disable
+    get 'manage/tags/:id/activate' => :c_activate
+    get 'manage/tags/:id/delete' => :c_delete
+
+  end
+
+  controller :news do
+    get 'manage/news/' => :p_all
+
+    get 'manage/news/new' => :p_add
+    post 'manage/news/save_new' => :c_save
+
+    get 'manage/news/:id/edit' => :p_edit
+    post 'manage/news/:id/update' => :c_update
+
+    get 'manage/news/:id/disable' => :c_disable
+    get 'manage/news/:id/activate' => :c_activate
+    get 'manage/news/:id/delete' => :c_delete
 
   end
 

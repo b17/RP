@@ -1,4 +1,4 @@
 class Tag < ActiveRecord::Base
-  attr_accessible :img_url, :name
-
+  attr_accessible :image, :name
+  mount_uploader :image, TagUploader
 end

@@ -3,7 +3,7 @@ class ImageController < ApplicationController
     item_id = params[:id]
     item = Announce.find item_id
     logger.print item
-    send_file item.main_img_url
+    send_file item.image
   end
 
 
@@ -12,7 +12,7 @@ class ImageController < ApplicationController
   def show
     item_id = params[:id]
     item = Announce.find item_id
-    send_file item.main_img_url, :type => 'image/*',
+    send_file item.image, :type => 'image/*',
               :disposition => 'inline'
   end
 

@@ -1,9 +1,9 @@
-class AddDisableAndDateToNews < ActiveRecord::Migration
+class CreateNews < ActiveRecord::Migration
   def change
     create_table :news do |t|
       t.string :title, :null => false
       t.string :short_info, :null => false
-      t.boolean :disabled, :default => true
+      t.boolean :disabled, :default => true, :null => false
       t.text :content, :null => false
       t.string :image, :null => false
       t.integer :user_id, :null => false
