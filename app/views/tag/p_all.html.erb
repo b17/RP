@@ -1,0 +1,61 @@
+<input type="search" placeholder="search">
+<link type="text/css" href="/css/superuser-styles.css" media="all" rel="stylesheet">
+<div>Tags:
+  <% @all_tags.size %></div>
+<% unless @all_tags.nil? %>
+    <h3>Active </h3>
+<% end %>
+<div class="tag-listing-wrapper">
+  <% for tag in @all_tags %>
+
+
+      <div class="announces-list-element">
+        <div class="list-element-text inline-block fixed-size-50pt">
+          <a href="announceinfo.html?id=12"><%= tag.name %></a></div>
+        <div class="inline-block" style="width: 10pt"></div>
+        <div class="pull-right control-block-size inline-block">
+          <a href="/manage/tag/<%= tag.id %>/disable"><img class="selectable-image" src="/img/delete-64.png"
+                                                           alt="Disable" title="Disable it and move to trash folder"></a>
+        </div>
+        <div class="pull-right control-block-size inline-block">
+          <a href="/manage/tag/<%= tag.id %>/edit"><img class="selectable-image" src="/img/edit_property-64.png"
+                                                        alt="Editing" title="Change this announce"></a>
+        </div>
+        <div class="pull-right date ">30/06/2013 - 19:00</div>
+        <div class="inline-block"><img class="tag-list-item-height" src="<%= tag.image %>"></div>
+
+      </div>
+
+  <% end %>
+  <% unless @disabled.nil? %>
+      <h3>Disabled</h3>
+      <% for item in @disabled %>
+
+          <div class="announces-list-element">
+            <div class="list-element-text inline-block fixed-size-50pt">
+              <a href="/info/<%= item.id %>"><%= item.name %></a></div>
+
+            <div class="inline-block" style="width: 10pt"></div>
+            <div class="pull-right control-block-size inline-block">
+              <a href="/manage/tag/<%= item.id %>/activate"><img class="selectable-image" src="/css/styled-img/add-48.png"
+                                                                 alt="Editing" title="Activate"></a>
+            </div>
+            <div class="pull-right control-block-size inline-block">
+              <a href="/manage/tag/<%= item.id %>/edit"><img class="selectable-image" src="/img/edit_property-64.png"
+                                                            alt="Editing" title="Change this announce"></a>
+            </div>
+            <div class="pull-right date ">30/06/2013 - 19:00</div>
+            <div title="Delete forever" class="inline-block close height-middle padding-right-big">
+              <a href="/manage/tag/<%= item.id %>/delete">
+                <img src="/img/delete_forever.png"
+                     style="width: 30pt;height: 30pt;"></a>
+            </div>
+            <div class="inline-block"><img class="tag-list-item-height" src="<%= item.image %>"></div>
+
+          </div>
+
+      <% end %>
+  <% end %>
+
+
+</div>

@@ -8,8 +8,8 @@
         <ul class="nav">
 
 
-          <% if session[:role]==:admin||:core_admin %>
-              <% if session[:role]==:admin||:core_admin %>
+          <% if session[:role]==:admin || session[:role]== :core_admin %>
+              <% if session[:role]==:core_admin %>
                   <li><a class="nav-link" href="<%= manage_path %>">manage</a></li>
               <% end %>
               <li><a class="nav-link" href="/admin">Admin</a></li>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130803025207) do
+ActiveRecord::Schema.define(:version => 20130806224340) do
 
   create_table "announces", :force => true do |t|
     t.string   "title"
@@ -19,12 +19,12 @@ ActiveRecord::Schema.define(:version => 20130803025207) do
     t.date     "action_date"
     t.float    "lg"
     t.float    "lt"
-    t.string   "main_img_url"
+    t.string   "image"
     t.datetime "event_date"
     t.integer  "user_id"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-    t.boolean  "disabled",     :default => false, :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "disabled",    :default => false, :null => false
     t.string   "tag_1"
     t.string   "tag_2"
     t.string   "tag_3"
@@ -52,6 +52,13 @@ ActiveRecord::Schema.define(:version => 20130803025207) do
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
     t.boolean  "disabled",   :default => false
+  end
+
+  create_table "tests", :force => true do |t|
+    t.string   "name"
+    t.text     "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

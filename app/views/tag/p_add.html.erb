@@ -1,0 +1,6 @@
+<%= form_tag(manage_tag_save_new_path, method: 'post', enctype: 'multipart/form-data', style: 'text-align: left;') do %>
+
+    <input type="text" name="name">   <br>
+    <input type="file" name="image">  <br>
+    <input type="submit" value="create">
+<% end %>

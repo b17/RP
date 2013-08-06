@@ -17,43 +17,44 @@
 
         <div>
           <div class="inline-block">
-            <input type="text" placeholder="longitude" name="announce[longitude]" class="margin-left-5pt"><br>
-            <input type="text" placeholder="latitude" name="announce[latitude]" class="margin-left-5pt"> <br></div>
-          <div class="inline-block">Map here</div>
+            <input type="text" placeholder="longitude" name="announce[longitude]" class="margin-left-5pt" value="<%= @longitude %>"><br>
+            <input type="text" placeholder="latitude" name="announce[latitude]" class="margin-left-5pt" value="<%=  @latitude %>">
+            <br></div>
+            <div class="inline-block">Map here</div>
 
-        </div>
-        <br>
+            </div>
+            <br>
 
-        <div class="margin-left-5pt">
-          <label>#1 <select name="announce[tag_1]">
-            <option id="-1">none</option>
-            <% for tag in @tags %>
-                <option id="<%= tag.id %>"><%= tag.name %></option>
+            <div class="margin-left-5pt">
+              <label>#1 <select name="announce[tag_1]">
+                <option id="-1">none</option>
+                <% for tag in @tags %>
+                    <option id="<%= tag.id %>"><%= tag.name %></option>
+                <% end %>
+              </select>
+              </label>
+              <label>#2 <select name="announce[tag_2]">
+                <option id="-1">none</option>
+
+                <% for tag in @tags %>
+                    <option id="<%= tag.id %>"><%= tag.name %></option>
+                <% end %>
+              </select>
+              </label>
+              <label>#3 <select name="announce[tag_3]">
+                <option id="-1">none</option>
+                <% for tag in @tags %>
+                    <option id="<%= tag.id %>"><%= tag.name %></option>
+                <% end %>
+              </select>
+              </label></div>
+            <br>
+            <input class="margin-left-5pt" name="announce[image]" type="file" title="Image"/>
+
+            <div id="desc-bot-border"></div>
+
+
             <% end %>
-          </select>
-          </label>
-          <label>#2 <select name="announce[tag_2]">
-            <option id="-1">none</option>
+            </div>
 
-            <% for tag in @tags %>
-                <option id="<%= tag.id %>"><%= tag.name %></option>
-            <% end %>
-          </select>
-          </label>
-          <label>#3 <select name="announce[tag_3]">
-            <option id="-1">none</option>
-            <% for tag in @tags %>
-                <option id="<%= tag.id %>"><%= tag.name %></option>
-            <% end %>
-          </select>
-          </label></div>
-        <br>
-        <input class="margin-left-5pt" name="announce[image]" type="file" title="Image"/>
-
-        <div id="desc-bot-border"></div>
-
-
-    <% end %>
-  </div>
-
-</div>
+            </div>

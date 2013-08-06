@@ -40,6 +40,8 @@ class RootController < ApplicationController
       location=Geocoder.search("194.28.172.27") #For work
       session[:country]=location[0].data['country_name']
       session[:city]=location[0].data['city']
+      session[:longitude]=location[0].data['longitude']
+      session[:latitude]=location[0].data['latitude']
       session[:init]=true
     end
   end

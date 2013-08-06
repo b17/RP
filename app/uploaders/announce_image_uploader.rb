@@ -2,6 +2,8 @@
 
 class AnnounceImageUploader < CarrierWave::Uploader::Base
 
+  attr_accessor :user_id
+
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -45,8 +47,12 @@ class AnnounceImageUploader < CarrierWave::Uploader::Base
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
-    @memorized_filename = 'a_img_'+Time.now.to_f.to_s + (File.extname original_filename) ||original_filename
+    @name ||= "#{timestamp}-#{File.extname original_filename}" if original_filename.present? and super.present?
+  end
 
+  def timestamp
+    var = :"@#{mounted_as}_timestamp"
+    model.instance_variable_get(var) or model.instance_variable_set(var, Time.now.to_i)
   end
 
 end

@@ -1,4 +1,7 @@
 Untitled8::Application.routes.draw do
+  resources :tests
+
+
   resources :news
   resources :users
 
@@ -36,7 +39,8 @@ Untitled8::Application.routes.draw do
   controller :secure do
     post "login" => :login
     get "logout" => :logout
-    get "fail" => :fail
+    get "fail/permissions" => :fail
+    get "fail/auth" => :fail
   end
 
 
@@ -67,12 +71,12 @@ Untitled8::Application.routes.draw do
     get 'manage/tag/new' => :p_add
     post 'manage/tag/save_new' => :c_save
 
-    get 'manage/tags/:id/edit' => :p_edit
+    get 'manage/tag/:id/edit' => :p_edit
     post 'manage/tag/:id/update' => :c_update
 
-    get 'manage/tags/:id/disable' => :c_disable
-    get 'manage/tags/:id/activate' => :c_activate
-    get 'manage/tags/:id/delete' => :c_delete
+    get 'manage/tag/:id/activate' => :c_activate
+    get 'manage/tag/:id/disable' => :c_disable
+    get 'manage/tag/:id/delete' => :c_delete
 
   end
 

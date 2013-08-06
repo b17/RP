@@ -58,7 +58,11 @@ class TagUploader < CarrierWave::Uploader::Base
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
-    @memorized_filename=@memorized_filename||'tag_'+Time.now.to_i.to_s + (File.extname original_filename)
+    @name ||= "#{timestamp}-#{super}#{File.extname original_filename}" if original_filename.present? and super.present?
   end
 
+  def timestamp
+    var = :"@#{mounted_as}_timestamp"
+    model.instance_variable_get(var) or model.instance_variable_set(var, Time.now.to_i)
+  end
 end

@@ -15,7 +15,7 @@ class AdminController < ApplicationController
       redirect_to :not_found
     end
     @path=Rails.root
-    @image_name=selected_item.image
+    @image_name=@item.image
     #@back=request.
   end
 
@@ -35,6 +35,8 @@ class AdminController < ApplicationController
   end
 
   def p_add
+    @longitude=session[:longitude]
+    @latitude=session[:latitude]
     @tags=Tag.all
   end
 
@@ -45,7 +47,7 @@ class AdminController < ApplicationController
     item = Announce.new
 
     unless image.nil?
-      item.image = save_image image, session[:id]
+      item.image = image
     end
     #parse date
     date = params[:announce][:date]
@@ -145,7 +147,7 @@ class AdminController < ApplicationController
       #check if new image available
       image = params[:announce][:image]
       unless image.nil?
-        item.image = save_image image, session[:id]
+        item.image = image
       end
 
       item.title=@params[:announce][:title]
