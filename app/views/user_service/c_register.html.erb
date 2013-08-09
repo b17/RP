@@ -1,0 +1,5 @@
+<h2>All users</h2>
+
+<% @users.each do |item| %>
+    <h4><%= item.login %>, <%= item.password %></h4>
+<% end %>

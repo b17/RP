@@ -1,4 +1,14 @@
 Untitled8::Application.routes.draw do
+  get "user_service/p_register"
+
+  get "user_service/p_reset"
+
+  get "user_service/p_login"
+
+  get "user_service/c_register"
+
+  get "user_service/c_reset"
+
   resources :tests
 
 
@@ -36,11 +46,15 @@ Untitled8::Application.routes.draw do
   end
 
 
-  controller :secure do
+  controller :user_service do
     post "login" => :login
     get "logout" => :logout
     get "fail/permissions" => :fail
     get "fail/auth" => :fail
+    get 'session/debug' => :debug_session
+    get 'registration' => :p_register
+    post 'register' => :c_register
+
   end
 
 

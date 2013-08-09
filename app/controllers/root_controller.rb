@@ -5,6 +5,8 @@ class RootController < ApplicationController
   def feed
     init
     @items=Announce.where(:disabled => false).limit(10)
+    @news=News.where(:disabled => false)
+
   end
 
   def tag

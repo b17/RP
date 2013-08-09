@@ -115,5 +115,19 @@
   </div>
 
 
-  <%= render 'root/news' %>
+  <div class="news inline-block">
+    <% for item in @news %>
+        <div class="news-item">
+          <a  href="<%= item.id %>"><h3><%= item.title %></h3></a>
+
+          <div class="vertical">
+            <div class="inline-block"><img src="<%= item.image %>" class="news-image inline-block"></div>
+            <div class="article-short inline-block">
+              <a class="inline-block" href="<%= item.id %>"><%= item.short_info %></a>
+            </div>
+          </div>
+          <hr>
+        </div>
+    <% end %>
+  </div>
 </div>

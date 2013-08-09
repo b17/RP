@@ -15,6 +15,27 @@
             background: darkgray;
         }
 
+        .header {
+            font-family: Consolas, fantasy;
+            font-size: xx-large;
+            text-align: center;
+        }
+
+        .list {
+            background: #000000;
+            color: white;
+            padding: 5pt 10pt;
+        }
+
+        .element {
+
+        }
+
+        .element:hover {
+            background: #f5f5f5;
+            color: #000000;
+
+        }
     </style>
 </head>
 <body>
@@ -39,7 +60,7 @@
     <tr>
         <td>user role</td>
         <td><code>session[:role]</code></td>
-        <td>'admin'- page administrator,<br>'core-admin' - service administrator,<br> 'subscriber' - free user without
+        <td>'admin'- page administrator,<br>'core_admin' - service administrator,<br> 'subscriber' - free user without
             right to publishing <br> 'guest'(by default or nil)
         </td>
 
@@ -50,6 +71,16 @@
         <td></td>
     </tr>
 </table>
+
+<div>
+    <div class="header">Behavior and other</div>
+
+    <div class="list">
+        <div class="element">Search all nearest events by range in 10km in each dimension</div>
+        <div class="element">Passwords holding in DB as Digest::MD5.hexdigest(password)</div>
+        <div class="element"></div>
+    </div>
+</div>
 
 </body>
 </html>

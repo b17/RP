@@ -1,0 +1,18 @@
+{
+    <% for  item in @random_list %>
+    "title": "<%=item.title%>",
+    "desc": "<%=item.desc%>",
+    "tags": [
+        <% unless item.tag_1.nil?  %>
+        "<%=item.tag_1 %>",
+        <% end %>
+        <% unless item.tag_2.nil?  %>
+        "<%=item.tag_2 %>",
+        <% end %>
+        <% unless item.tag_3.nil?  %>
+        "<%=item.tag_3 %>"
+        <% end %>
+    ]
+    <%end%>
+
+}

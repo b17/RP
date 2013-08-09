@@ -1,0 +1,26 @@
+<div class="register-block">
+
+  <img src="img/web_services.png" class="image-registration">
+
+  <%= form_tag(register_path) do %>
+
+      <div>
+        <input class="wight-100" type="text" placeholder="first name" name="register[first]">
+        <input class="wight-100" type="text" placeholder="last name" name="register[last]">
+      </div>
+
+      <input type="text" class="wight-100" required="true" placeholder="login" name="register[login]">
+      <input class="wight-100" type="email" placeholder="e-mail" onchange=" email_check(this.value)" name="register[e_mail]">
+      <input class="wight-100" type="password" placeholder="password (required)" required name="register[password]">
+
+      <div class="pull-left">
+        <label>I Accept <a href="termls.ogf.use.html">terms of use</a>
+          <input type="checkbox" required name="is_accepted" title="You should accept this rules">
+        </label>
+
+
+      </div>
+      <input type="submit" value="register">
+
+  <% end %>
+</div>

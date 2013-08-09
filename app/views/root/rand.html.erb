@@ -4,103 +4,31 @@
     <div id="announce-list">
       <% for random in @random_list do %>
           <div class="item-wrapper">
-            <div class="header"><a href="#go-to-item" class="white-link-style"><%=random.title %></a></div>
+            <div class="header"><a href="#go-to-item" class="white-link-style"><%= random.title %></a></div>
             <img class="image-gold-size-with_minus_margin" src="<%= random.image %>">
 
             <div class="bot-header-tag-panel">
-              <i><a href="#?tag=health">health</a></i>
-              <i><a href="index_new_style_tag.html">hair</a></i>
-              <i><a href="index_new_style_tag.html">free</a></i>
+              <div class="bot-header-tag-panel">
+
+                <% unless random.tag_1.nil? %>
+                    <i><a href="/tag/<%= random.tag_1 %>" class="style-tag"><%= random.tag_1 %></a></i>
+                <% end %>
+                <% unless random.tag_2.nil? %>
+                    <i><a href="/tag/<%= random.tag_2 %>" class="style-tag"><%= random.tag_2 %></a></i>
+                <% end %>
+                <% unless random.tag_3.nil? %>
+                    <i><a href="/tag/<%= random.tag_3 %>" class="style-tag"><%= random.tag_3 %></a></i>
+                <% end %>
+
+              </div>
             </div>
           </div>
       <% end %>
 
     </div>
 
-    <div class="breadcrumb-new">
-      <a href="/random">
-        Some random new
-      </a>
-    </div>
-
-
     <div class="inline">
-      <div class="item-wrapper">
-        <div class="header"><a href="#go-to-item" class="white-link-style">Free hair styler master!</a></div>
-        <img class="image-gold-size-with_minus_margin" src="img/mock/cOei1AE_pMI.jpg">
 
-        <div class="bot-header-tag-panel">
-          <i><a href="#?tag=health">health</a></i>
-          <i><a href="index_new_style_tag.html">hair</a></i>
-          <i><a href="index_new_style_tag.html">free</a></i>
-        </div>
-      </div>
-      <div class="item-wrapper">
-        <div class="header"><a href="#go-to-item" class="white-link-style">Free hair styler master!</a></div>
-        <img class="image-gold-size-with_minus_margin"
-             src="img/mock/800px-Tachyphonus_rufus_-Asa_Wright_Nature_Centre,_Northern_Range,_Trinidad,_Trinidad_and_Tobago_-pair-8a.jpg">
-
-        <div class="bot-header-tag-panel">
-          <i><a href="#?tag=health">health</a></i>
-          <i><a href="index_new_style_tag.html">hair</a></i>
-          <i><a href="index_new_style_tag.html">free</a></i>
-        </div>
-      </div>
-      <div class="item-wrapper">
-        <div class="header"><a href="#go-to-item" class="white-link-style">Free hair styler master!</a></div>
-        <img class="image-gold-size-with_minus_margin"
-             src="img/mock/800px-Tachyphonus_rufus_-Asa_Wright_Nature_Centre,_Northern_Range,_Trinidad,_Trinidad_and_Tobago_-pair-8a.jpg">
-
-        <div class="bot-header-tag-panel">
-          <i><a href="#?tag=health">health</a></i>
-          <i><a href="index_new_style_tag.html">hair</a></i>
-          <i><a href="index_new_style_tag.html">free</a></i>
-        </div>
-      </div>
-      <div class="item-wrapper">
-        <div class="header"><a href="#go-to-item" class="white-link-style">Free hair styler master!</a></div>
-        <img class="image-gold-size-with_minus_margin"
-             src="img/mock/800px-Tachyphonus_rufus_-Asa_Wright_Nature_Centre,_Northern_Range,_Trinidad,_Trinidad_and_Tobago_-pair-8a.jpg">
-
-        <div class="bot-header-tag-panel">
-          <i><a href="#?tag=health">health</a></i>
-          <i><a href="index_new_style_tag.html">hair</a></i>
-          <i><a href="index_new_style_tag.html">free</a></i>
-        </div>
-      </div>
-      <div class="item-wrapper">
-        <div class="header"><a href="#go-to-item" class="white-link-style">Free hair styler master!</a></div>
-        <img class="image-gold-size-with_minus_margin"
-             src="img/mock/800px-Tachyphonus_rufus_-Asa_Wright_Nature_Centre,_Northern_Range,_Trinidad,_Trinidad_and_Tobago_-pair-8a.jpg">
-
-        <div class="bot-header-tag-panel">
-          <i><a href="#?tag=health">health</a></i>
-          <i><a href="index_new_style_tag.html">hair</a></i>
-          <i><a href="index_new_style_tag.html">free</a></i>
-        </div>
-      </div>
-      <div class="item-wrapper">
-        <div class="header"><a href="#go-to-item" class="white-link-style">Free hair styler master!</a></div>
-        <img class="image-gold-size-with_minus_margin"
-             src="img/mock/800px-Tachyphonus_rufus_-Asa_Wright_Nature_Centre,_Northern_Range,_Trinidad,_Trinidad_and_Tobago_-pair-8a.jpg">
-
-        <div class="bot-header-tag-panel">
-          <i><a href="#?tag=health">health</a></i>
-          <i><a href="index_new_style_tag.html">hair</a></i>
-          <i><a href="index_new_style_tag.html">free</a></i>
-        </div>
-      </div>
-      <div class="item-wrapper">
-        <div class="header"><a href="#go-to-item" class="white-link-style">Free hair styler master!</a></div>
-        <img class="image-gold-size-with_minus_margin"
-             src="img/mock/800px-Tachyphonus_rufus_-Asa_Wright_Nature_Centre,_Northern_Range,_Trinidad,_Trinidad_and_Tobago_-pair-8a.jpg">
-
-        <div class="bot-header-tag-panel">
-          <i><a href="#?tag=health">health</a></i>
-          <i><a href="index_new_style_tag.html">hair</a></i>
-          <i><a href="index_new_style_tag.html">free</a></i>
-        </div>
-      </div>
     </div>
   </div>
 

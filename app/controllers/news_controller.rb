@@ -24,9 +24,30 @@ class NewsController < ApplicationController
   end
 
   def c_disable
+    if is_core_admin
+      id=params[:id]
+      news = News.find id
+      unless news.nil?
+        news.disabled=true
+        news.save
+      end
+      redirect_to :back
+    else
+      redirect_to :fail_permissions
+    end
   end
 
   def c_delete
+    if is_core_admin
+      id=params[:id]
+      news = News.find id
+      unless news.nil?
+        news.delete
+      end
+      redirect_to :back
+    else
+      redirect_to :fail_permissions
+    end
   end
 
   def p_edit
@@ -37,6 +58,16 @@ class NewsController < ApplicationController
   end
 
   def c_activate
-
+    if is_core_admin
+      id=params[:id]
+      news = News.find id
+      unless news.nil?
+        news.disabled=false
+        news.save
+      end
+      redirect_to :back
+    else
+      redirect_to :fail_permissions
+    end
   end
 end
