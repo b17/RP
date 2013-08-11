@@ -3,6 +3,9 @@
 <% unless @active_news.nil? %>
     <h3>Active </h3>
 <% end %>
+<a href="<%= manage_news_new_path %>">
+  <div class="btn-info pull-left wight-100p add-button crackable">Add</div>
+</a><br>
 <div class="tag-listing-wrapper">
   <% unless @active_news.nil?
        for active in @active_news %>

@@ -1,10 +1,11 @@
 <input type="search" placeholder="search">
 <link type="text/css" href="/css/superuser-styles.css" media="all" rel="stylesheet">
-<div>Tags:
-  <% @all_tags.size %></div>
 <% unless @all_tags.nil? %>
     <h3>Active </h3>
 <% end %>
+<a href="<%= manage_tag_new_path %>">
+  <div class="btn-info pull-left wight-100p add-button crackable">Add</div>
+</a><br>
 <div class="tag-listing-wrapper">
   <% for tag in @all_tags %>
 
@@ -42,7 +43,7 @@
             </div>
             <div class="pull-right control-block-size inline-block">
               <a href="/manage/tag/<%= item.id %>/edit"><img class="selectable-image" src="/img/edit_property-64.png"
-                                                            alt="Editing" title="Change this announce"></a>
+                                                             alt="Editing" title="Change this announce"></a>
             </div>
             <div class="pull-right date ">30/06/2013 - 19:00</div>
             <div title="Delete forever" class="inline-block close height-middle padding-right-big">
