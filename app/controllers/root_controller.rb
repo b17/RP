@@ -37,15 +37,21 @@ class RootController < ApplicationController
   end
 
   def init
-    unless session[:init]
+    unless session[:init] or same_ip("194.28.172.27")
       #location=Geocoder.search(request.ip)
+      #session[:ip]=request.ip
       location=Geocoder.search("194.28.172.27") #For work
+      session[:ip]="194.28.172.27"
       session[:country]=location[0].data['country_name']
       session[:city]=location[0].data['city']
       session[:longitude]=location[0].data['longitude']
       session[:latitude]=location[0].data['latitude']
       session[:init]=true
     end
+  end
+
+  def same_ip ip
+    ip==session[:ip]
   end
 end
 
