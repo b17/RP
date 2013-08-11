@@ -7,6 +7,7 @@ class NewsController < ApplicationController
   end
 
   def p_add
+    @tags= Tag.all
   end
 
   def c_save
@@ -16,10 +17,24 @@ class NewsController < ApplicationController
     item.title=news[:title]
     item.short_info=news['short_description']
     item.content=news['full_description']
-    item.image=news[:image]
+    unless news[:image].nil?
+      item.image=news[:image]
+    end
     item.user_id=session[:id]
 
+    unless news[:tag_1].nil?
+      item.tag_1 =news[:tag_1]
+    end
+    unless news[:tag_2].nil?
+      item.tag_2 =news[:tag_2]
+    end
+    unless news[:tag_3].nil?
+      item.tag_3 =news[:tag_3]
+    end
+
+
     item.save
+    redirect_to :manage_news
 
   end
 

@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   #roles
   #guest,admin, core_admin
   def is_core_admin
-    session[:role]==:core_admin
+    session[:role]=='core_admin'
   end
 
   def is_admin

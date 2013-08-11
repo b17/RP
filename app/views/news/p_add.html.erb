@@ -4,7 +4,34 @@
     <textarea name="news[full_description]" placeholder="All description here" class="wight-95"></textarea><br>
     <input type="file" name="news[image]" title="100*100 preferred"> <br>
     <hr>
-    <input name="news[use_my_position]" type="checkbox" title="appear to my current location">
+    <label>
+      <input name="news[use_my_position]" type="checkbox" title="appear to my current location"> Use current position
+    </label>
     <br>
+
+    <div class="margin-left-5pt">
+      <label>#1 <select name="news[tag_1]">
+        <option id="-1">none</option>
+        <% for tag in @tags %>
+            <option id="<%= tag.id %>"><%= tag.name %></option>
+        <% end %>
+      </select>
+      </label>
+      <label>#2 <select name="news[tag_2]">
+        <option id="-1">none</option>
+
+        <% for tag in @tags %>
+            <option id="<%= tag.id %>"><%= tag.name %></option>
+        <% end %>
+      </select>
+      </label>
+      <label>#3 <select name="news[tag_3]">
+        <option id="-1">none</option>
+        <% for tag in @tags %>
+            <option id="<%= tag.id %>"><%= tag.name %></option>
+        <% end %>
+      </select>
+      </label></div>
+
     <input type="submit" value="Create">
 <% end %>
