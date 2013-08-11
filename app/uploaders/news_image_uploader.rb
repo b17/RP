@@ -62,7 +62,7 @@ class NewsImageUploader < CarrierWave::Uploader::Base
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
-    @name ||= "#{timestamp}-#{super}#{File.extname original_filename}" if original_filename.present? and super.present?
+    @name ||= "#{timestamp}-#{Digest::MD5.hexdigest super}#{File.extname original_filename}" if original_filename.present? and super.present?
   end
 
   def timestamp
