@@ -2,11 +2,12 @@ class RootController < ApplicationController
   layout 'guest'
   require 'geocoder'
 
+
   def feed
     init
     @items=Announce.where(:disabled => false).limit(10)
     @news=News.where(:disabled => false).order('created_at DESC').limit(3)
-
+    @stringUtil=StringUtil.new
     @random = Announce.where(:disabled => false).order("RANDOM()").limit(6)
   end
 
@@ -24,7 +25,9 @@ class RootController < ApplicationController
   end
 
   def rand
-    @random_list=Announce.where(:disabled => false)
+    @stringUtil=StringUtil.new
+    @news=News.where(disabled: false).order('created_at DESC').limit(3)
+    @random_list=Announce.where(:disabled => false).limit(20)
   end
 
   def get_tag_name id

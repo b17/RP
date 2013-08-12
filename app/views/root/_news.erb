@@ -1,18 +1,18 @@
 <div class="news inline-block">
-  <div class="news-item">
-    <h3>Sales in FoxMart</h3>
+  <% unless @news.nil? %>
+      <% for item in @news %>
+          <div class="news-item">
+            <h3><%= @stringUtil.new.words_limit(item.title, 30) %></h3>
 
-    <div class="vertical">
-      <div class="inline-block"><img src="img/contacts.png" class="news-image inline-block"></div>
-      <div class="article-short inline-block"><a class="inline-block" href="#news/32">A sale is the act of selling
-        a product or
-        service in
-        return for money or
-        other compensation.</a>
-      </div>
+            <div class="vertical">
+              <div class="inline-block"><img src="<%= item.image %>" class="news-image inline-block"></div>
+              <div class="article-short inline-block">
+                <a class="inline-block" href="#news/32"><%= item.short_info %></a>
+              </div>
 
-
-    </div>
-    <hr>
-  </div>
+            </div>
+            <hr>
+          </div>
+      <% end %>
+  <% end %>
 </div>

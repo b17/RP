@@ -4,7 +4,7 @@
     <div id="announce-list">
       <% for item in @items %>
           <div class="item-wrapper">
-            <div class="header"><a href="/details/<%= item.id %>" class="white-link-style"><%= item.title %></a>
+            <div class="header"><a href="/details/<%= item.id %>" class="white-link-style"><%= @stringUtil.new.words_limit(item.title, 24) %></a>
             </div>
             <img class="image-gold-size-with_minus_margin" src="<%= item.image %>">
 
@@ -37,7 +37,8 @@
         <div class="inline">
           <% for item in @random %>
               <div class="item-wrapper">
-                <div class="header"><a href="/details/<%= item.id %>" class="white-link-style"><%= item.title %></a>
+                <div class="header">
+                  <a href="/details/<%= item.id %>" class="white-link-style"><%= @stringUtil.new.words_limit(item.title, 24) %></a>
                 </div>
                 <img class="image-gold-size-with_minus_margin" src="<%= item.image %>">
 
