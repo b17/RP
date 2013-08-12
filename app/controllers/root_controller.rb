@@ -5,7 +5,7 @@ class RootController < ApplicationController
   def feed
     init
     @items=Announce.where(:disabled => false).limit(10)
-    @news=News.where(:disabled => false)
+    @news=News.where(:disabled => false).order('created_at DESC').limit(3)
 
   end
 

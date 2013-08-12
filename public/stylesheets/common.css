@@ -121,6 +121,7 @@ body {
 .footer-info {
     text-align: center;
     margin: 0 auto;
+    vertical-align: bottom;
 
 }
 
