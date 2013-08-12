@@ -7,7 +7,7 @@ class NewsController < ApplicationController
   end
 
   def p_add
-    @tags= Tag.all
+    @tags= Tag.where(:disabled =>false)
   end
 
   def c_save

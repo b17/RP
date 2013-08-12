@@ -37,7 +37,7 @@ class AdminController < ApplicationController
   def p_add
     @longitude=session[:longitude]
     @latitude=session[:latitude]
-    @tags=Tag.all
+    @tags=Tag.where(:disabled => false)
   end
 
   def c_add
