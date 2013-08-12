@@ -129,7 +129,7 @@ class AdminController < ApplicationController
   def p_edit
     id=params[:id]
     item = Announce.find id
-    if item.user_id==session[:id]
+    if item.user_id==session[:id].to_i
       @item=item
     else
       redirect_to :home

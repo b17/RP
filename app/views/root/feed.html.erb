@@ -26,108 +26,54 @@
 
 
     </div>
-
-    <div class="breadcrumb-new">
-      <a href="/random">
-        Some random new
-      </a>
-    </div>
-
-
-    <div class="inline">
-      <div class="item-wrapper">
-        <div class="header"><a href="#go-to-item" class="white-link-style">Free hair styler master!</a></div>
-        <img class="image-gold-size-with_minus_margin" src="img/mock/cOei1AE_pMI.jpg">
-
-        <div class="bot-header-tag-panel">
-          <i><a href="#?tag=health">health</a></i>
-          <i><a href="index_new_style_tag.html">hair</a></i>
-          <i><a href="index_new_style_tag.html">free</a></i>
+    <% unless @random.nil? %>
+        <div class="breadcrumb-new">
+          <a href="/random">
+            Some random new
+          </a>
         </div>
-      </div>
-      <div class="item-wrapper">
-        <div class="header"><a href="#go-to-item" class="white-link-style">Free hair styler master!</a></div>
-        <img class="image-gold-size-with_minus_margin"
-             src="img/mock/800px-Tachyphonus_rufus_-Asa_Wright_Nature_Centre,_Northern_Range,_Trinidad,_Trinidad_and_Tobago_-pair-8a.jpg">
 
-        <div class="bot-header-tag-panel">
-          <i><a href="#?tag=health">health</a></i>
-          <i><a href="index_new_style_tag.html">hair</a></i>
-          <i><a href="index_new_style_tag.html">free</a></i>
+
+        <div class="inline">
+          <% for item in @random %>
+              <div class="item-wrapper">
+                <div class="header"><a href="/details/<%= item.id %>" class="white-link-style"><%= item.title %></a>
+                </div>
+                <img class="image-gold-size-with_minus_margin" src="<%= item.image %>">
+
+                <div class="bot-header-tag-panel">
+
+                  <% unless item.tag_1.nil? %>
+                      <i><a href="/tag/<%= item.tag_1 %>" class="style-tag"><%= item.tag_1 %></a></i>
+                  <% end %>
+                  <% unless item.tag_2.nil? %>
+                      <i><a href="/tag/<%= item.tag_2 %>" class="style-tag"><%= item.tag_2 %></a></i>
+                  <% end %>
+                  <% unless item.tag_3.nil? %>
+                      <i><a href="/tag/<%= item.tag_3 %>" class="style-tag"><%= item.tag_3 %></a></i>
+                  <% end %>
+
+                </div>
+              </div>
+          <% end %>
+
         </div>
-      </div>
-      <div class="item-wrapper">
-        <div class="header"><a href="#go-to-item" class="white-link-style">Free hair styler master!</a></div>
-        <img class="image-gold-size-with_minus_margin"
-             src="img/mock/800px-Tachyphonus_rufus_-Asa_Wright_Nature_Centre,_Northern_Range,_Trinidad,_Trinidad_and_Tobago_-pair-8a.jpg">
-
-        <div class="bot-header-tag-panel">
-          <i><a href="#?tag=health">health</a></i>
-          <i><a href="index_new_style_tag.html">hair</a></i>
-          <i><a href="index_new_style_tag.html">free</a></i>
-        </div>
-      </div>
-      <div class="item-wrapper">
-        <div class="header"><a href="#go-to-item" class="white-link-style">Free hair styler master!</a></div>
-        <img class="image-gold-size-with_minus_margin"
-             src="img/mock/800px-Tachyphonus_rufus_-Asa_Wright_Nature_Centre,_Northern_Range,_Trinidad,_Trinidad_and_Tobago_-pair-8a.jpg">
-
-        <div class="bot-header-tag-panel">
-          <i><a href="#?tag=health">health</a></i>
-          <i><a href="index_new_style_tag.html">hair</a></i>
-          <i><a href="index_new_style_tag.html">free</a></i>
-        </div>
-      </div>
-      <div class="item-wrapper">
-        <div class="header"><a href="#go-to-item" class="white-link-style">Free hair styler master!</a></div>
-        <img class="image-gold-size-with_minus_margin"
-             src="img/mock/800px-Tachyphonus_rufus_-Asa_Wright_Nature_Centre,_Northern_Range,_Trinidad,_Trinidad_and_Tobago_-pair-8a.jpg">
-
-        <div class="bot-header-tag-panel">
-          <i><a href="#?tag=health">health</a></i>
-          <i><a href="index_new_style_tag.html">hair</a></i>
-          <i><a href="index_new_style_tag.html">free</a></i>
-        </div>
-      </div>
-      <div class="item-wrapper">
-        <div class="header"><a href="#go-to-item" class="white-link-style">Free hair styler master!</a></div>
-        <img class="image-gold-size-with_minus_margin"
-             src="img/mock/800px-Tachyphonus_rufus_-Asa_Wright_Nature_Centre,_Northern_Range,_Trinidad,_Trinidad_and_Tobago_-pair-8a.jpg">
-
-        <div class="bot-header-tag-panel">
-          <i><a href="#?tag=health">health</a></i>
-          <i><a href="index_new_style_tag.html">hair</a></i>
-          <i><a href="index_new_style_tag.html">free</a></i>
-        </div>
-      </div>
-      <div class="item-wrapper">
-        <div class="header"><a href="#go-to-item" class="white-link-style">Free hair styler master!</a></div>
-        <img class="image-gold-size-with_minus_margin"
-             src="img/mock/800px-Tachyphonus_rufus_-Asa_Wright_Nature_Centre,_Northern_Range,_Trinidad,_Trinidad_and_Tobago_-pair-8a.jpg">
-
-        <div class="bot-header-tag-panel">
-          <i><a href="#?tag=health">health</a></i>
-          <i><a href="index_new_style_tag.html">hair</a></i>
-          <i><a href="index_new_style_tag.html">free</a></i>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="news inline-block">
-    <% for item in @news %>
-        <div class="news-item">
-          <a href="<%= item.id %>"><h3><%= item.title %></h3></a>
-
-          <div class="vertical">
-            <div class="inline-block"><img src="<%= item.image %>" class="news-image inline-block"></div>
-            <div class="article-short inline-block">
-              <a class="inline-block" href="<%= item.id %>"><%= item.short_info %></a>
-            </div>
-          </div>
-          <hr>
         </div>
     <% end %>
-  </div>
-</div>
+
+    <div class="news inline-block">
+      <% for item in @news %>
+          <div class="news-item">
+            <a href="<%= item.id %>"><h3><%= item.title %></h3></a>
+
+            <div class="vertical">
+              <div class="inline-block"><img src="<%= item.image %>" class="news-image inline-block"></div>
+              <div class="article-short inline-block">
+                <a class="inline-block" href="<%= item.id %>"><%= item.short_info %></a>
+              </div>
+            </div>
+            <hr>
+          </div>
+      <% end %>
+    </div>
+    </div>

@@ -7,6 +7,7 @@ class RootController < ApplicationController
     @items=Announce.where(:disabled => false).limit(10)
     @news=News.where(:disabled => false).order('created_at DESC').limit(3)
 
+    @random = Announce.where(:disabled => false).order("RANDOM()").limit(6)
   end
 
   def tag
