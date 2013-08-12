@@ -40,7 +40,7 @@ Untitled8::Application.routes.draw do
     get "delete/:id" => :c_delete
 
     post "c_add" => :c_add
-    post "c_edit" => :c_edit
+    post "c_edit" => :c_update_announce
 
 
   end

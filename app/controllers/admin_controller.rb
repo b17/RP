@@ -131,6 +131,7 @@ class AdminController < ApplicationController
     item = Announce.find id
     if item.user_id==session[:id].to_i
       @item=item
+      @tags = Tag.where(:disabled => false)
     else
       redirect_to :home
     end
@@ -138,12 +139,12 @@ class AdminController < ApplicationController
   end
 
 
-  def c_edit
+  def c_update_announce
     @params=request.params
     item = Announce.find params[:announce][:id]
     if item.nil?
       redirect_to :to
-    elsif session[:id]==item.user_id
+    elsif session[:id]==item.user_id.to_i
       #check if new image available
       image = params[:announce][:image]
       unless image.nil?
@@ -158,6 +159,34 @@ class AdminController < ApplicationController
         item.action_date=date_parse
       end
       #end
+
+      #Tags setting
+      #support only three tags
+      tag_1 = params[:announce][:tag_1]
+
+      if tag_1=='none'
+        item.tag_1= nil
+      else
+        item.tag_1= tag_1
+      end
+
+      tag_2 = params[:announce][:tag_2]
+
+      if tag_2=='none'
+        item.tag_2= nil
+      else
+        item.tag_2= tag_2
+      end
+
+
+      tag_3 = params[:announce][:tag_3]
+
+      if tag_3=='none'
+        item.tag_3= nil
+      else
+        item.tag_3= tag_3
+      end
+
 
       item.desc=@params[:announce][:desc]
       item.user_id=session[:id]

@@ -24,7 +24,7 @@ class UserServiceController < ApplicationController
     if usr[0].nil?
       redirect_to :fail_login
     else
-      session[:id]=usr[0].id.to_s
+      session[:id]=usr[0].id.to_i
       session[:role]=usr[0].role.to_s
       redirect_to admin_path
     end

@@ -18,6 +18,32 @@
         <img class="margin-left-5pt" src="<%= @item.image.presence|| "img/no_image.jpg" %>" style="width: 200pt;height: 133pt" alt="Current image">
 
         <input class="margin-left-5pt" name="announce[image]" type="file" title="Image"/>
+        <!--Announce block-->
+        <div class="margin-left-5pt">
+          <label>#1 <select name="announce[tag_1]">
+            <option id="-1">none</option>
+            <% for tag in @tags %>
+                <option id="<%= tag.id %>"><%= tag.name %></option>
+            <% end %>
+          </select>
+          </label>
+          <label>#2 <select name="announce[tag_2]">
+            <option id="-1">none</option>
+
+            <% for tag in @tags %>
+                <option id="<%= tag.id %>"><%= tag.name %></option>
+            <% end %>
+          </select>
+          </label>
+          <label>#3 <select name="announce[tag_3]">
+            <option id="-1">none</option>
+            <% for tag in @tags %>
+                <option id="<%= tag.id %>"><%= tag.name %></option>
+            <% end %>
+          </select>
+          </label></div>
+
+
 
         <div id="desc-bot-border"></div>
     <% end %>
