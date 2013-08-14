@@ -4,12 +4,24 @@ class Announce < ActiveRecord::Base
   mount_uploader :image, AnnounceImageUploader
 
 
-  def feed_title
+  def title_feed
     shorter 24, title
+  end
+
+  def title_resize(length)
+    shorter length, title
   end
 
   def shorter(length, field)
     string_arr = field.split(//)
     field.length > length ? "#{string_arr[0..(length-1)].join('')}..." : field
+  end
+
+  def self.active
+    where :disabled => false
+  end
+
+  def self.disabled
+    where :disabled => true
   end
 end

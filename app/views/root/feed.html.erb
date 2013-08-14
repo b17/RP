@@ -5,7 +5,7 @@
       <% for item in @items %>
           <div class="item-wrapper">
             <div class="header">
-              <a href="/details/<%= item.id %>" class="white-link-style"><%= item.feed_title %></a>
+              <a href="/details/<%= item.id %>" class="white-link-style"><%= item.title_feed %></a>
             </div>
             <img class="image-gold-size-with_minus_margin" src="<%= item.image %>">
 
@@ -39,7 +39,7 @@
           <% for item in @random %>
               <div class="item-wrapper">
                 <div class="header">
-                  <a href="/details/<%= item.id %>" class="white-link-style"><%= item.feed_title %></a>
+                  <a href="/details/<%= item.id %>" class="white-link-style"><%= item.title_feed %></a>
                 </div>
                 <img class="image-gold-size-with_minus_margin" src="<%= item.image %>">
 
