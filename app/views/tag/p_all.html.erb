@@ -7,23 +7,23 @@
   <div class="btn-info pull-left wight-100p add-button crackable">Add</div>
 </a><br>
 <div class="tag-listing-wrapper">
-  <% for tag in @all_tags %>
+  <% for item in @all_tags %>
 
 
       <div class="announces-list-element">
-        <div class="list-element-text inline-block fixed-size-50pt">
-          <a href="announceinfo.html?id=12"><%= tag.name %></a></div>
+        <div class="list-element-text inline-block fixed-size-50pt" title="<%= item.name %>">
+          <a href="/manage/tag/<%= item.id %>/info"><%= item.name_resize 8 %></a></div>
         <div class="inline-block" style="width: 10pt"></div>
         <div class="pull-right control-block-size inline-block">
-          <a href="/manage/tag/<%= tag.id %>/disable"><img class="selectable-image" src="/img/delete-64.png"
-                                                           alt="Disable" title="Disable it and move to trash folder"></a>
+          <a href="/manage/tag/<%= item.id %>/disable"><img class="selectable-image" src="/img/delete-64.png"
+                                                            alt="Disable" title="Disable it and move to trash folder"></a>
         </div>
         <div class="pull-right control-block-size inline-block">
-          <a href="/manage/tag/<%= tag.id %>/edit"><img class="selectable-image" src="/img/edit_property-64.png"
-                                                        alt="Editing" title="Change this announce"></a>
+          <a href="/manage/tag/<%= item.id %>/edit"><img class="selectable-image" src="/img/edit_property-64.png"
+                                                         alt="Editing" title="Change this announce"></a>
         </div>
         <div class="pull-right date ">30/06/2013 - 19:00</div>
-        <div class="inline-block"><img class="tag-list-item-height" src="<%= tag.image %>"></div>
+        <div class="inline-block"><img class="tag-list-item-height" src="<%= item.image %>"></div>
 
       </div>
 
@@ -33,8 +33,8 @@
       <% for item in @disabled %>
 
           <div class="announces-list-element">
-            <div class="list-element-text inline-block fixed-size-50pt">
-              <a href="/info/<%= item.id %>"><%= item.name %></a></div>
+            <div class="list-element-text inline-block fixed-size-50pt" title="<%= item.name %>">
+              <a href="/info/<%= item.id %>"><%= item.name_resize 8 %></a></div>
 
             <div class="inline-block" style="width: 10pt"></div>
             <div class="pull-right control-block-size inline-block">
