@@ -7,7 +7,6 @@ class RootController < ApplicationController
     init
     @items=Announce.where(:disabled => false).limit(10)
     @news=News.where(:disabled => false).order('created_at DESC').limit(3)
-    @stringUtil=StringUtil.new
     @random = Announce.where(:disabled => false).order("RANDOM()").limit(6)
   end
 
