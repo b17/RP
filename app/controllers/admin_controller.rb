@@ -58,8 +58,8 @@ class AdminController < ApplicationController
 
     item.title=params[:announce][:title]
 
-    item.lt=params[:announce][:latitude].to_s.to_f
-    item.lg=params[:announce][:longitude].to_s.to_f
+    item.lt=params[:announce][:latitude].to_f
+    item.lg=params[:announce][:longitude].to_f
 
     #Tags setting
     #support only three tags
