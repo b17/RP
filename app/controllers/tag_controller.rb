@@ -57,7 +57,7 @@ class TagController < ApplicationController
   def p_edit
   end
 
-  def c_update
+  def c_tag_update
 
   end
 

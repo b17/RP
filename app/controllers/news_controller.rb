@@ -2,12 +2,12 @@ class NewsController < ApplicationController
   layout 'superuser'
 
   def p_all
-    @active_news = News.where(:disabled => false)
-    @disabled_news =News.where(:disabled => true)
+    @active_news = News.active
+    @disabled_news =News.disabled
   end
 
   def p_add
-    @tags= Tag.where(:disabled =>false)
+    @tags= Tag.active
   end
 
   def c_save
@@ -66,10 +66,54 @@ class NewsController < ApplicationController
   end
 
   def p_edit
+    if is_core_admin
+      id=params[:id]
+      @item = News.find id
+      @tags = Tag.active
+    end
+
   end
 
-  def c_update
+  def c_news_update
+    id = params[:id]
+    item = News.find id
+    if is_core_admin and !item.nil?
+      news = params[:news]
+      item.title=news[:title]
+      item.short_info=news['short_description']
+      item.content=news['full_description']
+      unless  news[:image].nil?
+        item.image=news[:image]
+      end
 
+      unless news[:image].nil?
+        item.image=news[:image]
+      end
+
+      #Update tags
+      if news[:tag_1].nil?
+        item.tag_1=nil
+      else
+        item.tag_1 =news[:tag_1]
+      end
+      #----------------------
+      if news[:tag_2].nil?
+        item.tag_1=nil
+      else
+        item.tag_2 =news[:tag_2]
+      end
+      #----------------------
+      if news[:tag_3].nil?
+        item.tag_1=nil
+      else
+        item.tag_3 =news[:tag_3]
+      end
+      #----------------------
+      #Tags updated
+
+      item.save
+      redirect_to :manage_news
+    end
   end
 
   def c_activate

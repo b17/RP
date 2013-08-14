@@ -58,10 +58,6 @@ Untitled8::Application.routes.draw do
   end
 
 
-  controller :announces do
-    get "addsomenew" => :create
-  end
-
   controller :fail do
     get "miss" => :not_found
     get "not_found" => :not_found
@@ -86,7 +82,7 @@ Untitled8::Application.routes.draw do
     post 'manage/tag/save_new' => :c_save
 
     get 'manage/tag/:id/edit' => :p_edit
-    post 'manage/tag/:id/update' => :c_update
+    post 'manage/tag/:id/update' => :c_tag_update
 
     get 'manage/tag/:id/activate' => :c_activate
     get 'manage/tag/:id/disable' => :c_disable
@@ -101,7 +97,7 @@ Untitled8::Application.routes.draw do
     post 'manage/news/save_new' => :c_save
 
     get 'manage/news/:id/edit' => :p_edit
-    post 'manage/news/:id/update' => :c_update
+    post 'manage/news/:id/update' => :c_news_update
 
     get 'manage/news/:id/disable' => :c_disable
     get 'manage/news/:id/activate' => :c_activate

@@ -1,6 +1,37 @@
 <%= form_tag(manage_tag_save_new_path, method: 'post', enctype: 'multipart/form-data', style: 'text-align: left;') do %>
+    <input type="text" name="news[title]" placeholder="Title"> <br>
+    <textarea name="news[short_description]" placeholder="First page description here" class="wight-95"></textarea> <br>
+    <textarea name="news[full_description]" placeholder="All description here" class="wight-95"></textarea><br>
+    <input type="file" name="news[image]" title="100*100 preferred"> <br>
+    <hr>
+    <label>
+      <input name="news[use_my_position]" type="checkbox" title="appear to my current location"> Use current position
+    </label>
+    <br>
 
-    <input type="text" name="name">   <br>
-    <input type="file" name="image">  <br>
-    <input type="submit" value="create">
+    <div class="margin-left-5pt">
+      <label>#1 <select name="news[tag_1]">
+        <option id="-1">none</option>
+        <% for tag in @tags %>
+            <option id="<%= tag.id %>"><%= tag.name %></option>
+        <% end %>
+      </select>
+      </label>
+      <label>#2 <select name="news[tag_2]">
+        <option id="-1">none</option>
+
+        <% for tag in @tags %>
+            <option id="<%= tag.id %>"><%= tag.name %></option>
+        <% end %>
+      </select>
+      </label>
+      <label>#3 <select name="news[tag_3]">
+        <option id="-1">none</option>
+        <% for tag in @tags %>
+            <option id="<%= tag.id %>"><%= tag.name %></option>
+        <% end %>
+      </select>
+      </label></div>
+
+    <input type="submit" value="Create">
 <% end %>

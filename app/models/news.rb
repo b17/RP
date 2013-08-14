@@ -16,4 +16,12 @@ class News < ActiveRecord::Base
     string_arr = field.split(//)
     field.length > length ? "#{string_arr[0..(length-1)].join('')}..." : field
   end
+
+  def self.active
+    where(:disabled => false)
+  end
+
+  def self.disabled
+    where(:disabled => true)
+  end
 end
