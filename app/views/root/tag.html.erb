@@ -1,4 +1,4 @@
-<h1><%= @tag_name %></h1>
+<div class="breadcrumb-new"><a href="/">Most popular</a> > <a href="/tag/<%= @tag_name %>"><%= @tag_name %></a></div>
 <div class="page-root">
   <div class="inline-block wight-70pc">
     <div id="announce-list">
@@ -27,4 +27,5 @@
 
     </div>
   </div>
+  <%= render 'root/news' %>
 </div>

@@ -16,6 +16,7 @@ class RootController < ApplicationController
     @tag_name=tag
     announce = Announce.arel_table
     @items_with_tag = Announce.where(announce[:tag_1].eq(tag).or(announce[:tag_2].eq(tag).or(announce[:tag_3].eq(tag))))
+    @news = News.active
   end
 
   def all_tags
