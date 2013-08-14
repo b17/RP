@@ -102,6 +102,8 @@ Untitled8::Application.routes.draw do
     get 'manage/news/:id/disable' => :c_disable
     get 'manage/news/:id/activate' => :c_activate
     get 'manage/news/:id/delete' => :c_delete
+    get 'manage/news/:id/info' => :p_info
+
 
   end
 

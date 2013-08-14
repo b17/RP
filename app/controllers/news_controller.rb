@@ -129,4 +129,11 @@ class NewsController < ApplicationController
       redirect_to :fail_permissions
     end
   end
+
+  def p_info
+    if is_core_admin
+      id=params[:id]
+      @item=News.find id
+    end
+  end
 end

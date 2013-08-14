@@ -8,13 +8,12 @@ class News < ActiveRecord::Base
     shorter 240, short_info
   end
 
-  def feed_title
+  def title_feed
     shorter 24, title
   end
 
-  def shorter(length, field)
-    string_arr = field.split(//)
-    field.length > length ? "#{string_arr[0..(length-1)].join('')}..." : field
+  def title_resize(length)
+    shorter length, title
   end
 
   def self.active
@@ -23,5 +22,11 @@ class News < ActiveRecord::Base
 
   def self.disabled
     where(:disabled => true)
+  end
+
+  private
+  def shorter(length, field)
+    string_arr = field.split(//)
+    field.length > length ? "#{string_arr[0..(length-1)].join('')}..." : field
   end
 end

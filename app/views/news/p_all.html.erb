@@ -10,8 +10,8 @@
   <% unless @active_news.nil?
        for active in @active_news %>
           <div class="announces-list-element">
-            <div class="list-element-text inline-block fixed-size-50pt">
-              <a href="/news/info/<%= active.id %>"><%= active.title %></a></div>
+            <div class="list-element-text inline-block fixed-size-50pt" title="<%= active.title %>">
+              <a href="/manage/news/<%= active.id %>/info"><%= active.title_resize 8 %></a></div>
             <div class="inline-block" style="width: 10pt"></div>
             <div class="pull-right control-block-size inline-block">
               <a href="/manage/news/<%= active.id %>/disable"><img class="selectable-image" src="/img/delete-64.png"
@@ -34,8 +34,8 @@
       <% for disabled in @disabled_news %>
 
           <div class="announces-list-element">
-            <div class="list-element-text inline-block fixed-size-50pt">
-              <a href="announceinfo.html?id=12"><%= disabled.title %></a></div>
+            <div class="list-element-text inline-block fixed-size-50pt" title="<%= disabled.title %>">
+              <a href="/manage/news/<%= disabled.id %>/info"><%= disabled.title_resize 8 %></a></div>
 
             <div class="inline-block" style="width: 10pt"></div>
             <div class="pull-right control-block-size inline-block">

@@ -1,18 +1,7 @@
 <div class="news inline-block">
   <% unless @news.nil? %>
       <% for item in @news %>
-          <div class="news-item">
-            <h3><%= item.feed_title %></h3>
-
-            <div class="vertical">
-              <div class="inline-block"><img src="<%= item.image %>" class="news-image inline-block"></div>
-              <div class="article-short ">
-                <a class="" href="#news/32"><%= item.short_desc %></a>
-              </div>
-
-            </div>
-            <hr>
-          </div>
+          <%= render 'root/block', :item => item %>
       <% end %>
   <% end %>
 </div>
