@@ -1,3 +1,32 @@
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var mapOptions = {
+            zoom: 14,
+            center: new google.maps.LatLng(<%= @latitude.to_f%>, <%= @longitude.to_f%>),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById('map-canvas'),
+                mapOptions);
+        var image = '/img/anchor-m.png';
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(<%= @latitude.to_f%>, <%= @longitude.to_f%>),
+            draggable: true,
+            icon: image,
+            animation: google.maps.Animation.DROP,
+            map: map
+        });
+
+
+        google.maps.event.addListener(marker, 'dragend', function (evt) {
+            document.getElementById('announce[longitude]').setAttribute("value", evt.latLng.lng());
+            document.getElementById('announce[latitude]').setAttribute("value", evt.latLng.lat());
+        });
+    });
+
+
+</script>
 <div class="content-part" id="announce-part">
   <div class="black" style="margin-bottom: 10pt;">New</div>
 
@@ -15,46 +44,50 @@
 
         <textarea name="announce[desc]" class="sub-desc margin-left-5pt" placeholder="Small header description"></textarea><br>
 
-        <div>
+        <div class="">
           <div class="inline-block">
-            <input type="text" placeholder="longitude" name="announce[longitude]" class="margin-left-5pt" value="<%= @longitude %>"><br>
-            <input type="text" placeholder="latitude" name="announce[latitude]" class="margin-left-5pt" value="<%=  @latitude %>">
-            <br></div>
-            <div class="inline-block">Map here</div>
-
-            </div>
+            <input type="text" placeholder="longitude" id="announce[longitude]" name="announce[longitude]" class="margin-left-5pt" value="<%= @longitude %>"><br>
+            <input type="text" placeholder="latitude" id="announce[latitude]" name="announce[latitude]" class="margin-left-5pt" value="<%= @latitude %>">
             <br>
+          </div>
+          <div class="bordered inline-block" id="map-canvas"
+               style="width: 100%;height: 300pt; ;padding:0;margin-top: 5pt;float: left; margin-left: 5pt;">
+          </div>
 
-            <div class="margin-left-5pt">
-              <label>#1 <select name="announce[tag_1]">
-                <option id="-1">none</option>
-                <% for tag in @tags %>
-                    <option id="<%= tag.id %>"><%= tag.name %></option>
-                <% end %>
-              </select>
-              </label>
-              <label>#2 <select name="announce[tag_2]">
-                <option id="-1">none</option>
+        </div>
+        <br>
+        <fieldset>
+          <legend>tags</legend>
+          <div class="margin-left-5pt">
+            <label>#1 <select name="announce[tag_1]">
+              <option id="-1">none</option>
+              <% for tag in @tags %>
+                  <option id="<%= tag.id %>"><%= tag.name %></option>
+              <% end %>
+            </select>
+            </label>
+            <label>#2 <select name="announce[tag_2]">
+              <option id="-1">none</option>
 
-                <% for tag in @tags %>
-                    <option id="<%= tag.id %>"><%= tag.name %></option>
-                <% end %>
-              </select>
-              </label>
-              <label>#3 <select name="announce[tag_3]">
-                <option id="-1">none</option>
-                <% for tag in @tags %>
-                    <option id="<%= tag.id %>"><%= tag.name %></option>
-                <% end %>
-              </select>
-              </label></div>
-            <br>
-            <input class="margin-left-5pt" name="announce[image]" type="file" title="Image"/>
+              <% for tag in @tags %>
+                  <option id="<%= tag.id %>"><%= tag.name %></option>
+              <% end %>
+            </select>
+            </label>
+            <label>#3 <select name="announce[tag_3]">
+              <option id="-1">none</option>
+              <% for tag in @tags %>
+                  <option id="<%= tag.id %>"><%= tag.name %></option>
+              <% end %>
+            </select>
+            </label></div>
+          <br>
+          <input class="margin-left-5pt" name="announce[image]" type="file" title="Image"/>
 
-            <div id="desc-bot-border"></div>
+          <div id="desc-bot-border"></div>
 
 
-            <% end %>
-            </div>
-
-            </div>
+    <% end %>
+    </fieldset>
+  </div>
+</div>

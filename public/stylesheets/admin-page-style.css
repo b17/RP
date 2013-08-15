@@ -247,3 +247,7 @@
 .date {
     margin-right: 30pt;
 }
+
+.tag-list-item-height {
+    height: 35pt;
+}

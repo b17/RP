@@ -10,6 +10,7 @@ class RootController < ApplicationController
     @random = Announce.where(:disabled => false).order("RANDOM()").limit(6)
   end
 
+
   def tag
     init
     tag = request.params[:id]

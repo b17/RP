@@ -1,0 +1,40 @@
+<div class="page-root">
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+  <script type="text/javascript">
+
+      $(document).ready(function () {
+          var mapOptions = {
+              zoom: 14,
+              center: new google.maps.LatLng(<%= @announce.lt.to_f %>, <%= @announce.lg.to_f%>),
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+          map = new google.maps.Map(document.getElementById('map-canvas'),
+                  mapOptions);
+          var image = '/img/anchor-m.png';
+          var marker = new google.maps.Marker({
+              position: new google.maps.LatLng(<%= @announce.lt.to_f %>, <%= @announce.lg.to_f%>),
+              draggable: true,
+              icon: image,
+              animation: google.maps.Animation.DROP,
+              map: map
+          });
+
+
+          google.maps.event.addListener(marker, 'dragend', function (evt) {
+              document.getElementById('announce[longitude]').setAttribute("value", evt.latLng.lng());
+              document.getElementById('announce[latitude]').setAttribute("value", evt.latLng.lat());
+          });
+      });
+
+
+  </script>
+  <div class="margin-left-5pt align-center">
+
+    <img class="image-gold-size inline-block" src="<%= @announce.image %>">
+
+    <div><%= @announce.desc %></div>
+    <div class="bordered inline-block" id="map-canvas"
+         style="width: 90%;height: 300pt; text-align: right; margin-top:  15pt">
+    </div>
+  </div>
+</div>

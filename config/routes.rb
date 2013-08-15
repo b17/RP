@@ -22,6 +22,7 @@ Untitled8::Application.routes.draw do
     get 'tag/:id' => :tag
     get 'random' => :rand
     get 'announce/:id' => :announce
+
   end
 
   controller :admin do
