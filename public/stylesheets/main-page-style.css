@@ -54,10 +54,7 @@
     padding-left: 5pt;
 }
 
-.bot-header-tag-panel i a {
-    color: #ffffff;
 
-}
 
 .bot-header-tag-panel i a:hover {
     color: #ffffff;
@@ -68,6 +65,7 @@
 #announce-list {
     display: inline;
     padding: 5pt;
+    height: auto;
     text-align: left;
     min-width: 660pt;
     max-width: 660pt;
@@ -130,3 +128,24 @@
 
 }
 
+.tag-wrapper {
+    width: 200pt;
+    height: 133pt;
+    display: inline-block;
+    padding: 10pt;
+
+}
+
+.tag-header {
+    height: 30pt;
+    width: 100%;
+    background-color: rgba(126, 255, 0, 0.89);
+    z-index: 2;
+    position: relative;
+    color: #ffffff;
+    font-size: 16pt;
+    line-height: 30pt;
+    text-align: left;
+    padding-left: 10pt;
+
+}

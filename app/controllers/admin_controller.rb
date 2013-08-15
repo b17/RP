@@ -119,6 +119,9 @@ class AdminController < ApplicationController
       if session[:id]==item.user_id
         item.disabled=true
         item.save
+
+        notify_tags item
+
         redirect_to :back
       else
         redirect_to :home
@@ -212,5 +215,9 @@ class AdminController < ApplicationController
 
   end
 
+  def notify_tags(item)
+
+
+  end
 
 end

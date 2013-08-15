@@ -1,2 +1,2 @@
-rake db:migrate 
-pause
+rake db:migrate
+timeout /t 30 

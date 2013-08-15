@@ -30,6 +30,7 @@ body {
     -webkit-margin-end: auto;
     border-style: inset;
     border-width: 1px;
+    margin-top: 50pt;
 }
 
 .bordered {
@@ -178,4 +179,9 @@ body {
 
 .fixed-size-50pt {
     width: 50pt;
+}
+
+.gray-header {
+    background-color: lightgray;
+    padding-left: 10pt;
 }

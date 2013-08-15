@@ -5,9 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+# user 'admin', password '2105'
+users = User.create("login" => "admin", 'password' => '24f0d2c90473b2bc949ad962e61d9bcb', 'e_mail' => 'some@e.mail', 'first' => 'andrew')
 
-users = User.create("login" => "admin", 'password' => 'password', 'e_mail' => 'some@e.mail', 'first' => 'andrew')
-tags =Tag.create({name: 'sport', image: '/img/tag/sport_small.jpg'})
-tags =Tag.create({name: 'party', image: '/img/tag/party_small.jpg'})
-tags =Tag.create({name: 'health', image: '/img/tag/health_small.jpg'})
-tags =Tag.create({name: 'education', image: '/img/tag/education_small.jpg'})

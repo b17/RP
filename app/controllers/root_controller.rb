@@ -21,7 +21,8 @@ class RootController < ApplicationController
 
   def all_tags
     init
-    #@tags=nil
+    @tags=Tag.active
+    @news=News.active
   end
 
   def rand

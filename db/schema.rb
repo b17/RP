@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130809160309) do
+ActiveRecord::Schema.define(:version => 20130815153516) do
 
   create_table "announces", :force => true do |t|
     t.string   "title"
@@ -22,9 +22,9 @@ ActiveRecord::Schema.define(:version => 20130809160309) do
     t.string   "image"
     t.datetime "event_date"
     t.integer  "user_id"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.boolean  "disabled",    :default => false, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "disabled",    :default => true, :null => false
     t.string   "tag_1"
     t.string   "tag_2"
     t.string   "tag_3"
@@ -51,14 +51,16 @@ ActiveRecord::Schema.define(:version => 20130809160309) do
     t.string   "tag_3"
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
+    t.date     "valid_to"
   end
 
   create_table "tags", :force => true do |t|
     t.string   "name"
     t.string   "image"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.boolean  "disabled",   :default => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.boolean  "disabled",     :default => false
+    t.integer  "active_count", :default => 0,     :null => false
   end
 
   create_table "tests", :force => true do |t|
