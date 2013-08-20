@@ -2,10 +2,21 @@ class RootController < ApplicationController
   layout 'guest'
   require 'geocoder'
 
-
   def feed
     init
-    @items=Announce.where(:disabled => false).limit(10)
+
+    one_km_dist=0.009 #constant, hand made
+    radius=10 #km
+
+
+    #@items=Announce.where(:disabled => false).limit(10)
+    half_of_bounds=(one_km_dist*radius)/2
+    lg1 = session[:longitude].to_f-half_of_bounds
+    lg2 = session[:longitude].to_f+half_of_bounds
+    lt1 = session[:latitude].to_f-half_of_bounds
+    lt2 = session[:latitude].to_f+half_of_bounds
+    @items=Announce.all(:conditions => {:lg => (lg1..lg2), :lt => (lt1..lt2), :disabled => false, })
+
     @news=News.where(:disabled => false).order('created_at DESC').limit(3)
     @random = Announce.where(:disabled => false).order("RANDOM()").limit(6)
   end
