@@ -29,4 +29,17 @@ class News < ActiveRecord::Base
     string_arr = field.split(//)
     field.length > length ? "#{string_arr[0..(length-1)].join('')}..." : field
   end
+
+  def self.locale(longitude, latitude, limit)
+
+    one_km_dist=0.009 #constant, hand made
+    radius=30 #km
+    where(:disabled => false).order('created_at DESC').limit(3)
+    half_of_bounds=(one_km_dist*radius)/2
+    lg1 = longitude.to_f-half_of_bounds
+    lg2 = longitude.to_f+half_of_bounds
+    lt1 = latitude.to_f-half_of_bounds
+    lt2 = latitude.to_f+half_of_bounds
+    all(:conditions => {:lg => (lg1..lg2), :lt => (lt1..lt2), :disabled => false, }, :limit => limit.to_i)
+  end
 end

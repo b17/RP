@@ -5,19 +5,10 @@ class RootController < ApplicationController
   def feed
     init
 
-    one_km_dist=0.009 #constant, hand made
-    radius=10 #km
-
 
     #@items=Announce.where(:disabled => false).limit(10)
-    half_of_bounds=(one_km_dist*radius)/2
-    lg1 = session[:longitude].to_f-half_of_bounds
-    lg2 = session[:longitude].to_f+half_of_bounds
-    lt1 = session[:latitude].to_f-half_of_bounds
-    lt2 = session[:latitude].to_f+half_of_bounds
-    @items=Announce.all(:conditions => {:lg => (lg1..lg2), :lt => (lt1..lt2), :disabled => false, })
-
-    @news=News.where(:disabled => false).order('created_at DESC').limit(3)
+    @items=Announce.locale session[:longitude], session[:latitude], 10
+    @news=News.locale session[:longitude], session[:latitude], 3
     @random = Announce.where(:disabled => false).order("RANDOM()").limit(6)
   end
 
@@ -38,7 +29,6 @@ class RootController < ApplicationController
   end
 
   def rand
-    @stringUtil=StringUtil.new
     @news=News.where(disabled: false).order('created_at DESC').limit(3)
     @random_list=Announce.where(:disabled => false).limit(20)
   end

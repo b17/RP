@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130815153516) do
+ActiveRecord::Schema.define(:version => 20130820191606) do
+
+  create_table "announce_accounting", :force => true do |t|
+    t.integer "announce_id"
+    t.integer "watches"
+    t.integer "detailed"
+    t.integer "fav"
+  end
 
   create_table "announces", :force => true do |t|
     t.string   "title"

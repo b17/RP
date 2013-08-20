@@ -5,7 +5,7 @@
       <% for item in @random_list do %>
           <div class="item-wrapper">
             <div class="header">
-              <a href="#go-to-item" class="white-link-style"><%= @stringUtil.new.words_limit(item.title, 24) %></a>
+              <a href="#go-to-item" class="white-link-style"><%= item.title_feed %></a>
             </div>
             <img class="image-gold-size-with_minus_margin" src="<%= item.image %>">
 
