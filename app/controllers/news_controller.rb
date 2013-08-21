@@ -8,6 +8,8 @@ class NewsController < ApplicationController
 
   def p_add
     @tags= Tag.active
+    @longitude=session[:longitude]
+    @latitude=session[:latitude]
   end
 
   def c_save
@@ -32,6 +34,8 @@ class NewsController < ApplicationController
       item.tag_3 =news[:tag_3]
     end
 
+    item.lg= news[:longitude].to_f
+    item.lt= news[:latitude].to_f
 
     item.save
     redirect_to :manage_news
@@ -68,8 +72,12 @@ class NewsController < ApplicationController
   def p_edit
     if is_core_admin
       id=params[:id]
-      @item = News.find id
+      @edit_item = News.find id
       @tags = Tag.active
+
+      @e_longitude=session[:longitude]
+      @e_latitude=session[:latitude]
+
     end
 
   end
@@ -110,6 +118,10 @@ class NewsController < ApplicationController
       end
       #----------------------
       #Tags updated
+
+      #Location update
+      item.lg= news[:longitude].to_f
+      item.lt= news[:latitude].to_f
 
       item.save
       redirect_to :manage_news

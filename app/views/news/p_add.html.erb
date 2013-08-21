@@ -1,3 +1,6 @@
+<%= render 'admin/map_js' %>
+
+<div class="inline-block">Add News</div>
 <%= form_tag(manage_news_save_new_path, method: 'post', enctype: 'multipart/form-data', style: 'text-align: left;') do %>
     <input type="text" name="news[title]" placeholder="Title"> <br>
     <textarea name="news[short_description]" placeholder="First page description here" class="wight-95"></textarea> <br>
@@ -8,7 +11,17 @@
       <input name="news[use_my_position]" type="checkbox" title="appear to my current location"> Use current position
     </label>
     <br>
+    <div class="margin-left-5pt">
+      <div class="inline-block ">
+        <input type="hidden" placeholder="longitude" id="announce[longitude]" name="news[longitude]" class="margin-left-5pt" value="<%= @longitude %>"><br>
+        <input type="hidden" placeholder="latitude" id="announce[latitude]" name="news[latitude]" class="margin-left-5pt" value="<%= @latitude %>">
+        <br>
+      </div>
+      <div class="bordered inline-block" id="map-canvas"
+           style="width: 100%;height: 300pt; ;padding:0;margin-top: 5pt;float: left; margin-left: 5pt;">
+      </div>
 
+    </div>
     <div class="margin-left-5pt">
       <label>#1 <select name="news[tag_1]">
         <option id="-1">none</option>

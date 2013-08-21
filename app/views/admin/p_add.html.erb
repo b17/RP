@@ -1,31 +1,6 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 <script type="text/javascript">
-
-    $(document).ready(function () {
-        var mapOptions = {
-            zoom: 14,
-            center: new google.maps.LatLng(<%= @latitude.to_f%>, <%= @longitude.to_f%>),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        map = new google.maps.Map(document.getElementById('map-canvas'),
-                mapOptions);
-        var image = '/img/anchor-m.png';
-        var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(<%= @latitude.to_f%>, <%= @longitude.to_f%>),
-            draggable: true,
-            icon: image,
-            animation: google.maps.Animation.DROP,
-            map: map
-        });
-
-
-        google.maps.event.addListener(marker, 'dragend', function (evt) {
-            document.getElementById('announce[longitude]').setAttribute("value", evt.latLng.lng());
-            document.getElementById('announce[latitude]').setAttribute("value", evt.latLng.lat());
-        });
-    });
-
-
+    <%= render 'admin/map_js'%>
 </script>
 <div class="content-part" id="announce-part">
   <div class="black" style="margin-bottom: 10pt;">New</div>

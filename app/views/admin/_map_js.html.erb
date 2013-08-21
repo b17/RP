@@ -1,0 +1,41 @@
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var mapOptions = {
+            zoom: 14,
+            center: new google.maps.LatLng(<%= @latitude.to_f %>, <%= @longitude.to_f %>),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById('map-canvas'),
+                mapOptions);
+        var home_img = '/img/anchor-m.png';
+
+        var pin_img = new google.maps.MarkerImage("/img/pin-32.png");
+        pin_img.anchor = new google.maps.Point(0, 32)
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(<%= @latitude.to_f+0.004 %>, <%= @longitude.to_f %>),
+            draggable: true,
+            icon: pin_img,
+            title: "Event location",
+            animation: google.maps.Animation.DROP,
+            map: map
+        });
+
+
+        var home = new google.maps.Marker({
+            position: new google.maps.LatLng(<%= @latitude.to_f %>, <%= @longitude.to_f %>),
+            draggable: false,
+            title: "Your position (restored from IP)",
+            icon: home_img,
+            animation: google.maps.Animation.DROP,
+            map: map
+        });
+
+
+        google.maps.event.addListener(marker, 'dragend', function (evt) {
+            document.getElementById('announce[longitude]').setAttribute("value", evt.latLng.lng());
+            document.getElementById('announce[latitude]').setAttribute("value", evt.latLng.lat());
+        });
+    });
+
+</script>
