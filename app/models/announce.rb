@@ -35,4 +35,13 @@ class Announce < ActiveRecord::Base
     lt2 = latitude.to_f+half_of_bounds
     all(:conditions => {:lg => (lg1..lg2), :lt => (lt1..lt2), :disabled => false, }, :limit => limit.to_i)
   end
+
+
+  def self.active_by_id(id)
+    where(:user_id => id, :disabled => false)
+  end
+
+  def self.views
+     AddAnnounceAccounting
+  end
 end

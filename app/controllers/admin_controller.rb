@@ -26,6 +26,7 @@ class AdminController < ApplicationController
   end
 
   def p_text_stats
+    @items=Announce.active_by_id session[:id]
   end
 
   def p_map_stats

@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'activesupport', '3.2.13'
-gem 'rails', '3.2.13'
+gem 'activesupport'
+gem 'rails'
 
-gem 'geocoder', :git => 'git://github.com/alexreisner/geocoder.git', :ref => '5ec9a28c'
+gem 'geocoder'
 gem 'carrierwave', '0.9.0'
 #gem 'paperclip', '3.5.0'
 #gem 'rmagick', '2.13.2'
@@ -11,13 +11,13 @@ gem 'carrierwave', '0.9.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'sqlite3','1.3.8'
 
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', '~> 3.2.3'
+  gem 'sass-rails', '~> 3.2.6'
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes

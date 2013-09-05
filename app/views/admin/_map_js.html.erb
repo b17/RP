@@ -8,9 +8,9 @@
         };
         map = new google.maps.Map(document.getElementById('map-canvas'),
                 mapOptions);
-        var home_img = '/img/anchor-m.png';
+        var home_img = '/images/anchor-m.png';
 
-        var pin_img = new google.maps.MarkerImage("/img/pin-32.png");
+        var pin_img = new google.maps.MarkerImage("/images/pin-32.png");
         pin_img.anchor = new google.maps.Point(0, 32)
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng(<%= @latitude.to_f+0.004 %>, <%= @longitude.to_f %>),

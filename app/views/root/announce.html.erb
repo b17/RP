@@ -10,7 +10,7 @@
           };
           map = new google.maps.Map(document.getElementById('map-canvas'),
                   mapOptions);
-          var image = '/img/anchor-m.png';
+          var image = '/images/anchor-m.png';
           var marker = new google.maps.Marker({
               position: new google.maps.LatLng(<%= @announce.lt.to_f %>, <%= @announce.lg.to_f%>),
               draggable: true,

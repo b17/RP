@@ -144,7 +144,7 @@
 .add-info-block {
     width: 20pt;
     height: 20pt;
-    background: #e9eadc url("styled-img/add-48.png");
+    background: #e9eadc url("styled-images/add-48.png");
     background-size: 20pt 20pt;
     margin-top: 20pt;
     margin-left: 15pt;
@@ -155,7 +155,7 @@
 .remove-info-block {
     width: 20pt;
     height: 20pt;
-    background: #e9eadc url("styled-img/delete-128.png");
+    background: #e9eadc url("styled-images/delete-128.png");
     background-size: 20pt 20pt;
     margin-bottom: -10pt;
     margin-left: 5pt;
@@ -216,13 +216,13 @@
 
 .file_button_container,
 .file_button_container input {
-    background: transparent url("styled-img/BT5AB.png") left top no-repeat;
+    background: transparent url("styled-images/BT5AB.png") left top no-repeat;
     height: 47px;
     width: 263px;
 }
 
 .file_button_container {
-    background: transparent url("styled-img/BT5AB.png") left top no-repeat;
+    background: transparent url("styled-images/BT5AB.png") left top no-repeat;
 
 }
 
