@@ -32,7 +32,7 @@ class UserServiceController < ApplicationController
 
 
   def debug_session
-    if is_core_admin
+    if is_administrator
       @param=session
     else
       redirect_to :fail_permissions

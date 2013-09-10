@@ -4,14 +4,15 @@ gem 'activesupport'
 gem 'rails'
 
 gem 'geocoder'
-gem 'carrierwave', '0.9.0'
+gem 'carrierwave'
 #gem 'paperclip', '3.5.0'
 #gem 'rmagick', '2.13.2'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3','1.3.8'
+gem 'sqlite3'
+gem 'seed_dump'
 
 
 # Gems used only for assets and not required

@@ -25,7 +25,7 @@ class TagController < ApplicationController
   end
 
   def c_disable
-    if is_core_admin
+    if is_administrator
       id=params[:id]
       tag_find = Tag.find id
       unless  tag_find.nil?
@@ -40,7 +40,7 @@ class TagController < ApplicationController
 
 
   def c_delete
-    if is_core_admin
+    if is_administrator
       id=params[:id]
       tag_find = Tag.find id
       unless  tag_find.nil?
@@ -62,7 +62,7 @@ class TagController < ApplicationController
   end
 
   def c_activate
-    if is_core_admin
+    if is_administrator
       id=params[:id]
       tag_find = Tag.find id
       tag_find.disabled=false

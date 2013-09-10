@@ -43,7 +43,7 @@ class NewsController < ApplicationController
   end
 
   def c_disable
-    if is_core_admin
+    if is_administrator
       id=params[:id]
       news = News.find id
       unless news.nil?
@@ -57,7 +57,7 @@ class NewsController < ApplicationController
   end
 
   def c_delete
-    if is_core_admin
+    if is_administrator
       id=params[:id]
       news = News.find id
       unless news.nil?
@@ -70,7 +70,7 @@ class NewsController < ApplicationController
   end
 
   def p_edit
-    if is_core_admin
+    if is_administrator
       id=params[:id]
       @edit_item = News.find id
       @tags = Tag.active
@@ -85,7 +85,7 @@ class NewsController < ApplicationController
   def c_news_update
     id = params[:id]
     item = News.find id
-    if is_core_admin and !item.nil?
+    if is_administrator and !item.nil?
       news = params[:news]
       item.title=news[:title]
       item.short_info=news['short_description']
@@ -129,7 +129,7 @@ class NewsController < ApplicationController
   end
 
   def c_activate
-    if is_core_admin
+    if is_administrator
       id=params[:id]
       news = News.find id
       unless news.nil?
@@ -143,7 +143,7 @@ class NewsController < ApplicationController
   end
 
   def p_info
-    if is_core_admin
+    if is_administrator
       id=params[:id]
       @item=News.find id
     end
