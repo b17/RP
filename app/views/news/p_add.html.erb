@@ -3,9 +3,15 @@
 <div class="inline-block">Add News</div>
 <%= form_tag(manage_news_save_new_path, method: 'post', enctype: 'multipart/form-data', style: 'text-align: left;') do %>
     <input type="text" name="news[title]" placeholder="Title"> <br>
-    <textarea name="news[short_description]" placeholder="First page description here" class="wight-95"></textarea> <br>
-    <textarea name="news[full_description]" placeholder="All description here" class="wight-95"></textarea><br>
-    <input type="file" name="news[image]" title="100*100 preferred"> <br>
+
+    <fieldset class="inline-block">
+      <textarea name="news[short_description]" placeholder="First page description here" class="wight-95"></textarea>
+      <br>
+      <textarea name="news[full_description]" placeholder="All description here" class="wight-95"></textarea><br>
+    </fieldset>            <input type="submit"
+                                  class="btn-success height-middle wight-middle pull-right action-publish unavailable red-placeholder"
+                                  id="btn-publish" value="PUBLISH">
+
     <hr>
     <label>
       <input name="news[use_my_position]" type="checkbox" title="appear to my current location"> Use current position
@@ -23,28 +29,9 @@
 
     </div>
     <div class="margin-left-5pt">
-      <label>#1 <select name="news[tag_1]">
-        <option id="-1">none</option>
-        <% for tag in @tags %>
-            <option id="<%= tag.id %>"><%= tag.name %></option>
-        <% end %>
-      </select>
-      </label>
-      <label>#2 <select name="news[tag_2]">
-        <option id="-1">none</option>
+      <%= render 'admin/tag_common' %></div>
+    <input type="file" name="news[image]" title="100*100 preferred"> <br>
 
-        <% for tag in @tags %>
-            <option id="<%= tag.id %>"><%= tag.name %></option>
-        <% end %>
-      </select>
-      </label>
-      <label>#3 <select name="news[tag_3]">
-        <option id="-1">none</option>
-        <% for tag in @tags %>
-            <option id="<%= tag.id %>"><%= tag.name %></option>
-        <% end %>
-      </select>
-      </label></div>
+    <div id="desc-bot-border"></div>
 
-    <input type="submit" value="Create">
 <% end %>

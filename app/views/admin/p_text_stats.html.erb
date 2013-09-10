@@ -1,7 +1,26 @@
+<script type="text/javascript" src="/javascripts/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sortable_table').dataTable({
+            "aoColumns": [
+                null,
+                null,
+                null,
+                null,
+                { "sType": "numeric-comma" },
+                null
+            ]
+        });
+    });
+</script>
+<style type="text/css">
+    td {
+        padding: 5pt;
+    }
+</style>
 <div class="content-part" id="statistic-part" style="text-align: left;">
   <div class="black"></div>
-
-  <table class="table-bordered black" id="st_id" role="columnheader"
+  <table class="table-bordered black" id="sortable_table" role="columnheader"
          style="width: 100%; background: #ffffff; text-align: center">
     <thead>
     <tr role="row">
@@ -9,6 +28,7 @@
       <td class="sort_available">Title</td>
       <td class="sort_available">Creation date</td>
       <td class="sort_available">Target day</td>
+      <td class="sort_available">Time</td>
       <td class="sort_available">Views count</td>
     </tr>
     </thead>
@@ -17,13 +37,13 @@
          for item in @items
            iter=iter+1
     %>
-
-            <tr>
+            <tr class="align-left">
               <td><%= iter %></td>
-              <td><%= item.title %></td>
-              <td><%= item.created_at %></td>
-              <td><%= item.action_date %></td>
-              <td><%= %></td>
+              <td><a href="info/<%= item.id %>"><%= item.title %></a></td>
+              <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
+              <td><%= item.action_date.strftime("%d/%m/%Y") %></td>
+              <td><%= item.action_date.strftime("%H:%M") %></td>
+              <td style="text-align: center"><%= Random.rand(100) %></td>
             </tr>
 
         <% end

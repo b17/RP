@@ -21,71 +21,71 @@ ActiveRecord::Schema.define(:version => 20130820191606) do
   end
 
   create_table "announces", :force => true do |t|
-    t.string "title"
-    t.string "desc"
-    t.date "action_date"
-    t.float "lg"
-    t.float "lt"
-    t.string "image"
+    t.string   "title"
+    t.string   "desc"
+    t.date     "action_date"
+    t.float    "lg"
+    t.float    "lt"
+    t.string   "image"
     t.datetime "event_date"
-    t.integer "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.boolean "disabled", :default => true, :null => false
-    t.string "tag_1"
-    t.string "tag_2"
-    t.string "tag_3"
+    t.integer  "user_id"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "disabled",    :default => true, :null => false
+    t.string   "tag_1"
+    t.string   "tag_2"
+    t.string   "tag_3"
   end
 
   create_table "docs", :force => true do |t|
-    t.string "key"
-    t.text "document"
+    t.string   "key"
+    t.text     "document"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "news", :force => true do |t|
-    t.string "title", :null => false
-    t.string "short_info", :null => false
-    t.boolean "disabled", :default => true, :null => false
-    t.text "content", :null => false
-    t.string "image", :null => false
-    t.integer "user_id", :null => false
-    t.float "lt"
-    t.float "lg"
-    t.string "tag_1"
-    t.string "tag_2"
-    t.string "tag_3"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.date "valid_to"
+    t.string   "title",                        :null => false
+    t.string   "short_info",                   :null => false
+    t.boolean  "disabled",   :default => true, :null => false
+    t.text     "content",                      :null => false
+    t.string   "image",                        :null => false
+    t.integer  "user_id",                      :null => false
+    t.float    "lt"
+    t.float    "lg"
+    t.string   "tag_1"
+    t.string   "tag_2"
+    t.string   "tag_3"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.date     "valid_to"
   end
 
   create_table "tags", :force => true do |t|
-    t.string "name"
-    t.string "image"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.boolean "disabled", :default => false
-    t.integer "active_count", :default => 0, :null => false
+    t.string   "name"
+    t.string   "image"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.boolean  "disabled",     :default => false
+    t.integer  "active_count", :default => 0,     :null => false
   end
 
   create_table "tests", :force => true do |t|
-    t.string "name"
-    t.text "value"
+    t.string   "name"
+    t.text     "value"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
-    t.string "first"
-    t.string "last"
-    t.string "e_mail"
-    t.string "password"
-    t.string "login"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string "role", :default => 'user'
+    t.string   "first"
+    t.string   "last"
+    t.string   "e_mail"
+    t.string   "password"
+    t.string   "login"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.string   "role",       :default => "subscriber"
   end
 
 end

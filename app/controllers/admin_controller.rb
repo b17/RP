@@ -52,7 +52,7 @@ class AdminController < ApplicationController
     end
     #parse date
     date = params[:announce][:date]
-    date_parse = Date.parse(date)
+    date_parse = DateTime.strptime(date, "%d/%m/%Y %H:%M")
     unless date_parse.nil?
       item.action_date=date_parse
     end

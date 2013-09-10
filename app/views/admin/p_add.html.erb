@@ -1,11 +1,22 @@
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+
+<script type="text/javascript" src="/javascripts/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/javascripts/bootstrap-datepicker.js"></script>
+
+<link type="text/css" href="/stylesheets/datepicker.css">
+<link type="text/css" href="/less/datepicker.less">
+<link type="text/css" href="/stylesheets/bootstrap-datetimepicker.min.css">
+<%= render 'admin/map_js' %>
+
 <script type="text/javascript">
-    <%= render 'admin/map_js'%>
+    $(function () {
+        $('#datetimepicker1').datetimepicker({
+            language: 'pt-BR'
+        });
+    });
 </script>
+
 <div class="content-part" id="announce-part">
-  <div class="black" style="margin-bottom: 10pt;">New</div>
-
-
   <div class="new-item-description">
     <%= form_tag(c_add_path, method: 'post', enctype: 'multipart/form-data', style: 'text-align: left;') do %>
         <input type="submit"
@@ -13,8 +24,14 @@
                id="btn-publish" value="PUBLISH">
         <input type="text" name="announce[title]" id="new-item-title" oninput="tracker(this)"
                placeholder="Title(customers will see this first)">
-        <input type="text" name="announce[date]" class="datepicker hasDatepicker" title="Starting"
-               placeholder="Date ( 26/01/2013 )">
+
+        <div id="datetimepicker1" class="input-append date inline-block">
+          <input required="true" class="inline-block" contenteditable="false" data-format="dd/MM/yyyy hh:mm" type="text" name="announce[date]" placeholder="Date and time"/>
+        <span class="add-on">
+      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+      </i>
+    </span>
+        </div>
         <br>
 
         <textarea name="announce[desc]" class="sub-desc margin-left-5pt" placeholder="Small header description"></textarea><br>
@@ -31,38 +48,11 @@
 
         </div>
         <br>
-        <fieldset>
-          <legend>tags</legend>
-          <div class="margin-left-5pt">
-            <label>#1 <select name="announce[tag_1]">
-              <option id="-1">none</option>
-              <% for tag in @tags %>
-                  <option id="<%= tag.id %>"><%= tag.name %></option>
-              <% end %>
-            </select>
-            </label>
-            <label>#2 <select name="announce[tag_2]">
-              <option id="-1">none</option>
+        <%= render 'admin/tag_common' %>
+        <input class="margin-left-5pt" name="announce[image]" type="file" title="Image"/>
 
-              <% for tag in @tags %>
-                  <option id="<%= tag.id %>"><%= tag.name %></option>
-              <% end %>
-            </select>
-            </label>
-            <label>#3 <select name="announce[tag_3]">
-              <option id="-1">none</option>
-              <% for tag in @tags %>
-                  <option id="<%= tag.id %>"><%= tag.name %></option>
-              <% end %>
-            </select>
-            </label></div>
-          <br>
-          <input class="margin-left-5pt" name="announce[image]" type="file" title="Image"/>
-
-          <div id="desc-bot-border"></div>
-
-
+        <div id="desc-bot-border"></div>
+        </div>
     <% end %>
-    </fieldset>
-  </div>
-</div>
+
+    </div>
