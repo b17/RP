@@ -55,3 +55,7 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+# thinking-sphinx needs mysql2
+gem 'mysql2',          '0.3.12b5'
+gem 'thinking-sphinx', '~> 3.0.2'
