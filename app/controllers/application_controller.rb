@@ -19,8 +19,8 @@ class ApplicationController < ActionController::Base
   end
 
   def init
-    location=Geocoder.search(request.ip)
     unless session[:init] or same_ip(request.ip)
+      location=Geocoder.search(request.ip)
       session[:ip]=request.ip
       session[:country]=location[0].data[:country_name]
       session[:city]=location[0].data[:city]
