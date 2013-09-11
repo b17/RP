@@ -11,7 +11,7 @@ gem 'rails'
 gem 'geocoder'
 gem 'carrierwave'
 #gem 'paperclip', '3.5.0'
-#gem 'rmagick', '2.13.2'
+gem 'rmagick', '2.13.2'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -23,7 +23,7 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg'
+  #gem 'pg'
 end
 
 
