@@ -7,7 +7,10 @@ development:
   adapter: sqlite3
   database: db/development.sqlite3
   pool: 5
+  port: 5432
   timeout: 5000
+  user: hehe
+  password: 2105
 
 
 # Warning: The database defined as "test" will be erased and
@@ -20,7 +23,7 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  adapter: postgresql
+  database: db/cedar_0.pg
   pool: 5
   timeout: 5000
