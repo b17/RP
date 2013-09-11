@@ -20,18 +20,15 @@ class ApplicationController < ActionController::Base
 
   def init
     location=Geocoder.search(request.ip)
-    print location.inspect
     unless session[:init] or same_ip(request.ip)
       session[:ip]=request.ip
-      session[:country]=location[0].data['country_name']
-      session[:city]=location[0].data['city']
-      session[:longitude]=location[0].data['longitude']
-      session[:latitude]=location[0].data['latitude']
-
-      unless location[:country_code]=='RD'
+      session[:country]=location[0].data[:country_name]
+      session[:city]=location[0].data[:city]
+      session[:longitude]=location[0].data[:longitude]
+      session[:latitude]=location[0].data[:latitude]
+      if location[0].data[:country_code]!='RD'
         session[:init]=true
       end
-
     end
   end
 
