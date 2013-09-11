@@ -1,4 +1,6 @@
 Untitled8::Application.routes.draw do
+
+
   get "user_service/p_register"
 
   get "user_service/p_reset"
@@ -23,6 +25,10 @@ Untitled8::Application.routes.draw do
     get 'random' => :rand
     get 'announce/:id' => :announce
 
+  end
+  controller :admin_announce do
+    get '/admin/announce/search/panel' => :search
+    post '/admin/announce/search/results' => :view
   end
 
   controller :admin do

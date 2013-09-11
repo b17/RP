@@ -1,0 +1,22 @@
+<link type="text/css" href="/css/superuser-styles.css" media="all" rel="stylesheet">
+<div>
+  <% unless @id_item.nil? %>
+      <% item = @id_item %>
+      <fieldset>
+        <legend>by id</legend>
+        <%= render 'admin_announce/admin_search_item_result', :item => @id_item %>
+  <% else %>
+      <h3>No item found</h3>
+  <% end %>
+  </fieldset>
+  <% unless @text_items.nil? %>
+      <% for item in @text_items %>
+          <fieldset>
+            <legend>by id</legend>
+            <%= render 'admin_announce/admin_search_item_result', :item => item %>
+      <% end %>
+  <% else %>
+      <h3>No item found</h3>
+  <% end %>
+  </fieldset>
+</div>

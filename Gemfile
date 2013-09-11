@@ -16,9 +16,15 @@ gem 'carrierwave'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-#gem 'sqlite3'
-gem 'pg'
-gem 'seed_dump'
+
+group :development, :test do
+  gem 'sqlite3'
+  gem 'seed_dump'
+end
+
+group :production do
+  gem 'pg'
+end
 
 
 # Gems used only for assets and not required
