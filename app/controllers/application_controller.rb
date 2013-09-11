@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :init
-  before_filter :is_publisher , :except => [:feed, :rand]
-  before_filter :is_administrator,:except => [:feed, :rand]
+  before_filter :is_publisher, :except => [:feed, :rand]
+  before_filter :is_administrator, :except => [:feed, :rand]
 
   #roles
   #guest,admin, core_admin
@@ -19,14 +19,19 @@ class ApplicationController < ActionController::Base
   end
 
   def init
+    location=Geocoder.search(request.ip)
+    print location.inspect
     unless session[:init] or same_ip(request.ip)
       session[:ip]=request.ip
-      location=Geocoder.search(request.ip)
       session[:country]=location[0].data['country_name']
       session[:city]=location[0].data['city']
       session[:longitude]=location[0].data['longitude']
       session[:latitude]=location[0].data['latitude']
-      session[:init]=true
+
+      unless location[:country_code]=='RD'
+        session[:init]=true
+      end
+
     end
   end
 

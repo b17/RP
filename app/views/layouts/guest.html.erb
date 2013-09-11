@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>
-    <% if session[:country]!=nil %>
+    <% if session[:country]!=nil && session[:init]==true %>
         <%= session[:country] %>
         <% if session[:city]!=nil %>
             <%= ": #{session[:city]}" %>
