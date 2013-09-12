@@ -20,3 +20,4 @@ config/production.sphinx.conf
 log/development.sphinx.pid
 log/production.sphinx.pid
 config/database.yml
+config/thinking_sphinx.yml
