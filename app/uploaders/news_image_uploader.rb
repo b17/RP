@@ -3,7 +3,7 @@
 class NewsImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
+  include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
@@ -49,7 +49,8 @@ class NewsImageUploader < CarrierWave::Uploader::Base
   # end
 
 
-  version :normal do
+  version :thumb do
+    process :resize_to_fill => [100, 100]
   end
 
 

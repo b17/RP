@@ -26,14 +26,7 @@ class Announce < ActiveRecord::Base
   end
 
   def self.locale(longitude, latitude, limit)
-    one_km_dist=0.009 #constant, hand made
-    radius=10 #km
-    half_of_bounds=(one_km_dist*radius)/2
-    lg1 = longitude.to_f-half_of_bounds
-    lg2 = longitude.to_f+half_of_bounds
-    lt1 = latitude.to_f-half_of_bounds
-    lt2 = latitude.to_f+half_of_bounds
-    all(:conditions => {:lg => (lg1..lg2), :lt => (lt1..lt2), :disabled => false, }, :limit => limit.to_i)
+    search '', :geo => [longitude, latitude]
   end
 
 
