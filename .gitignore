@@ -15,5 +15,9 @@
 /tmp
 .idea
 db/sphinx
-/config/development.sphinx.conf
-/log/development.sphinx.pid
+config/development.sphinx.conf
+config/production.sphinx.conf
+log/development.sphinx.pid
+log/production.sphinx.pid
+config/database.yml
+config/thinking_sphinx.yml
