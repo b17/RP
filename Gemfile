@@ -20,6 +20,7 @@ gem 'rmagick', '2.13.2'
 group :development, :test do
   gem 'sqlite3'
   gem 'seed_dump'
+  gem 'test-unit'
 end
 
 group :production do
@@ -61,3 +62,5 @@ gem 'mysql2',          '0.3.12b5'
 gem 'thinking-sphinx', '~> 3.0.2'
 
 gem 'whenever'
+
+gem 'translit'
