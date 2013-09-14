@@ -42,4 +42,13 @@ class News < ActiveRecord::Base
     lt2 = latitude.to_f+half_of_bounds
     all(:conditions => {:lg => (lg1..lg2), :lt => (lt1..lt2), :disabled => false, }, :limit => limit.to_i)
   end
+
+  def self.nearest_search(lg,lt,geo_distance,per_page)
+    search '',
+        :geo => [GeoHelper.to_rads(lt), GeoHelper.to_rads(lt)],
+        :order => 'geodist ASC',
+        :with => {:geodist => 0.0..GeoHelper.to_meters(geo_distance).to_f},
+        :per_page => per_page
+
+  end
 end
