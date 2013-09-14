@@ -44,6 +44,5 @@ class Announce < ActiveRecord::Base
            :order => 'geodist ASC',
            :with => {:geodist => 0.0..GeoHelper.to_meters(geo_distance).to_f},
            :per_page => per_page
-
   end
 end

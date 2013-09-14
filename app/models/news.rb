@@ -45,10 +45,11 @@ class News < ActiveRecord::Base
 
   def self.nearest_search(lg,lt,geo_distance,per_page)
     search '',
-        :geo => [GeoHelper.to_rads(lt), GeoHelper.to_rads(lt)],
-        :order => 'geodist ASC',
-        :with => {:geodist => 0.0..GeoHelper.to_meters(geo_distance).to_f},
-        :per_page => per_page
+           :geo => [GeoHelper.to_rads(lt), GeoHelper.to_rads(lt)],
+           :order => 'geodist ASC',
+           :with => {:geodist => 0.0..GeoHelper.to_meters(geo_distance).to_f},
+           :per_page => per_page
+
 
   end
 end
