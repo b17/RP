@@ -5,25 +5,19 @@ class RootController < ApplicationController
   def feed
     init
 
-    geo_distance = 1 # kms
+    params[:distance] ||= 1000 # distance in meters (THIS IS AN EXAMPLE)
+    params[:latitude] = session[:latitude] # current coords for GeoDistanceProvider
+    params[:longitude] = session[:longitude] # current coords for GeoDistanceProvider
 
-    # Important warning!
-    # Sphinx uses strict types of filters.
-    # For example, if field `latitude` is declared as float
-    # you have to pass a float value not an integer!
-    @items = Announce.search '',
-                           :geo => [GeoHelper.to_rads(session[:latitude]), GeoHelper.to_rads(session[:longitude])],
-                           :order => 'geodist ASC',
-                           :with => {:geodist => 0.0..GeoHelper.to_meters(geo_distance).to_f},
-                           :per_page => 10
+    search_criteria = layer_news.bind params
+    sphinx_criteria = layer_news.apply search_criteria
+    p sphinx_criteria
+    sphinx_criteria[:order] = 'geodist ASC'
 
-    @news = News.search '',
-                       :geo => [GeoHelper.to_rads(session[:latitude]), GeoHelper.to_rads(session[:longitude])],
-                       :order => 'geodist ASC',
-                       :with => {:geodist => 0.0..GeoHelper.to_meters(geo_distance).to_f},
-                       :per_page => 10
+    @items = Announce.search '', sphinx_criteria
 
-    # Sphinx random order is much efficient then mysql, pg or sqlite.
+    @news = News.search '', sphinx_criteria
+
     @random = Announce.search '', :order => 'created_at DESC'
   end
 

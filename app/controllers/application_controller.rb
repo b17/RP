@@ -1,3 +1,5 @@
+require 'search'
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :init
@@ -34,6 +36,14 @@ class ApplicationController < ActionController::Base
 
   def same_ip ip
     ip==session[:ip]
+  end
+
+  def layer_news
+    unless @layer_news
+      @layer_news = Search::Layer.new
+      @layer_news.add_provider Search::GeoDistanceProvider.new
+    end
+    @layer_news
   end
 
 end
