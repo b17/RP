@@ -1,4 +1,4 @@
-ThinkingSphinx::Index.define :tags, :with => :active_record do
+ThinkingSphinx::Index.define :tag, :with => :active_record do
   # fields
   indexes name
 
