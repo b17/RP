@@ -5,9 +5,7 @@ class AddIsDisabledFieldToAllTables < ActiveRecord::Migration
   end
 
  def down
-   remove_column :docs,:disabled,
+   remove_column :docs,:disabled
    remove_column :users,:disabled
  end
-
-
 end
