@@ -17,6 +17,17 @@ gem 'rmagick', '2.13.2'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 
+group :development, :test do
+  gem 'sqlite3'
+  gem 'seed_dump'
+  gem 'test-unit'
+end
+
+group :production do
+  #gem 'pg'
+end
+
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -30,10 +41,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
-# thinking-sphinx needs mysql2
-gem 'mysql2', '0.3.12b5'
-gem 'thinking-sphinx', '~> 3.0.2'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -50,4 +57,10 @@ gem 'thinking-sphinx', '~> 3.0.2'
 # To use debugger
 # gem 'debugger'
 
+# thinking-sphinx needs mysql2
+gem 'mysql2',          '0.3.12b5'
+gem 'thinking-sphinx', '~> 3.0.2'
 
+gem 'whenever'
+
+gem 'translit'

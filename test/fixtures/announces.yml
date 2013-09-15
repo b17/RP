@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  title: MyString
-  desc: MyString
-  lg: 1.5
-  lt: 1.5
-  main_img_url: MyString
-  date: 
-
-two:
-  title: MyString
-  desc: MyString
-  lg: 1.5
-  lt: 1.5
-  main_img_url: MyString
-  date: 
+#one:
+#  title: MyString
+#  desc: MyString
+#  lg: 1.5
+#  lt: 1.5
+#  main_img_url: MyString
+#  date:
+#
+#two:
+#  title: MyString
+#  desc: MyString
+#  lg: 1.5
+#  lt: 1.5
+#  main_img_url: MyString
+#  date:
