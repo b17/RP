@@ -1,7 +1,7 @@
-class News < ActiveRecord::Base
-  attr_accessible :short_info, :title, :disabled, :content, :image, :tag_1, :tag_3, :tag_2, :disabled, :user_id, :lg, :lt, :created_at
+class Place < ActiveRecord::Base
+  attr_accessible :name, :image, :description, :longitude, :latitude, :created_at,:updatet_at
   belongs_to :user
-  mount_uploader :image, NewsImageUploader
+  mount_uploader :image, PlaceLogoUploader
 
 
   def short_desc
@@ -29,6 +29,7 @@ class News < ActiveRecord::Base
     string_arr = field.split(//)
     field.length > length ? "#{string_arr[0..(length-1)].join('')}..." : field
   end
+
 
   def self.nearest_search(lg,lt,geo_distance,per_page)
     search '',

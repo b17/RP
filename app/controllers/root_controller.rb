@@ -48,7 +48,5 @@ class RootController < ApplicationController
     id= params[:id]
     @announce= Announce.find id
   end
-
-
-end
+  end
 
