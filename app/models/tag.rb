@@ -11,7 +11,7 @@ class Tag < ActiveRecord::Base
   end
 
   def self.disabled
-    where :disabled => trd
+    where :disabled => true
   end
 
   def name_resize(length)
