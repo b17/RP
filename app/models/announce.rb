@@ -3,6 +3,9 @@ class Announce < ActiveRecord::Base
   belongs_to :user
   mount_uploader :image, AnnounceImageUploader
 
+  before_save do |entity|
+    entity.rewrite ||= StringHelper::urlize entity.title
+  end
 
   def title_feed
     shorter 24, title
@@ -45,4 +48,5 @@ class Announce < ActiveRecord::Base
            :with => {:geodist => 0.0..GeoHelper.to_meters(geo_distance).to_f},
            :per_page => per_page
   end
+
 end

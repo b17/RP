@@ -18,10 +18,13 @@ class RootController < ApplicationController
     @random = Announce.search '', :order => 'created_at DESC' ,:per_page => 6
   end
 
+  def article
+    @article = News.where(:id => params[:id]).first
+  end
 
   def tag
     init
-    tag = request.params[:id]
+    tag = request.params[:rewrite]
     @tag_name=tag
     announce = Announce.arel_table
     @items_with_tag = Announce.where(announce[:tag_1].eq(tag).or(announce[:tag_2].eq(tag).or(announce[:tag_3].eq(tag))))

@@ -4,7 +4,9 @@
     <div id="announce-list">
       <% for item in @tags do %>
           <div class="tag-wrapper">
-            <div class="tag-header"><a href="/tag/<%= item.name %>" class="no-link-style"><%= item.name %></a></div>
+            <div class="tag-header">
+              <a href="<%= tag_view_path :rewrite => item.rewrite %>" class="no-link-style"><%= item.name %></a>
+            </div>
             <img class="image-gold-size-with_minus_margin" src="<%= item.image %>">
 
             <div class="bot-header-tag-panel black">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130915105806) do
+ActiveRecord::Schema.define(:version => 20130915164326) do
 
   create_table "announce_accounting", :force => true do |t|
     t.integer "announce_id"
@@ -36,7 +36,10 @@ ActiveRecord::Schema.define(:version => 20130915105806) do
     t.string   "tag_2"
     t.string   "tag_3"
     t.boolean  "is_repeated", :default => false
+    t.string   "rewrite"
   end
+
+  add_index "announces", ["rewrite"], :name => "index_announces_on_rewrite"
 
   create_table "docs", :force => true do |t|
     t.string   "key"
@@ -51,7 +54,7 @@ ActiveRecord::Schema.define(:version => 20130915105806) do
     t.string   "short_info",                   :null => false
     t.boolean  "disabled",   :default => true, :null => false
     t.text     "content",                      :null => false
-    t.string   "image"
+    t.string   "image",                        :null => false
     t.integer  "user_id",                      :null => false
     t.float    "lt"
     t.float    "lg"
@@ -61,7 +64,10 @@ ActiveRecord::Schema.define(:version => 20130915105806) do
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
     t.date     "valid_to"
+    t.string   "rewrite"
   end
+
+  add_index "news", ["rewrite"], :name => "index_news_on_rewrite"
 
   create_table "place", :force => true do |t|
     t.string   "name"
@@ -80,7 +86,10 @@ ActiveRecord::Schema.define(:version => 20130915105806) do
     t.datetime "updated_at",                      :null => false
     t.boolean  "disabled",     :default => false
     t.integer  "active_count", :default => 0,     :null => false
+    t.string   "rewrite"
   end
+
+  add_index "tags", ["rewrite"], :name => "index_tags_on_rewrite", :unique => true
 
   create_table "tests", :force => true do |t|
     t.string   "name"
