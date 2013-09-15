@@ -66,16 +66,16 @@ Untitled8::Application.routes.draw do
 
 
   controller :fail do
+
+    #page
     get "miss" => :not_found
     get "not_found" => :not_found
     get "404" => :not_found
-  end
-  controller :image do
-    get "announces/:id/front_img" => :announce_images
-    get 'show/:id' => :show
+    #credentials
+    get 'fail/login' =>:login
+    get 'fail/permission' =>:permission
 
   end
-
 
   controller :superuser do
     get 'manage' => :view

@@ -36,20 +36,5 @@
   <button type="button" class="close" style="padding-right: 5pt;padding-top: 5pt" data-dismiss="modal"
           aria-hidden="true">X
   </button>
-  <div class="modal-header">
-    <h2>Login</h2>
-  </div>
-  <div class="modal-body wight-250">
-    <div>
-      <%= form_tag(login_path, class: "form-inline") do %>
-          <!--<form class="form-inline" method="post" action="login">-->
-
-          <input name="login" class="wight-100 margin-bot-middle" type="text" placeholder="login(email)">
-          <input name="password" class="wight-100 margin-bot-middle" type="password" placeholder="password">
-          <input type="submit" value="Log In" class="btn-link"> or <a href="<%= registration_path %>"
-                                                                      class="btn-link">register</a>
-          <!--</form>-->
-      <% end %>
-    </div>
-  </div>
+ <%= render 'shared/login_form' %>
 </div>

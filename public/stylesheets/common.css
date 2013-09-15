@@ -185,3 +185,15 @@ body {
     background-color: lightgray;
     padding-left: 10pt;
 }
+
+.red-text {
+    color: red;
+}
+
+.redhead-text {
+    color: orangered;
+}
+
+.middle {
+    text-align: center;
+}
