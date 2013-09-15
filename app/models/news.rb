@@ -3,6 +3,9 @@ class News < ActiveRecord::Base
   belongs_to :user
   mount_uploader :image, NewsImageUploader
 
+  before_save do |entity|
+    entity.rewrite ||= StringHelper::urlize entity.title
+  end
 
   def short_desc
     shorter 240, short_info

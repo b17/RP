@@ -1,4 +1,4 @@
-Untitled8::Application.routes.draw do
+RestPlaces::Application.routes.draw do
 
 
   get "user_service/p_register"
@@ -21,10 +21,12 @@ Untitled8::Application.routes.draw do
 
   controller :root do
     get 'tags' => :all_tags
-    get 'tag/:id' => :tag
+    get 'tag/:rewrite.:format' => :tag, :as => 'tag_view', :defaults => {:format => 'html'}
+    get 'article/:rewrite-:id.:format' => :article, :as => 'news_view', :defaults => {:format => 'html'}
     get 'random' => :rand
-    get 'announce/:id' => :announce
     get 'test' => :dev_test
+    get 'announce/:rewrite-:id.:format' => :announce, :as => 'announce_view', :defaults => {:format => 'html'}
+
 
   end
   controller :admin_announce do
