@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130820191606) do
+ActiveRecord::Schema.define(:version => 20130915080816) do
 
   create_table "announce_accounting", :force => true do |t|
     t.integer "announce_id"
@@ -29,19 +29,21 @@ ActiveRecord::Schema.define(:version => 20130820191606) do
     t.string   "image"
     t.datetime "event_date"
     t.integer  "user_id"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.boolean  "disabled",    :default => true, :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "disabled",    :default => true,  :null => false
     t.string   "tag_1"
     t.string   "tag_2"
     t.string   "tag_3"
+    t.boolean  "is_repeated", :default => false
   end
 
   create_table "docs", :force => true do |t|
     t.string   "key"
     t.text     "document"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "disabled",   :default => false
   end
 
   create_table "news", :force => true do |t|
@@ -49,7 +51,7 @@ ActiveRecord::Schema.define(:version => 20130820191606) do
     t.string   "short_info",                   :null => false
     t.boolean  "disabled",   :default => true, :null => false
     t.text     "content",                      :null => false
-    t.string   "image",                        :null => false
+    t.string   "image"
     t.integer  "user_id",                      :null => false
     t.float    "lt"
     t.float    "lg"
@@ -86,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20130820191606) do
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
     t.string   "role",       :default => "subscriber"
+    t.boolean  "disabled",   :default => false
   end
 
 end
