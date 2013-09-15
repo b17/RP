@@ -1,6 +1,8 @@
 ThinkingSphinx::Index.define :user, :with => :active_record do
   # fields
-  indexes name
+  indexes first
+  indexes last
+  indexes role
 
 
   where "disabled = 0"
