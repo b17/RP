@@ -24,15 +24,16 @@ class NewsController < ApplicationController
     end
     item.user_id=session[:id]
 
-    unless news[:tag_1].nil?
-      item.tag_1 =news[:tag_1]
+    tags = [ news[:tag_1],news[:tag_2],news[:tag_3]]
+
+    item.tags.clear
+    tags.each do |tag|
+      the_tag = Tag.find tag
+      unless the_tag.nil?
+        item.tags<<(the_tag)
+      end
     end
-    unless news[:tag_2].nil?
-      item.tag_2 =news[:tag_2]
-    end
-    unless news[:tag_3].nil?
-      item.tag_3 =news[:tag_3]
-    end
+
 
     item.lg= news[:longitude].to_f
     item.lt= news[:latitude].to_f
@@ -99,22 +100,14 @@ class NewsController < ApplicationController
       end
 
       #Update tags
-      if news[:tag_1].nil?
-        item.tag_1=nil
-      else
-        item.tag_1 =news[:tag_1]
-      end
-      #----------------------
-      if news[:tag_2].nil?
-        item.tag_1=nil
-      else
-        item.tag_2 =news[:tag_2]
-      end
-      #----------------------
-      if news[:tag_3].nil?
-        item.tag_1=nil
-      else
-        item.tag_3 =news[:tag_3]
+      tags = [ news[:tag_1],news[:tag_2],news[:tag_3]]
+
+      item.tags.clear
+      tags.each do |tag|
+        the_tag = Tag.find tag
+        unless the_tag.nil?
+          item.tags<<(the_tag)
+        end
       end
       #----------------------
       #Tags updated

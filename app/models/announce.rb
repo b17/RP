@@ -1,7 +1,10 @@
 class Announce < ActiveRecord::Base
   attr_accessible :action_date, :desc, :lg, :lt, :title, :user_id, :disabled, :image, :tag_1, :tag_2, :tag_3
-  belongs_to :user
+
   mount_uploader :image, AnnounceImageUploader
+
+  belongs_to :user
+  has_many :tags, :limit => 3
 
   before_save do |entity|
     entity.rewrite ||= StringHelper::urlize entity.title

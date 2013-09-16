@@ -1,5 +1,10 @@
 class Tag < ActiveRecord::Base
-  attr_accessible :image, :name, :disabled
+  attr_accessible :image, :name, :disabled ,:rewrite
+
+  belongs_to :announce
+  belongs_to :news
+  belongs_to :place
+
   mount_uploader :image, TagUploader
 
   before_save do |entity|
