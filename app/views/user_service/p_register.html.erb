@@ -2,25 +2,39 @@
 
   <img src="images/web_services.png" class="image-registration">
 
-  <%= form_tag(register_path) do %>
+  <%= form_tag(register_path, :class => 'validate') do %>
 
-      <div>
-        <input class="wight-100" type="text" placeholder="first name" name="register[first]">
-        <input class="wight-100" type="text" placeholder="last name" name="register[last]">
+      <div class="control-group">
+        <input class="wight-100 validate__required" type="text" placeholder="first name" name="register[first]" data-required-message="<%= t(:validation_firstname_empty) %>">
       </div>
 
-      <input type="text" class="wight-100" required="true" placeholder="login" name="register[login]">
-      <input class="wight-100" type="email" placeholder="e-mail" onchange=" email_check(this.value)" name="register[e_mail]">
-      <input class="wight-100" type="password" placeholder="password (required)" required name="register[password]">
-
-      <div class="pull-left">
-        <label>I Accept <a href="termls.ogf.use.html">terms of use</a>
-          <input type="checkbox" required name="is_accepted" title="You should accept this rules">
-        </label>
-
-
+      <div class="control-group">
+        <input class="wight-100 validate__required" type="text" placeholder="last name" name="register[last]" data-required-message="<%= t(:validation_secondname_empty) %>">
       </div>
-      <input type="submit" value="register">
+
+      <div class="control-group">
+        <input type="text" class="wight-100 validate__required validate__user__login" required="true" placeholder="login" name="register[login]" data-required-message="<%= t(:validation_login_empty) %>">
+      </div>
+
+      <div class="control-group">
+        <input class="wight-100 validate__required validate__email validate__user__email" type="email" placeholder="e-mail" name="register[e_mail]" data-required-message="<%= t(:validation_email_empty) %>" data-email-message="<%= t(:validation_email_format) %>">
+      </div>
+
+      <div class="control-group">
+        <input class="wight-100 validate__required" type="password" placeholder="password (required)" required name="register[password]" data-required-message="<%= t(:validation_password_empty) %>">
+      </div>
+
+      <div class="control-group">
+        <div class="pull-left">
+          <label>I Accept <a href="termls.ogf.use.html">terms of use</a>
+            <input type="checkbox" required name="is_accepted" title="You should accept this rules" data-required-message="<%= t(:validation_termsofuse) %>">
+          </label>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <input type="submit" value="register" class="btn btn-primary">
+      </div>
 
   <% end %>
 </div>
