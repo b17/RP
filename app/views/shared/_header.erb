@@ -41,11 +41,19 @@
   </div>
   <div class="modal-body wight-250">
     <div>
-      <%= form_tag(login_path, class: "form-inline") do %>
+      <%= form_tag(login_path, class: "form-inline validate") do %>
           <!--<form class="form-inline" method="post" action="login">-->
 
-          <input name="login" class="wight-100 margin-bot-middle" type="text" placeholder="login(email)">
-          <input name="password" class="wight-100 margin-bot-middle" type="password" placeholder="password">
+          <div class="control-group">
+            <div class="controls">
+              <input name="login" class="wight-100 margin-bot-middle validate__required" type="text" placeholder="login(email)">
+            </div>
+          </div>
+
+          <div class="control-group">
+            <input name="password" class="wight-100 margin-bot-middle validate__required" type="password" placeholder="password">
+          </div>
+
           <input type="submit" value="Log In" class="btn-link"> or <a href="<%= registration_path %>"
                                                                       class="btn-link">register</a>
           <!--</form>-->
