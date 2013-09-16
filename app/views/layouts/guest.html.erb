@@ -18,6 +18,7 @@
   <%= javascript_include_tag "jquery", :media => "all" %>
   <%= javascript_include_tag "bootstrap", :media => "all" %>
   <%= javascript_include_tag 'jquery.validate.min', :media => "all" %>
+  <%= render 'shared/js/validation' %>
   <%= javascript_include_tag 'rp.validation', :media => "all" %>
   <%= csrf_meta_tags %>
 </head>
@@ -27,6 +28,5 @@
 <hr class="amazing-style">
 
 <%= render 'shared/footer' %>
-
 </body>
 </html>

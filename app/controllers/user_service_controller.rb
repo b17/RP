@@ -14,6 +14,13 @@ class UserServiceController < ApplicationController
   def c_reset
   end
 
+  # Validates registration form login field for uniqueness
+  def validate
+    user = User.new(:login => params[:login].strip)
+    user.valid?
+    render json: !user.errors[:login].any?
+  end
+
 
   def login
     login= request.params[:login]
