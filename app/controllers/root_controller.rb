@@ -25,9 +25,14 @@ class RootController < ApplicationController
   def tag
     init
     tag = request.params[:rewrite]
-    @tag_name=tag
-    announce = Announce.arel_table
-    @items_with_tag = Announce.where(announce[:tag_1].eq(tag).or(announce[:tag_2].eq(tag).or(announce[:tag_3].eq(tag))))
+    @tag_name = t(tag)
+    #Omg, it looks like bad shit
+    tag_id = (Tag.find_by_rewrite tag).id
+    announces = AnnounceTagger.find_all_by_tag_id tag_id
+    @items_with_tag=Array.new
+    announces.each do |a|
+      @items_with_tag.append a.announce
+    end
     @news = News.nearest_search session[:longitude],session[:latitude],session[:geo_distance],3
   end
 

@@ -28,9 +28,13 @@ class NewsController < ApplicationController
 
     item.tags.clear
     tags.each do |tag|
-      the_tag = Tag.find tag
+      unless tag.nil?
+
+      the_tag = Tag.find(tag).first
       unless the_tag.nil?
         item.tags<<(the_tag)
+
+      end
       end
     end
 
