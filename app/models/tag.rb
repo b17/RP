@@ -2,6 +2,10 @@ class Tag < ActiveRecord::Base
   attr_accessible :image, :name, :disabled
   mount_uploader :image, TagUploader
 
+  before_save do |entity|
+    entity.rewrite ||= StringHelper::urlize entity.name
+  end
+
   def self.active
     where :disabled => false
   end
