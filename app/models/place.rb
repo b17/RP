@@ -1,7 +1,10 @@
 class Place < ActiveRecord::Base
-  attr_accessible :name, :image, :description, :longitude, :latitude, :created_at,:updatet_at
-  belongs_to :user
+  attr_accessible :name, :image, :description, :longitude, :latitude, :created_at,:updatet_at, :tag_1, :tag_2, :tag_3
+
   mount_uploader :image, PlaceLogoUploader
+
+  has_many :tags, :limit => 3
+  belongs_to :user
 
 
   def short_desc

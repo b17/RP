@@ -11,3 +11,8 @@ en:
   validation_email_format: "Invalid email format. Valid format is: chuck@norris.com"
   validation_termsofuse: "You have to accept terms of use."
   validation_user_login: "This login is already taken."
+
+#  tag language block ?
+  sport: "sport"
+  education: "education"
+  travel: "travel"

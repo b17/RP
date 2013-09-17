@@ -1,7 +1,10 @@
 class News < ActiveRecord::Base
   attr_accessible :short_info, :title, :disabled, :content, :image, :tag_1, :tag_3, :tag_2, :disabled, :user_id, :lg, :lt, :created_at
-  belongs_to :user
+
   mount_uploader :image, NewsImageUploader
+
+  has_many :news_taggers
+  has_many :tags, :through => :news_taggers
 
   before_save do |entity|
     entity.rewrite ||= StringHelper::urlize entity.title
