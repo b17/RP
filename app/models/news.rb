@@ -3,9 +3,8 @@ class News < ActiveRecord::Base
 
   mount_uploader :image, NewsImageUploader
 
-  belongs_to :user
-  has_many :tags, :limit => 3
-
+  has_many :news_taggers
+  has_many :tags, :through => :news_taggers
 
   before_save do |entity|
     entity.rewrite ||= StringHelper::urlize entity.title

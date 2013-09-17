@@ -3,8 +3,8 @@ class Announce < ActiveRecord::Base
 
   mount_uploader :image, AnnounceImageUploader
 
-  belongs_to :user
-  has_many :tags, :limit => 3
+  has_many :announce_taggers
+  has_many :tags, :through => :announce_taggers
 
   before_save do |entity|
     entity.rewrite ||= StringHelper::urlize entity.title

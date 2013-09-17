@@ -5,7 +5,7 @@
   <img class="image-gold-size-with_minus_margin" src="<%= item.image_url :thumb %>">
 
   <div class="bot-header-tag-panel">
-    <% [item.tag_1, item.tag_2, item.tag_3].each do |tag| %>
+    <% item.tags.each do |tag| %>
         <% if tag %>
             <i><a href="<%= tag_view_path :rewrite => tag %>" class="style-tag"><%= tag %></a></i>
         <% end %>
