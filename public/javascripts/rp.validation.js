@@ -100,6 +100,28 @@ $(function() {
         $(this).rules('add', opts);
     });
 
+    $('.validate__user__login').each(function() {
+        var el = this;
+        var opts = {
+            remote: {
+                url: $.Validation.url.user,
+                type: "post",
+                data: {
+                    login: function() {
+                        return $(el).val();
+                    }
+                }
+            }
+        };
+        var message = $(this).attr('data-user-login-message');
+        if (message) {
+            opts.messages = {
+                remote: message
+            }
+        }
+        $(el).rules('add', opts);
+    });
+
     $('.validate__required').each(function() {
         var opts = {
             required: true

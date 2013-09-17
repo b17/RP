@@ -64,6 +64,7 @@ RestPlaces::Application.routes.draw do
     get 'session/debug' => :debug_session
     get 'registration' => :p_register
     post 'register' => :c_register
+    post 'user/validate' => :validate, :as => 'user_validate'
 
   end
 
