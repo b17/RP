@@ -11,7 +11,10 @@
         <% end %>
     <% end %>
 
-<%= item.categories.inspect %>
-
+    <% item.category.each do |cat| %>
+        <% if cat %>
+            <i><a href="<%= category_filter_path :rewrite => cat.rewrite %>" class="style-tag"><%= t(cat.name) %></a></i>
+        <% end %>
+    <% end %>
   </div>
 </div>

@@ -26,7 +26,7 @@ RestPlaces::Application.routes.draw do
     get 'random' => :rand
     get 'test' => :dev_test
     get 'announce/:rewrite-:id.:format' => :announce, :as => 'announce_view', :defaults => {:format => 'html'}
-
+    get 'category/:rewrite' =>:category,:as =>:category_filter
 
   end
   controller :admin_announce do

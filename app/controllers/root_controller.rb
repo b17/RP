@@ -56,5 +56,10 @@ class RootController < ApplicationController
     id= params[:id]
     @announce= Announce.find id
   end
+
+  def category
+    @rewrite = params[:rewrite]
+
+  end
   end
 

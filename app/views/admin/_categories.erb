@@ -1,0 +1,14 @@
+<fieldset>
+  <legend>Categories</legend>
+
+
+  <% (1..3).each do |iteration|%>
+      <label>#<%= iteration %> <select name="category[<%=iteration%>]">
+        <option value="-1">none</option>
+        <% for category in @categories %>
+            <option value="<%= category.id%>"><%= t(category.rewrite)  %></option>
+        <% end %>
+      </select>
+      </label>
+  <%end %>
+</fieldset>

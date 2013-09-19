@@ -1,13 +1,13 @@
 class Announce < ActiveRecord::Base
-  attr_accessible :action_date, :desc, :lg, :lt, :title, :user_id, :disabled, :image, :tag_1, :tag_2, :tag_3
+  attr_accessible :action_date, :desc, :lg, :lt, :title, :user_id, :disabled, :image
 
   mount_uploader :image, AnnounceImageUploader
 
   has_many :announce_taggers
   has_many :tags, :through => :announce_taggers
 
-  has_many :announce_category
-  has_many :category, :through => :announce_category
+  has_many :announce_categories
+  has_many :category, :through => :announce_categories
 
   before_save do |entity|
     entity.rewrite ||= StringHelper::urlize entity.title

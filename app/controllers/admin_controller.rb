@@ -39,6 +39,7 @@ class AdminController < ApplicationController
     @longitude=session[:longitude]
     @latitude=session[:latitude]
     @tags=Tag.active
+    @categories=Category.active
   end
 
   def c_add
@@ -62,8 +63,11 @@ class AdminController < ApplicationController
     item.lt=params[:announce][:latitude].to_f
     item.lg=params[:announce][:longitude].to_f
 
-    #Tags setting
-    #support only three tags
+    ####################################
+    #               Tags               #
+    #       support only three tags    #
+    ####################################
+
 
     tags = [params[:announce][:tag_1], params[:announce][:tag_2], params[:announce][:tag_3]]
 
@@ -75,7 +79,17 @@ class AdminController < ApplicationController
         item.tags<<(the_tag)
       end
     end
-
+    ####################################
+    #            Categories            #
+    ####################################
+    categories=params[:category]
+    item.category.clear
+    categories.each do  |cat|
+      category=Category.where(:id=>cat).first
+      unless category.nil?
+        item.category<< category
+      end
+    end
 
 
 

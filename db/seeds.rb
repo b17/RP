@@ -25,7 +25,7 @@ User.create([
 
 
  Category.create([
-      {:name => 'concert', :rewrite => 'concert'} ,
-      {:name => 'offer', :rewrite => 'offer'} ,
-      {:name => 'sale', :rewrite => 'sale'}
+      {:name => 'concert', :rewrite => 'concert' ,:disabled=>0} ,
+      {:name => 'offer', :rewrite => 'offer',:disabled=>0} ,
+      {:name => 'sale', :rewrite => 'sale',:disabled=>0}
                  ])
