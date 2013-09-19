@@ -39,11 +39,11 @@ class ApplicationController < ActionController::Base
   end
 
   def layer_news
-    unless @layer_news
-      @layer_news = Search::Layer.new
-      @layer_news.add_provider Search::GeoDistanceProvider.new
-    end
-    @layer_news
+    @layer_news ||= Search::NewsLayer.new
+  end
+
+  def layer_announce
+    @layer_announce ||= Search::AnnounceLayer.new
   end
 
 end

@@ -1,5 +1,35 @@
 module Search
 
+  class Filter
+    def initialize(label)
+      @label = label
+    end
+
+    def add(option)
+      option.filter = self
+    end
+  end
+
+  class FiltersCollection
+    def initialize(request)
+      @filters = []
+      @request = request #for url building
+    end
+    def add(filter)
+      filter.collection = filter
+      @filters.push(filter)
+    end
+  end
+
+  class FilterOption
+    def initialize(label, value, active = false, matched_count = 0)
+      @label = label
+      @value = value
+      @active = active
+      @matched_count = matched_count
+    end
+  end
+
   class Layer
     def initialize
       @providers = []
@@ -26,6 +56,20 @@ module Search
       end
       where
     end
+
+    def filters(params, request)
+      filters = Search::FiltersCollection.new request
+      search_criteria = bind params
+      where = apply search_criteria
+      @providers.each do |provider|
+        provider.filters where, search_criteria, filters
+      end
+      filters
+    end
+
+    def query(where)
+      raise NotImplementedError
+    end
   end
 
   class Provider
@@ -41,9 +85,6 @@ module Search
     end
 
     def unbind(params, search_criteria)
-      if params.key? :distance
-        search_criteria.delete(:geo)
-      end
     end
   end
 
@@ -59,6 +100,9 @@ module Search
       end
     end
 
+    def filters(where, search_criteria, filters_collection)
+    end
+
     def apply(query, search_criteria)
       if search_criteria.key? :geo
         geo = search_criteria[:geo]
@@ -66,6 +110,29 @@ module Search
         query[:with] ||= {}
         query[:with][:geodist] = 0.0..geo[:distance]
       end
+    end
+  end
+
+
+  class NewsLayer < Search::Layer
+    def initialize
+      super
+      add_provider Search::GeoDistanceProvider.new
+    end
+
+    def query(where)
+      News.search '', where
+    end
+  end
+
+  class AnnounceLayer < Search::Layer
+    def initialize
+      super
+      add_provider Search::GeoDistanceProvider.new
+    end
+
+    def query(where)
+      Announce.search '', where
     end
   end
 

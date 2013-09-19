@@ -14,11 +14,11 @@ class RootController < ApplicationController
     p sphinx_criteria
     sphinx_criteria[:order] = 'geodist ASC'
 
-    @items = Announce.search '', sphinx_criteria
+    @items = layer_announce.query sphinx_criteria
 
-    @news = News.search '', sphinx_criteria
+    @news = layer_news.query sphinx_criteria
 
-    @random = Announce.search '', :order => 'created_at DESC'
+    @random = layer_announce.query :order => 'created_at DESC'
   end
 
 
