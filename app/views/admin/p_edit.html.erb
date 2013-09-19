@@ -19,7 +19,7 @@
 
         <input class="margin-left-5pt" name="announce[image]" type="file" title="Image"/>
         <!--Announce block-->
-        <%= render 'admin/tag_common' %>  <input class="margin-left-5pt" name="announce[image]" type="file" title="Image"/>
+        <%= render 'admin/selected_tag_common', :item=>@item %>  <input class="margin-left-5pt" name="announce[image]" type="file" title="Image"/>
 
                <div id="desc-bot-border"></div>
     <% end %>

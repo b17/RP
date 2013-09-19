@@ -7,9 +7,11 @@
   <div class="bot-header-tag-panel">
     <% item.tags.each do |tag| %>
         <% if tag %>
-            <i><a href="<%= tag_view_path :rewrite => tag.name %>" class="style-tag"><%= t(tag.name) %></a></i>
+            <i><a href="<%= tag_view_path :rewrite => tag.rewrite %>" class="style-tag"><%= t(tag.name) %></a></i>
         <% end %>
     <% end %>
+
+<%= item.categories.inspect %>
 
   </div>
 </div>

@@ -24,3 +24,8 @@ User.create([
             ], :without_protection => true)
 
 
+ Category.create([
+      {:name => 'concert', :rewrite => 'concert'} ,
+      {:name => 'offer', :rewrite => 'offer'} ,
+      {:name => 'sale', :rewrite => 'sale'}
+                 ])

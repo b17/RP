@@ -1,4 +1,4 @@
 class AnnounceTagger < ActiveRecord::Base
-belongs_to :announce
-belongs_to :tag
+  belongs_to :announce
+  belongs_to :tag
 end

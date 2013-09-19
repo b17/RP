@@ -6,6 +6,9 @@ class Announce < ActiveRecord::Base
   has_many :announce_taggers
   has_many :tags, :through => :announce_taggers
 
+  has_many :announce_category
+  has_many :category, :through => :announce_category
+
   before_save do |entity|
     entity.rewrite ||= StringHelper::urlize entity.title
   end
@@ -50,6 +53,19 @@ class Announce < ActiveRecord::Base
            :order => 'geodist ASC',
            :with => {:geodist => 0.0..GeoHelper.to_meters(geo_distance).to_f},
            :per_page => per_page
+  end
+
+  def has_tag(id)
+    contain=false
+    self.tags.each { |t|
+      if t.id==id
+        contain=true
+
+        break
+      end
+    }
+    contain
+
   end
 
 end

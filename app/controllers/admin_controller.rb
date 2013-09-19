@@ -125,7 +125,7 @@ class AdminController < ApplicationController
     item = Announce.find id
     if item.user_id==session[:id].to_i
       @item=item
-      @tags = Tag.where(:disabled => false)
+      @tags = Tag.active
     else
       redirect_to :home
     end
