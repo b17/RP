@@ -38,7 +38,7 @@ class AdminController < ApplicationController
   def p_add
     @longitude=session[:longitude]
     @latitude=session[:latitude]
-    @tags=Tag.where(:disabled => false)
+    @tags=Tag.active
   end
 
   def c_add
@@ -64,30 +64,20 @@ class AdminController < ApplicationController
 
     #Tags setting
     #support only three tags
-    tag_1 = params[:announce][:tag_1]
 
-    if tag_1=='none'
-      item.tag_1= nil
-    else
-      item.tag_1= tag_1
-    end
+    tags = [params[:announce][:tag_1], params[:announce][:tag_2], params[:announce][:tag_3]]
 
-    tag_2 = params[:announce][:tag_2]
+    item.tags.clear
+    tags.each do |tag|
 
-    if tag_2=='none'
-      item.tag_2= nil
-    else
-      item.tag_2= tag_2
+      the_tag = Tag.where(:id=>tag).first
+      unless the_tag.nil?
+        item.tags<<(the_tag)
+      end
     end
 
 
-    tag_3 = params[:announce][:tag_3]
 
-    if tag_3=='none'
-      item.tag_3= nil
-    else
-      item.tag_3= tag_3
-    end
 
     #####################################
 

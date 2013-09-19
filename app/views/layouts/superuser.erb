@@ -20,15 +20,15 @@
     <div class="nav-button height-middle
       <% if params[:action]=='p_add' %> selected
       <% end %>" data-defpart="announce-part" style="width: 100%">
-      <a class="admin-link no-link-style" href="<%= manage_news_path %>">
-        <div>News</div>
+      <a  href="<%= manage_news_path %>">
+        <div class="white-link-style">News</div>
       </a>
     </div>
     <div class="nav-button height-middle
       <% if params[:action]=='p_my  _announces' %> selected
       <% end %>" data-defpart="my-announces-part" style="width: 100%">
-      <a class="admin-link no-link-style" href="<%= manage_news_new_path %>">
-        <div>Add news</div>
+      <a class="admin-link" href="<%= manage_news_new_path %>">
+        <div class="">Add news</div>
       </a>
     </div>
     <div class="nav-button height-middle

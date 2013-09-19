@@ -1,19 +1,14 @@
 <div class="item-wrapper">
   <div class="header">
-    <a href="/announce/<%= item.id %>" class="white-link-style"><%= item.title_feed %></a>
+    <a href="<%= announce_view_path :rewrite => item.rewrite, :id => item.id %>" class="white-link-style" target="_blank"><%= item.title_feed %></a>
   </div>
   <img class="image-gold-size-with_minus_margin" src="<%= item.image_url :thumb %>">
 
   <div class="bot-header-tag-panel">
-
-    <% unless item.tag_1.nil? %>
-        <i><a href="/tag/<%= item.tag_1 %>" class="style-tag"><%= item.tag_1 %></a></i>
-    <% end %>
-    <% unless item.tag_2.nil? %>
-        <i><a href="/tag/<%= item.tag_2 %>" class="style-tag"><%= item.tag_2 %></a></i>
-    <% end %>
-    <% unless item.tag_3.nil? %>
-        <i><a href="/tag/<%= item.tag_3 %>" class="style-tag"><%= item.tag_3 %></a></i>
+    <% item.tags.each do |tag| %>
+        <% if tag %>
+            <i><a href="<%= tag_view_path :rewrite => tag.name %>" class="style-tag"><%= t(tag.name) %></a></i>
+        <% end %>
     <% end %>
 
   </div>

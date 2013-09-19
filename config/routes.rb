@@ -1,4 +1,4 @@
-Untitled8::Application.routes.draw do
+RestPlaces::Application.routes.draw do
 
 
   get "user_service/p_register"
@@ -21,9 +21,12 @@ Untitled8::Application.routes.draw do
 
   controller :root do
     get 'tags' => :all_tags
-    get 'tag/:id' => :tag
+    get 'tag/:rewrite.:format' => :tag, :as => 'tag_view', :defaults => {:format => 'html'}
+    get 'article/:rewrite-:id.:format' => :article, :as => 'news_view', :defaults => {:format => 'html'}
     get 'random' => :rand
-    get 'announce/:id' => :announce
+    get 'test' => :dev_test
+    get 'announce/:rewrite-:id.:format' => :announce, :as => 'announce_view', :defaults => {:format => 'html'}
+
 
   end
   controller :admin_announce do
@@ -61,21 +64,22 @@ Untitled8::Application.routes.draw do
     get 'session/debug' => :debug_session
     get 'registration' => :p_register
     post 'register' => :c_register
+    post 'user/validate' => :validate, :as => 'user_validate'
 
   end
 
 
   controller :fail do
+
+    #page
     get "miss" => :not_found
     get "not_found" => :not_found
     get "404" => :not_found
-  end
-  controller :image do
-    get "announces/:id/front_img" => :announce_images
-    get 'show/:id' => :show
+    #credentials
+    get 'fail/login' =>:login
+    get 'fail/permission' =>:permission
 
   end
-
 
   controller :superuser do
     get 'manage' => :view

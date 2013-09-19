@@ -3,3 +3,16 @@
 
 en:
   hello: "Hello world"
+  validation_password_empty: "Password cannot be empty."
+  validation_firstname_empty: "First name cannot be empty."
+  validation_secondname_empty: "Second name cannot be empty."
+  validation_login_empty: "Login cannot be empty."
+  validation_email_empty: "Email cannot be blank."
+  validation_email_format: "Invalid email format. Valid format is: chuck@norris.com"
+  validation_termsofuse: "You have to accept terms of use."
+  validation_user_login: "This login is already taken."
+
+#  tag language block ?
+  sport: "sport"
+  education: "education"
+  travel: "travel"

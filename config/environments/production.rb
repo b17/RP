@@ -1,4 +1,4 @@
-Untitled8::Application.configure do
+RestPlaces::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
   config.eager_load=true
   # Code is not reloaded between requests

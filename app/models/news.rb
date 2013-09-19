@@ -1,8 +1,14 @@
 class News < ActiveRecord::Base
   attr_accessible :short_info, :title, :disabled, :content, :image, :tag_1, :tag_3, :tag_2, :disabled, :user_id, :lg, :lt, :created_at
-  belongs_to :user
+
   mount_uploader :image, NewsImageUploader
 
+  has_many :news_taggers
+  has_many :tags, :through => :news_taggers
+
+  before_save do |entity|
+    entity.rewrite ||= StringHelper::urlize entity.title
+  end
 
   def short_desc
     shorter 240, short_info
@@ -30,16 +36,13 @@ class News < ActiveRecord::Base
     field.length > length ? "#{string_arr[0..(length-1)].join('')}..." : field
   end
 
-  def self.locale(longitude, latitude, limit)
+  def self.nearest_search(lg,lt,geo_distance,per_page)
+    search '',
+           :geo => [GeoHelper.to_rads(lt), GeoHelper.to_rads(lt)],
+           :order => 'geodist ASC',
+           :with => {:geodist => 0.0..GeoHelper.to_meters(geo_distance).to_f},
+           :per_page => per_page
 
-    one_km_dist=0.009 #constant, hand made
-    radius=30 #km
-    where(:disabled => false).order('created_at DESC').limit(3)
-    half_of_bounds=(one_km_dist*radius)/2
-    lg1 = longitude.to_f-half_of_bounds
-    lg2 = longitude.to_f+half_of_bounds
-    lt1 = latitude.to_f-half_of_bounds
-    lt2 = latitude.to_f+half_of_bounds
-    all(:conditions => {:lg => (lg1..lg2), :lt => (lt1..lt2), :disabled => false, }, :limit => limit.to_i)
+
   end
 end
