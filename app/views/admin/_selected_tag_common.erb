@@ -1,0 +1,19 @@
+<fieldset>
+  <legend>tags</legend>
+  <div class="margin-left-5pt">
+
+  <% (1..3).each do |t|%>
+        <label>#<%= t %> <select name="announce[tag_<%=t%>]">
+          <option value="-1">none</option>
+          <% for tag in @tags %>
+              <option <%= if @item.has_tag tag.id
+                            'selected'
+                          end%> value="<%= tag.id%>"><%= t(tag.rewrite)  %></option>
+          <% end %>
+        </select>
+        </label>
+  <%end %>
+
+  </div>
+  <br>
+</fieldset>

@@ -1,10 +1,13 @@
 class Announce < ActiveRecord::Base
-  attr_accessible :action_date, :desc, :lg, :lt, :title, :user_id, :disabled, :image, :tag_1, :tag_2, :tag_3
+  attr_accessible :action_date, :desc, :lg, :lt, :title, :user_id, :disabled, :image
 
   mount_uploader :image, AnnounceImageUploader
 
   has_many :announce_taggers
   has_many :tags, :through => :announce_taggers
+
+  has_many :announce_categories
+  has_many :category, :through => :announce_categories
 
   before_save do |entity|
     entity.rewrite ||= StringHelper::urlize entity.title
@@ -50,6 +53,19 @@ class Announce < ActiveRecord::Base
            :order => 'geodist ASC',
            :with => {:geodist => 0.0..GeoHelper.to_meters(geo_distance).to_f},
            :per_page => per_page
+  end
+
+  def has_tag(id)
+    contain=false
+    self.tags.each { |t|
+      if t.id==id
+        contain=true
+
+        break
+      end
+    }
+    contain
+
   end
 
 end

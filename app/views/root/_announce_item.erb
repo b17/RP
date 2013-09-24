@@ -7,9 +7,14 @@
   <div class="bot-header-tag-panel">
     <% item.tags.each do |tag| %>
         <% if tag %>
-            <i><a href="<%= tag_view_path :rewrite => tag.name %>" class="style-tag"><%= t(tag.name) %></a></i>
+            <i><a href="<%= tag_view_path :rewrite => tag.rewrite %>" class="style-tag"><%= t(tag.name) %></a></i>
         <% end %>
     <% end %>
 
+    <% item.category.each do |cat| %>
+        <% if cat %>
+            <i><a href="<%= category_filter_path :rewrite => cat.rewrite %>" class="style-tag"><%= t(cat.name) %></a></i>
+        <% end %>
+    <% end %>
   </div>
 </div>

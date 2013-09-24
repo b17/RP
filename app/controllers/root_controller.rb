@@ -4,48 +4,42 @@ class RootController < ApplicationController
 
   def feed
     init
+    session[:geo_distance]=1 #kms
 
-    params[:distance] ||= 1000 # distance in meters (THIS IS AN EXAMPLE)
-    params[:latitude] = session[:latitude] # current coords for GeoDistanceProvider
-    params[:longitude] = session[:longitude] # current coords for GeoDistanceProvider
 
-    search_criteria = layer_news.bind params
-    sphinx_criteria = layer_news.apply search_criteria
-    sphinx_criteria[:order] = 'geodist ASC'
+    # Important warning!
+    # Sphinx uses strict types of filters.
+    # For example, if field `latitude` is declared as float
+    # you have to pass a float value not an integer!
+    @items = Announce.nearest_search session[:longitude],session[:latitude],session[:geo_distance],12
+    @news = News.nearest_search session[:longitude],session[:latitude],session[:geo_distance],3
 
-    @items = layer_announce.query sphinx_criteria
-
-    @filters = layer_announce.filters params, request
-
-    @news = layer_news.query sphinx_criteria
-
-    @random = layer_announce.query :order => 'created_at DESC'
+    # Sphinx random order is much efficient then mysql, pg or sqlite.
+    @random = Announce.search '', :order => 'created_at DESC' ,:per_page => 6
   end
 
-
-  def announce_search
-    search_criteria = layer_announce.bind params
-    sphinx_criteria = layer_announce.apply search_criteria
-    sphinx_criteria[:order] = 'geodist ASC'
-    @filters = layer_announce.filters params, request
-
-    @announces = layer_announce.query sphinx_criteria
+  def article
+    @article = News.where(:id => params[:id]).first
   end
-
 
   def tag
     init
-    tag = request.params[:id]
-    @tag_name=tag
-    announce = Announce.arel_table
-    @items_with_tag = Announce.where(announce[:tag_1].eq(tag).or(announce[:tag_2].eq(tag).or(announce[:tag_3].eq(tag))))
-    @news = News.active
+    tag = request.params[:rewrite]
+    @tag_name = t(tag)
+    #Omg, it looks like bad shit
+    tag_id = (Tag.find_by_rewrite tag).id
+    announces = AnnounceTagger.find_all_by_tag_id tag_id
+    @items_with_tag=Array.new
+    announces.each do |a|
+      @items_with_tag.append a.announce
+    end
+    @news = News.nearest_search session[:longitude],session[:latitude],session[:geo_distance],3
   end
 
   def all_tags
     init
     @tags=Tag.active
-    @news=News.active
+    @news=News.nearest_search session[:longitude],session[:latitude],session[:geo_distance],3
   end
 
   def rand
@@ -62,7 +56,5 @@ class RootController < ApplicationController
     id= params[:id]
     @announce= Announce.find id
   end
-
-
-end
+  end
 
