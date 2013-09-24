@@ -43,7 +43,7 @@ class AdminController < ApplicationController
 
   def c_add
     params=request.params
-    image = params[:announce][:image]
+    image = params[:announce_layer][:image]
     logger.print image
     item = Announce.new
 
@@ -51,21 +51,21 @@ class AdminController < ApplicationController
       item.image = image
     end
     #parse date
-    date = params[:announce][:date]
+    date = params[:announce_layer][:date]
     date_parse = DateTime.strptime(date, "%d/%m/%Y %H:%M")
     unless date_parse.nil?
       item.action_date=date_parse
     end
 
-    item.title=params[:announce][:title]
+    item.title=params[:announce_layer][:title]
 
-    item.lt=params[:announce][:latitude].to_f
-    item.lg=params[:announce][:longitude].to_f
+    item.lt=params[:announce_layer][:latitude].to_f
+    item.lg=params[:announce_layer][:longitude].to_f
 
     #Tags setting
     #support only three tags
 
-    tags = [params[:announce][:tag_1], params[:announce][:tag_2], params[:announce][:tag_3]]
+    tags = [params[:announce_layer][:tag_1], params[:announce_layer][:tag_2], params[:announce_layer][:tag_3]]
 
     item.tags.clear
     tags.each do |tag|
@@ -81,7 +81,7 @@ class AdminController < ApplicationController
 
     #####################################
 
-    item.desc=params[:announce][:desc]
+    item.desc=params[:announce_layer][:desc]
     item.user_id=session[:id]
     item.save
 
@@ -135,18 +135,18 @@ class AdminController < ApplicationController
 
   def c_update_announce
     @params=request.params
-    item = Announce.find params[:announce][:id]
+    item = Announce.find params[:announce_layer][:id]
     if item.nil?
       redirect_to :to
     elsif session[:id]==item.user_id.to_i
       #check if new image available
-      image = params[:announce][:image]
+      image = params[:announce_layer][:image]
       unless image.nil?
         item.image = image
       end
 
-      item.title=@params[:announce][:title]
-      date = @params[:announce][:date]
+      item.title=@params[:announce_layer][:title]
+      date = @params[:announce_layer][:date]
 
       date_parse = Date.parse(date)
       unless date_parse.nil?
@@ -156,7 +156,7 @@ class AdminController < ApplicationController
 
       #Tags setting
       #support only three tags
-      tag_1 = params[:announce][:tag_1]
+      tag_1 = params[:announce_layer][:tag_1]
 
       if tag_1=='none'
         item.tag_1= nil
@@ -164,7 +164,7 @@ class AdminController < ApplicationController
         item.tag_1= tag_1
       end
 
-      tag_2 = params[:announce][:tag_2]
+      tag_2 = params[:announce_layer][:tag_2]
 
       if tag_2=='none'
         item.tag_2= nil
@@ -173,7 +173,7 @@ class AdminController < ApplicationController
       end
 
 
-      tag_3 = params[:announce][:tag_3]
+      tag_3 = params[:announce_layer][:tag_3]
 
       if tag_3=='none'
         item.tag_3= nil
@@ -182,7 +182,7 @@ class AdminController < ApplicationController
       end
 
 
-      item.desc=@params[:announce][:desc]
+      item.desc=@params[:announce_layer][:desc]
       item.user_id=session[:id]
       item.save
       redirect_to :announce

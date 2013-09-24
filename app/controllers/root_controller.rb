@@ -11,14 +11,25 @@ class RootController < ApplicationController
 
     search_criteria = layer_news.bind params
     sphinx_criteria = layer_news.apply search_criteria
-    p sphinx_criteria
     sphinx_criteria[:order] = 'geodist ASC'
 
     @items = layer_announce.query sphinx_criteria
 
+    @filters = layer_announce.filters params, request
+
     @news = layer_news.query sphinx_criteria
 
     @random = layer_announce.query :order => 'created_at DESC'
+  end
+
+
+  def announce_search
+    search_criteria = layer_announce.bind params
+    sphinx_criteria = layer_announce.apply search_criteria
+    sphinx_criteria[:order] = 'geodist ASC'
+    @filters = layer_announce.filters params, request
+
+    @announces = layer_announce.query sphinx_criteria
   end
 
 

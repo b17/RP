@@ -25,9 +25,8 @@ RestPlaces::Application.routes.draw do
     get 'article/:rewrite-:id.:format' => :article, :as => 'news_view', :defaults => {:format => 'html'}
     get 'random' => :rand
     get 'test' => :dev_test
-    get 'announce/:rewrite-:id.:format' => :announce, :as => 'announce_view', :defaults => {:format => 'html'}
-
-
+    get 'announce/:rewrite-:id.:format' => :announce_layer, :as => 'announce_view', :defaults => {:format => 'html'}
+    get 'announces.:format' => :announce_search, :as => 'announce_search', :defaults => {:format => 'html'}
   end
   controller :admin_announce do
     get '/admin/announce/search/panel' => :search
