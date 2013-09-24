@@ -21,13 +21,19 @@ class Search::FilterOption
     query_params
   end
 
+  def total
+    @matched_count
+  end
+
   def apply_url
-    '?' + prepare_query_hash().merge({:category => [@value]}).to_query
+    merge_data = {}
+    merge_data[@filter.request_param_name] = @value
+    '?' + prepare_query_hash().merge(merge_data).to_query
   end
 
   def cancel_url
     query_hash = prepare_query_hash
-    query_hash.delete :category if query_hash.key? :category
+    query_hash.delete @filter.request_param_name if query_hash.key? @filter.request_param_name
     '?' + query_hash.to_query
   end
 end

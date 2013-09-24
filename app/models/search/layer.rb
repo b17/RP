@@ -18,6 +18,11 @@ class Search::Layer
     search_criteria
   end
 
+  def bind_and_apply(params)
+    search_criteria = bind params
+    apply search_criteria
+  end
+
   def apply(search_criteria)
     where = {}
     @providers.each do |provider|

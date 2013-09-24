@@ -1,2 +1,0 @@
-class NewsLayer
-end

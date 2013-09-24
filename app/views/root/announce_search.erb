@@ -8,9 +8,15 @@
               </li>
           <% else %>
               <li>
-                <a href="<%= option.apply_url %>"><%= option.label %></a>
+                <a href="<%= option.apply_url %>"><%= option.label %></a> (<%= option.total %>)
               </li>
           <% end %>
       <% end %>
     </ul>
 <% end %>
+
+<div id="announce-list">
+  <% for item in @items %>
+      <%= render 'root/announce_item', item: item %>
+  <% end %>
+</div>
