@@ -16,3 +16,5 @@ en:
   sport: "sport"
   education: "education"
   travel: "travel"
+  filter_category: "Category"
+  filter_tag: "Tags"

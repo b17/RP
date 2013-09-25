@@ -4,15 +4,13 @@ class RootController < ApplicationController
 
   def feed
     init
-    session[:geo_distance]=1 #kms
+    params[:distance] ||= 1000
 
+    announces_criteria = layer_announce.bind_and_apply params
+    @items = layer_announce.query announces_criteria
 
-    # Important warning!
-    # Sphinx uses strict types of filters.
-    # For example, if field `latitude` is declared as float
-    # you have to pass a float value not an integer!
-    @items = Announce.nearest_search session[:longitude],session[:latitude],session[:geo_distance],12
-    @news = News.nearest_search session[:longitude],session[:latitude],session[:geo_distance],3
+    news_criteria = layer_news.bind_and_apply params
+    @news = layer_news.query news_criteria
 
     # Sphinx random order is much efficient then mysql, pg or sqlite.
     @random = Announce.search '', :order => 'created_at DESC' ,:per_page => 6
@@ -20,6 +18,15 @@ class RootController < ApplicationController
 
   def article
     @article = News.where(:id => params[:id]).first
+  end
+
+  def announce_search
+    params[:distance] ||= 1000
+
+    announces_criteria = layer_announce.bind_and_apply params
+    @items = layer_announce.query announces_criteria
+
+    @filters = layer_announce.filters params, request
   end
 
   def tag
@@ -55,11 +62,6 @@ class RootController < ApplicationController
   def announce
     id= params[:id]
     @announce= Announce.find id
-  end
-
-  def category
-    @rewrite = params[:rewrite]
-
   end
   end
 

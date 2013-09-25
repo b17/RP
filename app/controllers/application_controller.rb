@@ -36,4 +36,12 @@ class ApplicationController < ActionController::Base
     ip==session[:ip]
   end
 
+  def layer_news
+    @layer_news ||= Search::NewsLayer.new
+  end
+
+  def layer_announce
+    @layer_announce ||= Search::AnnounceLayer.new
+  end
+
 end

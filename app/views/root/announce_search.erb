@@ -1,0 +1,22 @@
+<% @filters.each do |filter| %>
+    <div><%= filter.label %></div>
+    <ul>
+      <% filter.options.each do |option| %>
+          <% if option.active %>
+              <li class="active">
+                <a href="<%= option.cancel_url %>"><%= option.label %></a>
+              </li>
+          <% else %>
+              <li>
+                <a href="<%= option.apply_url %>"><%= option.label %></a> (<%= option.total %>)
+              </li>
+          <% end %>
+      <% end %>
+    </ul>
+<% end %>
+
+<div id="announce-list">
+  <% for item in @items %>
+      <%= render 'root/announce_item', item: item %>
+  <% end %>
+</div>
