@@ -11,7 +11,7 @@ class Search::Announce::TagProvider < Search::Provider
 
   def apply(query, search_criteria)
     if search_criteria.key? :tag
-      query[:with][:tag_id] = search_criteria[:category]
+      query[:with][:tag_id] = search_criteria[:tag]
     end
   end
 
