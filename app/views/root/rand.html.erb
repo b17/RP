@@ -13,7 +13,7 @@
               <div class="bot-header-tag-panel">
 
                 <% item.tags.each do |tag| %>
-                    <i><a href="/tag/<%= tag.id %>" class="style-tag"><%= t(tag.rewrite) %></a></i>
+                    <i><a href="/tag/<%= tag.rewrite %>.html" class="style-tag"><%= t(tag.rewrite) %></a></i>
                  <% end %>
               </div>
             </div>
