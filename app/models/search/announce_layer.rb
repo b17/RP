@@ -3,6 +3,7 @@ class Search::AnnounceLayer < Search::Layer
     super
     add_provider Search::Common::GeoDistanceProvider.new
     add_provider Search::Announce::CategoryProvider.new
+    add_provider Search::Announce::TagProvider.new
   end
 
   def query(where)

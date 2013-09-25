@@ -56,4 +56,44 @@ And then fetch matched items from database:
 
 ### Build filters related to search options.
 
-TODO
+Todo
+
+### Writing custom provider
+
+The interface for SearchProvider is:
+
+```ruby
+class Search::Provider
+
+  def bind(params, search_criteria)
+  end
+
+  def apply(query, search_criteria)
+
+  end
+
+  def filters(where, search_criteria, filters_collection)
+
+  end
+
+  def unbind(params, search_criteria)
+  end
+end
+```
+
+#### <code>def bind(params, search_criteria)</code>
+
+fetches requested filter value from <code>params</code> and stores it into <code>search_criteria</code>.
+
+#### <code>def apply(query, search_criteria)</code>
+
+tests if required param is in <code>search_criteria</code> and then applies it on <code>query</code>.
+
+#### <code>def filters(where, search_criteria, filters_collection)</code>
+
+Adds filter.
+
+<code>where</code> - current sphinx query
+<code>search_criteria</code> - active search params.
+<code>filters_collection</code> - filters collection, new filter should be added to collection.
+
