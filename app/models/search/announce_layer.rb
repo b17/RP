@@ -5,6 +5,7 @@ class Search::AnnounceLayer < Search::Layer
     add_provider Search::Announce::CategoryProvider.new
     add_provider Search::Announce::TagProvider.new
     add_provider Search::Announce::RepeatableProvider.new
+    add_provider Search::Announce::DateProvider.new
   end
 
   def query(where)

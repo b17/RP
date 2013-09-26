@@ -21,3 +21,9 @@ en:
   filter_repeatable: "Repeatable"
   filter_repeatable_multi: "Multi"
   filter_repeatable_once: "Once"
+  filter:
+    announce:
+      date: "Event Date"
+      date_matched:
+        one: "1 event"
+        other: "%{count} events"
