@@ -24,7 +24,7 @@ class Search::Layer
   end
 
   def apply(search_criteria)
-    where = {}
+    where = {:with => {}}
     @providers.each do |provider|
       provider.apply(where, search_criteria)
     end

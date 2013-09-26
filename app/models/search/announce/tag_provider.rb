@@ -30,13 +30,13 @@ class Search::Announce::TagProvider < Search::Provider
     end
 
     if tags_count.length
-      filter = Search::Filter.new(I18n::t(:filter_tag), request_param_name)
+      filter = Search::ListFilter.new(I18n::t(:filter_tag), request_param_name)
       tags = Tag.select('id, name').where({:id => tags_count.keys}).order('FIELD(id, %{ids})' % {:ids => tags_count.keys.join(',')})
       tags.each do |tag|
-        option = Search::FilterOption.new(tag.name, tag.id, tag.id == search_criteria[:tag], tags_count[tag.id])
+        option = Search::Announce::FilterOption.new(tag.name, tag.id, tag.id == search_criteria[:tag], tags_count[tag.id])
         filter.add option
       end
-      filters_collection.add filter
+      filters_collection.add :tags, filter
     end
   end
 end

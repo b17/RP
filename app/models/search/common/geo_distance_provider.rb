@@ -1,4 +1,5 @@
 class Search::Common::GeoDistanceProvider < Search::Provider
+
   def bind(params, search_criteria)
     if params.key? :distance
       search_criteria[:geo] = {
@@ -10,6 +11,9 @@ class Search::Common::GeoDistanceProvider < Search::Provider
   end
 
   def filters(where, search_criteria, filters_collection)
+    if search_criteria.key? :geo
+      where[:with].delete(:distance)
+    end
   end
 
   def apply(query, search_criteria)

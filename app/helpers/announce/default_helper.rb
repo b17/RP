@@ -1,0 +1,2 @@
+module Announce::DefaultHelper
+end
