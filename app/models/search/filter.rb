@@ -15,4 +15,8 @@ class Search::Filter
     option.filter = self
     @options.push(option)
   end
+
+  def template
+    raise NotImplementedError
+  end
 end

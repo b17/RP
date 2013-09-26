@@ -12,7 +12,7 @@ class Search::FiltersCollection
     end
   end
 
-  def add(filter)
+  def add(filter_code, filter)
     filter.collection = self
     @filters.push(filter)
   end

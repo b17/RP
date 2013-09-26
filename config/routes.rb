@@ -25,13 +25,17 @@ RestPlaces::Application.routes.draw do
     get 'article/:rewrite-:id.:format' => :article, :as => 'news_view', :defaults => {:format => 'html'}
     get 'random' => :rand
     get 'test' => :dev_test
-    get 'announce/:rewrite-:id.:format' => :announce, :as => 'announce_view', :defaults => {:format => 'html'}
-    get 'category/:rewrite' =>:category,:as =>:category_filter    
-    get 'announces.:format' => :announce_search, :as => 'announce_search', :defaults => {:format => 'html'}
+    get 'category/:rewrite' =>:category,:as =>:category_filter
   end
+
   controller :admin_announce do
     get '/admin/announce/search/panel' => :search
     post '/admin/announce/search/results' => :view
+  end
+
+  controller 'announce::default' do
+    get 'announces.:format' => :search, :as => 'announce_search', :defaults => {:format => 'html'}
+    get 'announce/:rewrite-:id.:format' => :view, :as => 'announce_view', :defaults => {:format => 'html'}
   end
 
   controller :admin do

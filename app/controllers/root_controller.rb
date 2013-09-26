@@ -20,15 +20,6 @@ class RootController < ApplicationController
     @article = News.where(:id => params[:id]).first
   end
 
-  def announce_search
-    params[:distance] ||= 1000
-
-    announces_criteria = layer_announce.bind_and_apply params
-    @items = layer_announce.query announces_criteria
-
-    @filters = layer_announce.filters params, request
-  end
-
   def tag
     init
     tag = request.params[:rewrite]

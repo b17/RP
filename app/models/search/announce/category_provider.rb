@@ -31,14 +31,13 @@ class Search::Announce::CategoryProvider < Search::Provider
     end
 
     if category_counts.length
-      filter = Search::Filter.new(I18n::t(:filter_category), request_param_name)
+      filter = Search::ListFilter.new(I18n::t(:filter_category), request_param_name)
       categories = Category.select('id, name').where({:id => category_counts.keys}).order('FIELD(id, %{ids})' % {:ids => category_counts.keys.join(',')})
       categories.each do |category|
-        option = Sear
-        ch::FilterOption.new(category.name, category.id, category.id == search_criteria[:category], category_counts[category.id])
+        option = Search::Announce::FilterOption.new(category.name, category.id, category.id == search_criteria[:category], category_counts[category.id])
         filter.add option
       end
-      filters_collection.add filter
+      filters_collection.add :categories, filter
     end
 
   end

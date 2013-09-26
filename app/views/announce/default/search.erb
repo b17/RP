@@ -1,0 +1,9 @@
+<% @filters.each do |filter| %>
+    <%= filter_widget filter %>
+<% end %>
+
+<div id="announce-list">
+  <% for announce in @announces %>
+      <%= render 'root/announce_item', item: announce %>
+  <% end %>
+</div>
