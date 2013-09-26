@@ -30,7 +30,7 @@ class Search::Announce::CategoryProvider < Search::Provider
       category_counts[row['@groupby']] = row['@count']
     end
 
-    if category_counts.length
+    if category_counts.length > 0
       filter = Search::ListFilter.new(I18n::t(:filter_category), request_param_name)
       categories = Category.select('id, name').where({:id => category_counts.keys}).order('FIELD(id, %{ids})' % {:ids => category_counts.keys.join(',')})
       categories.each do |category|
