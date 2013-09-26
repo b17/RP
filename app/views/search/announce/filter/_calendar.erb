@@ -2,11 +2,11 @@
 <%= calendar filter.options do |option| %>
     <% if option.active %>
         <div class="active">
-          <%= link_to 'x', option.cancel_url %>
+          <%= link_to 'X', option.cancel_url %>
         </div>
     <% else %>
         <div>
-          <%= link_to option.apply_url do %><%= t('filter.announce.date_matched', :count => option.total) %><% end %>
+          <%= link_to option.apply_url do %><div class="calendar-count-circle"><%= option.total %></div><% end %>
         </div>
     <% end %>
 <% end %>
@@ -16,11 +16,11 @@
   <%= calendar filter.options, :month => Time.now.months_since(1).month do |option| %>
       <% if option.active %>
           <div class="active">
-            <%= link_to 'x', option.cancel_url %>
+            <%= link_to 'X', option.cancel_url %>
           </div>
       <% else %>
           <div>
-            <%= link_to option.apply_url do %><%= t('filter.announce.date_matched', :count => option.total) %><% end %>
+            <%= link_to option.apply_url do %><div class="calendar-count-circle"><%= option.total %></div><% end %>
           </div>
       <% end %>
   <% end %>
@@ -30,11 +30,11 @@
   <%= calendar filter.options, :month => Time.now.months_since(2).month do |option| %>
       <% if option.active %>
           <div class="active">
-            <%= link_to 'x', option.cancel_url %>
+            <%= link_to 'X', option.cancel_url %>
           </div>
       <% else %>
           <div>
-            <%= link_to option.apply_url do %><%= t('filter.announce.date_matched', :count => option.total) %><% end %>
+            <%= link_to option.apply_url do %><div class="calendar-count-circle"><%= option.total %></div><% end %>
           </div>
       <% end %>
   <% end %>

@@ -1,11 +1,16 @@
 <div class="inline-block">
   <ul class="nav nav-list">
+
     <div class="span2">
+      <li><a href="announces.html">Clear all</a></li>
+      <hr>
       <% @filters.each do |filter| %>
           <%= filter_widget filter %>
       <% end %>
       <hr>
       <li><a href="announces.html">Clear all</a></li>
+
+
 
     </div>
   </ul>
