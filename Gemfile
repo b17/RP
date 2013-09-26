@@ -64,3 +64,5 @@ gem 'thinking-sphinx', '~> 3.0.2'
 gem 'whenever'
 
 gem 'translit'
+
+gem 'simple_calendar', '~> 0.1.9'
