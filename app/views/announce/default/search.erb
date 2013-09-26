@@ -1,15 +1,20 @@
-<link type="text/css" href="stylesheets/search_page.css">
-<ul class="nav nav-list">
+<div class="inline-block">
+  <ul class="nav nav-list">
     <div class="span2">
-        <% @filters.each do |filter| %>
-            <%= filter_widget filter %>
-        <% end %>
+      <% @filters.each do |filter| %>
+          <%= filter_widget filter %>
+      <% end %>
+      <hr>
       <li><a href="announces.html">Clear all</a></li>
 
     </div>
-</ul>
+  </ul>
 
-    <div id="announce-list">
-          <%= render 'root/search_result_block',announces: @announces %>
-    </div>
 
+    <%= render 'root/search_result_block', announces: @announces %>
+
+
+</div>
+<div class="search-page-news-list inline-block">
+  <%= render 'root/search_news', news: @news %>
+</div>

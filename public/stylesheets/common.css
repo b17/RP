@@ -199,6 +199,7 @@ body {
 .middle {
     text-align: center;
 }
+
 .search-item-wrapper {
     margin-bottom: 25pt;
     width: 600pt;
@@ -221,6 +222,16 @@ body {
 
 .search-image-block {
     margin-top: 5pt;
+
+    height: 100pt;
+    width: 100pt;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.news-search-image-block {
+    margin-top: 10pt;
+    margin-left: 10pt;
     height: 100pt;
     width: 100pt;
     overflow: hidden;
@@ -236,23 +247,30 @@ body {
     padding-right: 10pt;
 
 }
+.news-block {
+    width: 200pt;
+    min-width: 150pt;
+    padding-left: 10pt;
+    padding-right: 10pt;
+}
 
 .paper-block {
     box-shadow: 0 1pt 2pt darkgray;
 }
+
 .bg-payment-not-required, .bg-payment-required {
     min-width: 40pt;
     text-align: center;
 }
 
-.bg-payment-not-required{
+.bg-payment-not-required {
 
     background: cornflowerblue;
     padding: 5pt;
     color: lightgoldenrodyellow;
 }
 
-.bg-payment-required  {
+.bg-payment-required {
 
     background: green;
     padding: 5pt;
@@ -296,3 +314,82 @@ body {
     padding: 5pt;
     color: #000000;
 }
+
+.front-item-wrapper-h {
+    width: 250pt;
+    min-height: 200pt;
+    display: inline-block;
+}
+.search-page-news-item {
+    width: 250pt;
+    min-height: 200pt;
+    display: inline-block;
+    margin-top: 15pt;
+}
+/*Large screens*/
+@media (min-width: 1500px) {
+    .search-page-news-list {
+        width: 300pt;
+    }
+}
+
+/*Big dimension*/
+@media (min-width: 800px) and (max-width: 1499px) {
+    .search-page-news-list {
+        width: 120%;
+        text-align: center;
+        margin: 0;
+    }
+
+    .filter-block{
+        display: block;
+    }
+
+
+    #search-announce-list {
+          margin-left: 180pt;
+    }
+
+}
+/*End of big dimension*/
+
+/*Middle dimension*/
+@media (max-width:760px) {
+    ul.nav.nav-list{
+        width: 100%;
+    }
+    .filter-block{
+        display: inline-block;
+        position: relative;
+        margin-right: 25pt;
+    }
+    .span2 {
+        text-align: center;
+    }
+
+    #search-announce-list {
+        margin-left: 0pt;
+    }
+
+    .search-item-wrapper, .content {
+        width: 100%;
+    }
+    .bottom-stats{
+        display: block !important;
+    }
+    .search-announce-list,#search-announce-list {
+        width: 90%;
+        min-width: 300pt;
+        margin-right: 3%;
+        padding-right: 3%;
+    }
+
+    .search-page-news-list {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+    }
+
+}
+
+/*End of small dimension*/
