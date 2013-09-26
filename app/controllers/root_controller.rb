@@ -3,7 +3,6 @@ class RootController < ApplicationController
   require 'geocoder'
 
   def feed
-    init
     params[:distance] ||= 1000
 
     announces_criteria = layer_announce.bind_and_apply params

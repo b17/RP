@@ -6,6 +6,6 @@ module GeoHelper
   end
 
   def self.to_meters(km)
-    km * ONE_KM
+    km*ONE_KM
   end
 end
