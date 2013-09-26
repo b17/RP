@@ -1,6 +1,6 @@
 class Announce::DefaultController < ApplicationController
 
-  layout 'guest'
+  layout 'search'
 
   def search
     where = layer_announce.bind_and_apply params

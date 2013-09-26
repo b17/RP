@@ -1,14 +1,14 @@
-<div><%= filter.label %></div>
-<ul>
-  <% filter.options.each do |option| %>
-      <% if option.active %>
-          <li class="active">
-            <a href="<%= option.cancel_url %>"><%= option.label %></a>
-          </li>
-      <% else %>
-          <li>
-            <a href="<%= option.apply_url %>"><%= option.label %></a> (<%= option.total %>)
-          </li>
-      <% end %>
-  <% end %>
-</ul>
+<li class="nav-header"><%= filter.label %></li>
+<li class="divider"></li>
+<% filter.options.each do |option| %>
+    <% if option.active %>
+        <li class="active">
+          <a href="<%= option.cancel_url %>"><%= option.label %></a>
+        </li>
+    <% else %>
+        <li>
+          <a href="<%= option.apply_url %>"><%= option.label %></a> (<%= option.total %>)
+        </li>
+    <% end %>
+<% end %>
+

@@ -1,9 +1,15 @@
-<% @filters.each do |filter| %>
-    <%= filter_widget filter %>
-<% end %>
+<link type="text/css" href="stylesheets/search_page.css">
+<ul class="nav nav-list">
+    <div class="span2">
+        <% @filters.each do |filter| %>
+            <%= filter_widget filter %>
+        <% end %>
+      <li><a href="announces.html">Clear all</a></li>
 
-<div id="announce-list">
-  <% for announce in @announces %>
-      <%= render 'root/announce_item', item: announce %>
-  <% end %>
-</div>
+    </div>
+</ul>
+
+    <div id="announce-list">
+          <%= render 'root/search_result_block',announces: @announces %>
+    </div>
+

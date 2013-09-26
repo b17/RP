@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    <% if session[:country]!=nil && session[:init] %>
+        <%= session[:country] %>
+        <% if session[:city]!=nil && session[:city]!='' %>
+            <%= ": #{session[:city]}" %>
+        <% end %>
+    <% else %>
+        <%= "Places" %>
+    <% end %>
+  </title>
+  <%= stylesheet_link_tag "main-page-style", :media => "all" %>
+  <%= stylesheet_link_tag "metrov-by-talkslab/bootstrap", :media => "all" %>
+  <%= stylesheet_link_tag "metrov-by-talkslab/bootstrap-fonts", :media => "all" %>
+  <%= stylesheet_link_tag "common", :media => "all" %>
+  <%= stylesheet_link_tag "search", :media => "all" %>
+  <%= javascript_include_tag "jquery", :media => "all" %>
+  <%= javascript_include_tag "bootstrap", :media => "all" %>
+  <%= javascript_include_tag 'jquery.validate.min', :media => "all" %>
+  <%= render 'shared/js/validation' %>
+  <%= javascript_include_tag 'rp.validation', :media => "all" %>
+  <%= csrf_meta_tags %>
+</head>
+<body style="text-align: left">
+<%= render 'shared/header' %>
+<%= yield %>
+<hr class="amazing-style">
+
+<%= render 'shared/footer' %>
+</body>
+</html>
