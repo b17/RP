@@ -29,7 +29,7 @@ class Search::Announce::TagProvider < Search::Provider
       tags_count[row['@groupby']] = row['@count']
     end
 
-    if tags_count.length
+    if tags_count.length > 0
       filter = Search::ListFilter.new(I18n::t(:filter_tag), request_param_name)
       tags = Tag.select('id, name').where({:id => tags_count.keys}).order('FIELD(id, %{ids})' % {:ids => tags_count.keys.join(',')})
       tags.each do |tag|
