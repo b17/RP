@@ -36,7 +36,7 @@ class Search::Layer
     search_criteria = bind params
     where = apply search_criteria
     @providers.each do |provider|
-      provider.filters where, search_criteria, filters
+      provider.filters where.clone, search_criteria, filters
     end
     filters
   end
