@@ -4,6 +4,10 @@ class Category < ActiveRecord::Base
   has_many :announce_categorieses
   has_many :announces, :through => :announce_categorieses
 
+  before_save do |entity|
+    entity.rewrite ||= StringHelper::urlize entity.name
+  end
+
 
   def self.active
     where :disabled => false

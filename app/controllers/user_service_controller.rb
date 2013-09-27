@@ -23,17 +23,13 @@ class UserServiceController < ApplicationController
 
 
   def login
-    login= request.params[:login]
-    password= Digest::MD5.hexdigest request.params[:password]
-
-
-    usr = User.where(:login => login, :password => password).limit 1
-    if usr[0].nil?
-      redirect_to :fail_login
-    else
-      session[:id]=usr[0].id.to_i
-      session[:role]=usr[0].role.to_s
+    usr = User.authenticate params[:login], params[:password]
+    if usr
+      session[:id]=usr.id.to_i
+      session[:role]=usr.role.to_s
       redirect_to admin_path
+    else
+      redirect_to :fail_login
     end
   end
 

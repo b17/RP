@@ -4,11 +4,15 @@
   <% filter.options.each do |option| %>
       <% if option.active %>
           <li class="active">
-            <a href="<%= option.cancel_url %>"><%= option.label %></a>
+            <a href="<%= option.cancel_url %>"><%= option.label %>
+              <span class="pull-right">(X)</span>
+            </a>
           </li>
       <% else %>
           <li>
-            <a href="<%= option.apply_url %>"><%= option.label %></a> (<%= option.total %>)
+            <a href="<%= option.apply_url %>"><%= option.label %>
+              <span class="pull-right">(<%= option.total %>)</span>
+            </a>
           </li>
       <% end %>
   <% end %>

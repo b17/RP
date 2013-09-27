@@ -27,3 +27,6 @@ en:
       date_matched:
         one: "1 event"
         other: "%{count} events"
+  menu:
+    news: "News"
+    announces: "Announces"

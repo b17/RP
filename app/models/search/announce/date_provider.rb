@@ -5,8 +5,8 @@ class Search::Announce::DateProvider < Search::Provider
   end
 
   def bind(params, search_criteria)
-    if params[request_param_name]
-      search_criteria[:date] = params[request_param_name].to_i
+    if params[request_param_name].kind_of? Array
+      search_criteria[:date] = params[request_param_name].map {|i| i.to_i}
     end
   end
 
@@ -20,10 +20,14 @@ class Search::Announce::DateProvider < Search::Provider
     where[:group_by] = 'action_date'
     where[:order_by] = 'action_date'
 
-    filter = Search::Announce::Filter::DateFilter.new(I18n::t('filter.announce.date'), request_param_name)
-    @layer.query(where).raw.each do |row|
+    where[:with].delete :action_date
+
+    search_criteria[:date] ||= []
+
+    filter = Search::Announce::Filter::DateFilter.new(I18n::t('filter.announce.date'), request_param_name, :multi => true)
+    @layer.query_raw(where).each do |row|
       d = Time.at(row['@groupby']).to_date
-      option = Search::Announce::Filter::DateFilterOption.new d, row['action_date'], search_criteria[:date] == row['@groupby'], row['@count']
+      option = Search::Announce::Filter::DateFilterOption.new d, row['action_date'], search_criteria[:date].include?(row['@groupby']), row['@count']
       filter.add option
     end
 

@@ -4,36 +4,34 @@ class Search::Announce::TagProvider < Search::Provider
   end
 
   def bind(params, search_criteria)
-    if params.key? request_param_name
-      search_criteria[request_param_name] = params[:tag].to_i
+    if params[request_param_name].kind_of? Array
+      search_criteria[:tag] = params[request_param_name].map {|i| i.to_i}
     end
   end
 
   def apply(query, search_criteria)
-    if search_criteria.key? :tag
-      query[:with][:tag_id] = search_criteria[:tag]
-    end
+    query[:with][:tag_id] = search_criteria[:tag] if search_criteria[:tag]
   end
 
   def filters(where, search_criteria, filters_collection)
     where[:group_by] = 'tag_id'
     where[:order_by] = '@count DESC'
 
-    tags_count = {}
+    where[:with].delete :tag_id
 
-    # We can't get category id and name directly from sphinx response (Many-to-Many)
-    # So we collect counts and category ids from sphinx
-    # And then perform SQL query to the DB.
-    sphinx_result = @layer.query(where).raw()
+    search_criteria[:tag] ||= []
+
+    tags_count = {}
+    sphinx_result = @layer.query_raw(where)
     sphinx_result.each do |row|
       tags_count[row['@groupby']] = row['@count']
     end
 
     if tags_count.length > 0
-      filter = Search::ListFilter.new(I18n::t(:filter_tag), request_param_name)
+      filter = Search::ListFilter.new I18n::t(:filter_tag), request_param_name, :multi => true
       tags = Tag.select('id, name').where({:id => tags_count.keys}).order('FIELD(id, %{ids})' % {:ids => tags_count.keys.join(',')})
       tags.each do |tag|
-        option = Search::Announce::FilterOption.new(tag.name, tag.id, tag.id == search_criteria[:tag], tags_count[tag.id])
+        option = Search::Announce::FilterOption.new(tag.name, tag.id, search_criteria[:tag].include?(tag.id), tags_count[tag.id])
         filter.add option
       end
       filters_collection.add :tags, filter

@@ -1,9 +1,10 @@
 class Search::FiltersCollection
-  attr_reader :request
+  attr_reader :params, :layer
 
-  def initialize(request)
+  def initialize(params, layer)
     @filters = []
-    @request = request #for url building
+    @params = params #for url building
+    @layer = layer
   end
 
   def each

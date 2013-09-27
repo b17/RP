@@ -31,17 +31,23 @@ class Search::Layer
     where
   end
 
-  def filters(params, request)
-    filters = Search::FiltersCollection.new request
+  def filters(params)
+    filters = Search::FiltersCollection.new params.clone, self
     search_criteria = bind params
-    where = apply search_criteria
+    base_where = apply search_criteria
     @providers.each do |provider|
-      provider.filters where.clone, search_criteria, filters
+      where = Marshal.load(Marshal.dump(base_where))
+      criteria = Marshal.load(Marshal.dump(search_criteria))
+      provider.filters where.clone, criteria, filters
     end
     filters
   end
 
   def query(where)
+    raise NotImplementedError
+  end
+
+  def url(params)
     raise NotImplementedError
   end
 end

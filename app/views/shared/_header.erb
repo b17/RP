@@ -8,7 +8,12 @@
         <ul class="nav">
           <li><a class="nav-link" href="<%= home_path %>">Feed</a></li>
           <li><a class="nav-link" href="<%= tags_path %>">Tags</a></li>
-          <li><a class="nav-link" href="<%= announce_search_path %>">Announces</a></li>
+          <li>
+            <a class="nav-link" href="<%= announce_search_path %>"><%= t('menu.announces') %></a>
+          </li>
+          <li>
+            <a class="nav-link" href="<%= news_search_path %>"><%= t('menu.news') %></a>
+          </li>
 
 
         </ul>

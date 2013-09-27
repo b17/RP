@@ -11,4 +11,12 @@ class Search::AnnounceLayer < Search::Layer
   def query(where)
     ::Announce.search '', where
   end
+
+  def query_raw(where)
+    ::Announce.search_for_ids('', where).raw
+  end
+
+  def url(params)
+    Rails.application.routes.url_helpers.announce_search_path params
+  end
 end
