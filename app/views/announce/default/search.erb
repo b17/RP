@@ -2,21 +2,24 @@
   <ul class="nav nav-list">
 
     <div class="span2">
-      <li><a href="announces.html">Clear all</a></li>
+      <li>
+        <%= link_to t('filter.clear'), announce_search_path %>
+      </li>
       <hr>
       <% @filters.each do |filter| %>
           <%= filter_widget filter %>
       <% end %>
       <hr>
-      <li><a href="announces.html">Clear all</a></li>
-
-
+      <li>
+        <%= link_to t('filter.clear'), announce_search_path %>
+      </li>
 
     </div>
   </ul>
 
-
     <%= render 'root/search_result_block', announces: @announces %>
+
+  <%= will_paginate @announces, :renderer => Search::Announce::Paginate::LinkRenderer %>
 
 
 </div>

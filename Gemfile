@@ -66,3 +66,6 @@ gem 'whenever'
 gem 'translit'
 
 gem 'simple_calendar', '~> 0.1.9'
+
+gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-bootstrap'

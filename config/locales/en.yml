@@ -27,6 +27,7 @@ en:
       date_matched:
         one: "1 event"
         other: "%{count} events"
+    clear: "Clear all"
   menu:
     news: "News"
     announces: "Announces"
