@@ -21,7 +21,7 @@ class Search::Announce::RepeatableProvider < Search::Provider
     where[:order_by] = '@count DESC'
 
     filter = Search::ListFilter.new(I18n::t(:filter_repeatable), request_param_name)
-    @layer.query(where).raw.each do |row|
+    @layer.query_raw(where).each do |row|
       option_label = row['@groupby'] == 1 ? I18n::t(:filter_repeatable_multi) : I18n::t(:filter_repeatable_once)
       option = Search::Announce::FilterOption.new option_label, row['@groupby'], search_criteria[:repeatable] == row['@groupby'], row['@count']
       filter.add option
