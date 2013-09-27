@@ -18,14 +18,19 @@ Tag.create([
 
 
 User.create([
-                {:first => "andrew", :last => "nazymko", :e_mail => "some@e.mail", :password => "24f0d2c90473b2bc949ad962e61d9bcb", :login => "core_admin", :created_at => "2013-09-10 11:15:47", :updated_at => "2013-09-10 11:15:47", :role => "core_admin"},
-                {:first => "super", :last => "user", :e_mail => "some@e.mail", :password => "24f0d2c90473b2bc949ad962e61d9bcb", :login => "admin", :created_at => "2013-09-10 11:15:47", :updated_at => "2013-09-10 11:15:47", :role => "admin"},
-                {:first => "Jo", :last => "Kamton", :e_mail => "dieg0@gmail.com", :password => "24f0d2c90473b2bc949ad962e61d9bcb", :login => "diego", :created_at => "2013-09-10 11:15:47", :updated_at => "2013-09-10 11:15:47", :role => "subscriber"}
+                {:first => "andrew", :last => "nazymko", :e_mail => "some@e.mail", :password => "2105", :login => "core_admin", :role => "core_admin"},
+                {:first => "super", :last => "user", :e_mail => "some@e.mail", :password => "2105", :login => "admin", :role => "admin"},
+                {:first => "Jo", :last => "Kamton", :e_mail => "dieg0@gmail.com", :password => "2105", :login => "diego", :role => "subscriber"}
             ], :without_protection => true)
 
 
- Category.create([
-      {:name => 'concert', :rewrite => 'concert' ,:disabled=>0} ,
-      {:name => 'offer', :rewrite => 'offer',:disabled=>0} ,
-      {:name => 'sale', :rewrite => 'sale',:disabled=>0}
-                 ])
+Category.create([
+                    {:name => 'Кино', :disabled => 0},
+                    {:name => 'Театр', :disabled => 0},
+                    {:name => 'Клуб', :disabled => 0},
+                    {:name => 'Спорт', :disabled => 0},
+                    {:name => 'Акция', :disabled => 0},
+                    {:name => 'Концерты', :disabled => 0},
+                    {:name => 'Выставкы', :disabled => 0},
+                    {:name => 'Другое', :disabled => 0},
+                ])
