@@ -46,7 +46,7 @@ tokens =  t.split /[\.,!?\s]+/
 
 prng = Random.new
 
-20000.times do
+10000.times do
   title = tokens.shuffle.slice(0, 10).join ' '
   description = tokens.shuffle.slice(0, 50).join ' '
 
@@ -56,8 +56,12 @@ prng = Random.new
   event_date = Time.at(((Time.now + 2.month).to_f - Time.now.to_f)*rand + Time.now.to_f)
 
   announce = Announce.new(:title => title, :desc => description, :lt => lat, :lg => lon, :disabled => false)
-  announce.tags.merge  tags.shuffle.slice(0, 2)
-  announce.category.merge categories.shuffle.slice(0, 1)
+  tags.shuffle.slice(0, 2).each do |tag|
+    announce.tags << tag
+  end
+  categories.shuffle.slice(0, 1).each do |category|
+    announce.category << category
+  end
   announce.action_date = event_date
   announce.is_repeated = prng.rand(0..1)
   announce.user_id = users.shuffle.first.id
