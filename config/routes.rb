@@ -1,21 +1,25 @@
 RestPlaces::Application.routes.draw do
 
 
-  get "user_service/p_register"
-
-  get "user_service/p_reset"
-
-  get "user_service/p_login"
-
-  get "user_service/c_register"
-
-  get "user_service/c_reset"
-
-  resources :tests
-
-
-  resources :news
+  #get "user_service/p_register"
+  #
+  #get "user_service/p_reset"
+  #
+  #get "user_service/p_login"
+  #
+  #get "user_service/c_register"
+  #
+  #get "user_service/c_reset"
+  #
+  #resources :tests
+  #
+  #
+  #resources :news
   resources :users
+
+  controller :superuser do
+    get 'manage' =>:view
+  end
 
   get "home" => 'root#feed'
 
@@ -64,11 +68,10 @@ RestPlaces::Application.routes.draw do
 
   end
 
-
   controller :user_service do
     post "login" => :login
     get "logout" => :logout
-    get "fail/permissions" => :fail
+    get "fail/permissions" => :fail, :as=>'fail'
     get "fail/auth" => :fail
     get 'session/debug' => :debug_session
     get 'registration' => :p_register

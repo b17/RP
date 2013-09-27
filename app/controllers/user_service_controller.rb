@@ -26,7 +26,7 @@ class UserServiceController < ApplicationController
     usr = User.authenticate params[:login], params[:password]
     if usr
       session[:id]=usr.id.to_i
-      session[:role]=usr.role.to_s
+      session[:role]=to_level usr.role.to_s
       redirect_to admin_path
     else
       redirect_to :fail_login
@@ -34,17 +34,25 @@ class UserServiceController < ApplicationController
   end
 
 
-  def debug_session
-    if is_administrator
-      @param=session
-    else
-      redirect_to :fail_permissions
+  def to_level level
+    if level=='core_admin'
+      return 2
     end
+    if level=='admin'
+      return 1
+    end
+
+    0
+  end
+
+
+  def debug_session
+      @param=session
   end
 
 
   def logout
-    session[:role]='guest'
+    session[:role]=0
     session[:id]=nil
     session[:init]=false
     redirect_to :home
@@ -55,9 +63,7 @@ class UserServiceController < ApplicationController
   end
 
   def c_register
-
     user_find_by_login = User.find_by_login params[:register][:login]
-
     if user_find_by_login.nil?
       new_user=User.new(params[:register])
       new_user.password= Digest::MD5.hexdigest params[:register][:password]

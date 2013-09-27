@@ -1,11 +1,12 @@
+<% url =news_view_path :rewrite => news.rewrite, :id => news.id   %>
 <div class="search-page-news-item paper-block">
     <div class="inline-block news-search-image-block">
-      <a href="<%=  news_view_path :rewrite => news.rewrite, :id => news.id   %>"><img class="inline-block" src="<%= news.image_url :thumb %>"></a>
+      <a href="<%=url   %>"><img class="inline-block" src="<%= news.image_url :thumb %>"></a>
     </div>
     <div class="news-block inline-block ">
       <div>
-        <h4 class="inline-block"><a href="#"><%= news.content %></a></h4>
+        <h4 class="inline-block"><a href="<%= url %>"><%= news.title_feed_big %></a></h4>
 
-      </div><%= news.content %></div>
+      </div><%= news.short_desc %></div>
 
   </div>

@@ -1,17 +1,23 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :init
-  before_filter :is_publisher, :except => [:feed, :rand]
-  before_filter :is_administrator, :except => [:feed, :rand]
+  before_filter :is_publisher, :except => [:feed, :rand, :all_tags, :search, :fail ,:login , :logout,:debug_session ,:article]
 
   #roles
   #guest,admin, core_admin
   def is_administrator
-    session[:role]=='core_admin'
+    unless session[:role].to_i>1
+      print session[:role]
+      redirect_to fail_path
+    end
   end
 
   def is_publisher
-    session[:role]==:admin
+    unless session[:role].to_i>0
+      print session[:role]
+      redirect_to fail_path
+    end
+
   end
 
   def user_id

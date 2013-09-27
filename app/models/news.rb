@@ -18,6 +18,10 @@ class News < ActiveRecord::Base
     shorter 24, title
   end
 
+  def title_feed_big
+    shorter 36, title
+  end
+
   def title_resize(length)
     shorter length, title
   end
@@ -29,6 +33,8 @@ class News < ActiveRecord::Base
   def self.disabled
     where(:disabled => true)
   end
+
+
 
   private
   def shorter(length, field)

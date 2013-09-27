@@ -2,7 +2,7 @@
   <div class="search-item-wrapper paper-block">
     <div class="inline-block search-image-block"><img class="inline-block" src="<%= announce.image_url :thumb %>"></div>
     <div class="content inline-block ">
-      <div><h4 class="inline-block"><a href="<%=announce_view_path :rewrite => announce.rewrite, :id => announce.id %>"><%= announce.title  %></a></h4>
+      <div><h4 class="inline-block"><a href="<%=announce_view_path :rewrite => announce.rewrite, :id => announce.id %>"><%= announce.title_feed  %></a></h4>
         <div class="inline-block pull-right bg-payment-not-required"> price free</div>
       </div>
      <%= announce.desc %>
