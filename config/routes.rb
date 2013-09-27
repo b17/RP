@@ -38,6 +38,11 @@ RestPlaces::Application.routes.draw do
     get 'announce/:rewrite-:id.:format' => :view, :as => 'announce_view', :defaults => {:format => 'html'}
   end
 
+  controller 'news::default' do
+    get 'articles.:format' => :search, :as => 'news_search', :defaults => {:format => 'html'}
+  end
+
+
   controller :admin do
     get "admin" => :p_my_announces
 
