@@ -19,13 +19,13 @@
         </ul>
 
       </div>     <ul class="nav  pull-right">
-      <% unless session[:role].nil? || session[:role]=='guest' %>
+      <% if session[:role].to_i> 0 %>
 
-            <% if session[:role]=='core_admin' %>
+            <% if session[:role]>1 %>
                 <li><a class="nav-link" href="<%= manage_path %>"><b>core</b></a></li>
             <% end %>
 
-            <% if session[:role]=='admin'|| session[:role]== 'core_admin' %>
+            <% if session[:role]>0 %>
                 <li><a class="nav-link" href="/admin"><b>Admin</b></a></li>
             <% end %>
             <li><a class="nav-link" href="<%= logout_path %>" role="link">logout</a></li>

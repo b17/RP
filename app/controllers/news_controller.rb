@@ -48,7 +48,6 @@ class NewsController < ApplicationController
   end
 
   def c_disable
-    if is_administrator
       id=params[:id]
       news = News.find id
       unless news.nil?
@@ -56,9 +55,6 @@ class NewsController < ApplicationController
         news.save
       end
       redirect_to :back
-    else
-      redirect_to :fail_permissions
-    end
   end
 
   def c_delete
@@ -126,7 +122,6 @@ class NewsController < ApplicationController
   end
 
   def c_activate
-    if is_administrator
       id=params[:id]
       news = News.find id
       unless news.nil?
@@ -134,15 +129,12 @@ class NewsController < ApplicationController
         news.save
       end
       redirect_to :back
-    else
-      redirect_to :fail_permissions
-    end
+
   end
 
   def p_info
-    if is_administrator
       id=params[:id]
       @item=News.find id
-    end
+
   end
 end

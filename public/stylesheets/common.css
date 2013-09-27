@@ -360,6 +360,12 @@ body {
     font-size: 18pt;
 }
 
+.gone > * {
+    position: absolute;
+    width: 125pt;
+    visibility: hidden;
+}
+
 /*Large screens*/
 @media (min-width: 1500px) {
     .search-page-news-list {
@@ -431,3 +437,74 @@ body {
 }
 
 /*End of small dimension*/
+
+.active {
+    background: #74b1ff;
+
+}
+
+.margin-auto {
+    margin: auto;
+}
+
+.search-calendar-top-button:hover, .search-calendar-bottom-button:hover {
+    background: #0480be;
+
+}
+
+.search-calendar-bottom-button {
+    border-bottom-left-radius: 75%;
+    border-bottom-right-radius: 75%;
+    height: 15pt;
+    background: #003399;
+    cursor: pointer;
+
+}
+
+.search-calendar-top-button {
+    border-top-left-radius: 75%;
+    border-top-right-radius: 75%;
+    height: 15pt;
+    background: #003399;
+    cursor: pointer;
+}
+
+.no-pointer {
+    cursor: default;
+    background: none;
+    visibility: hidden;
+}
+
+.no-pointer:hover {
+    cursor: default;
+    background: none;
+    visibility: hidden;
+}
+
+.calendar-cell-in-active{
+    background: rgba(103, 164, 254, 0.31);
+}
+.calendar-cell-active {
+    background: rgba(221, 19, 0, 0.28);
+}
+.calendar-cell-in-active,
+.calendar-cell-active {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+
+}
+
+.pos-relative {
+    position: relative;
+}
+
+.pos-absolute {
+    position: absolute;
+
+}
+
+
