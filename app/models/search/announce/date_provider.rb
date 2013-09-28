@@ -18,7 +18,7 @@ class Search::Announce::DateProvider < Search::Provider
 
   def filters(where, search_criteria, filters_collection)
     where[:group_by] = 'action_date'
-    where[:order_by] = 'action_date'
+    where[:order] = 'action_date ASC'
 
     where[:with].delete :action_date
 

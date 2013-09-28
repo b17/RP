@@ -18,7 +18,7 @@ class Search::Announce::RepeatableProvider < Search::Provider
 
   def filters(where, search_criteria, filters_collection)
     where[:group_by] = 'is_repeated'
-    where[:order_by] = '@count DESC'
+    where[:order] = '@count DESC'
 
     filter = Search::ListFilter.new(I18n::t(:filter_repeatable), request_param_name)
     @layer.query_raw(where).each do |row|

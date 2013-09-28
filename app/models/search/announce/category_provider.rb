@@ -18,7 +18,7 @@ class Search::Announce::CategoryProvider < Search::Provider
 
   def filters(where, search_criteria, filters_collection)
     where[:group_by] = 'category_id'
-    where[:order_by] = '@count DESC'
+    where[:order] = '@count DESC'
 
     where[:with].delete :category_id
 

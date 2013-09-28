@@ -15,7 +15,7 @@ class Search::Announce::TagProvider < Search::Provider
 
   def filters(where, search_criteria, filters_collection)
     where[:group_by] = 'tag_id'
-    where[:order_by] = '@count DESC'
+    where[:order] = '@count DESC'
 
     where[:with].delete :tag_id
 
