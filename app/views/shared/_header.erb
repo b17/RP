@@ -18,21 +18,20 @@
 
         </ul>
 
-      </div>     <ul class="nav  pull-right">
-      <% if session[:role].to_i> 0 %>
-
-            <% if session[:role]>1 %>
+      </div>
+      <ul class="nav  pull-right">
+        <% if is_granted :user %>
+            <%= is_granted :core_admin do %>
                 <li><a class="nav-link" href="<%= manage_path %>"><b>core</b></a></li>
             <% end %>
 
-            <% if session[:role]>0 %>
+            <%= is_granted :admin do %>
                 <li><a class="nav-link" href="/admin"><b>Admin</b></a></li>
             <% end %>
             <li><a class="nav-link" href="<%= logout_path %>" role="link">logout</a></li>
-
-      <% else %>
-          <li><a class="nav-link pull-right" href="#login" role="button" data-toggle="modal">login</a></li>
-      <% end %>
+        <% else %>
+            <li><a class="nav-link pull-right" href="#login" role="button" data-toggle="modal">login</a></li>
+        <% end %>
       </ul>
     </div>
   </div>

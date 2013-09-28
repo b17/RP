@@ -1,6 +1,7 @@
 class NewsController < ApplicationController
   layout 'superuser'
 
+
   def p_all
     @active_news = News.active
     @disabled_news =News.disabled

@@ -46,6 +46,12 @@ RestPlaces::Application.routes.draw do
     get 'articles.:format' => :search, :as => 'news_search', :defaults => {:format => 'html'}
   end
 
+  scope '/error' do
+    controller 'error' do
+      get 'access' => :access, :as => 'error_access'
+    end
+  end
+
 
   controller :admin do
     get "admin" => :p_my_announces
@@ -69,7 +75,7 @@ RestPlaces::Application.routes.draw do
   end
 
   controller :user_service do
-    post "login" => :login
+    match "login" => :login, via: [:get, :post], as: :login
     get "logout" => :logout
     get "fail/permissions" => :fail, :as=>'fail'
     get "fail/auth" => :fail

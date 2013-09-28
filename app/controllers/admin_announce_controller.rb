@@ -1,6 +1,10 @@
 class AdminAnnounceController < ApplicationController
   layout 'superuser'
 
+  before_filter do
+    user_has_role :admin
+  end
+
   def view
     search = params[:search]
     id = search[:id]

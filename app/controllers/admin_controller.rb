@@ -4,6 +4,10 @@ class AdminController < ApplicationController
 
   layout 'admin'
 
+  before_filter do
+    user_has_role :admin
+  end
+
 
   def welcome
 

@@ -26,23 +26,11 @@ class UserServiceController < ApplicationController
     usr = User.authenticate params[:login], params[:password]
     if usr
       session[:id]=usr.id.to_i
-      session[:role]=to_level usr.role.to_s
+      session[:role]= access_provider.get usr.role.to_sym
       redirect_to admin_path
     else
       redirect_to :fail_login
     end
-  end
-
-
-  def to_level level
-    if level=='core_admin'
-      return 2
-    end
-    if level=='admin'
-      return 1
-    end
-
-    0
   end
 
 
@@ -52,7 +40,7 @@ class UserServiceController < ApplicationController
 
 
   def logout
-    session[:role]=0
+    session[:role] = access_provider.get :guest
     session[:id]=nil
     session[:init]=false
     redirect_to :home

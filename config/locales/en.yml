@@ -31,3 +31,7 @@ en:
   menu:
     news: "News"
     announces: "Announces"
+  error:
+    access:
+      login: "You need to login to perform an action."
+      denied: "Access denied"
