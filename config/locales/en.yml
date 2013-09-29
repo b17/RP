@@ -31,7 +31,8 @@ en:
   menu:
     news: "News"
     announces: "Announces"
-  announce: "announce"
+  common:
+   announce_count: "announce"
   error:
     access:
       login: "You need to login to perform an action."
