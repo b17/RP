@@ -7,7 +7,7 @@ module AccessHelper
     end
     if block
       if access_granted
-        block.call.html_safe
+        #block.call.html_safe
       else
         nil
       end

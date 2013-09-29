@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Lobster|EB+Garamond);
+@import url(Flat-UI-Icons.ttf);
 
 body {
     text-align: center;
@@ -481,12 +482,17 @@ body {
     visibility: hidden;
 }
 
-.calendar-cell-in-active{
-    background: rgba(103, 164, 254, 0.31);
+.calendar-cell-in-active {
+    background: rgba(103, 164, 254, 0.19);
+    color: #ffffff;
 }
+
 .calendar-cell-active {
-    background: rgba(221, 19, 0, 0.28);
+    background: rgba(103, 164, 254, 0.35);
+    color: #ffffff;
+    box-shadow: 0 0 1pt 1pt #4f4f4f;
 }
+
 .calendar-cell-in-active,
 .calendar-cell-active {
     position: absolute;
@@ -494,7 +500,6 @@ body {
     height: 100%;
     top: 0;
     left: 0;
-
 
 }
 
@@ -507,4 +512,88 @@ body {
 
 }
 
+.pager {
+    padding-left: 0;
+    margin: 20px 0;
+    text-align: center;
+    list-style: none;
+}
 
+.pager:before,
+.pager:after {
+    display: table;
+    content: " ";
+}
+
+.pager:after {
+    clear: both;
+}
+
+.pager:before,
+.pager:after {
+    display: table;
+    content: " ";
+}
+
+.pager:after {
+    clear: both;
+}
+
+.pager li {
+    display: inline;
+}
+
+.pager li > a,
+.pager li > span {
+    display: inline-block;
+    padding: 5px 14px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 15px;
+}
+
+.pager li > a:hover,
+.pager li > a:focus {
+    text-decoration: none;
+    background-color: #eeeeee;
+}
+
+.pager .next > a,
+.pager .next > span {
+    float: right;
+}
+
+.pager .previous > a,
+.pager .previous > span {
+    float: left;
+}
+
+.pager .disabled > a,
+.pager .disabled > a:hover,
+.pager .disabled > a:focus,
+.pager .disabled > span {
+    color: #999999;
+    cursor: not-allowed;
+    background-color: #ffffff;
+}
+
+.fui-arrow-right:before {
+    content: "\e02c";
+}
+.fui-arrow-left:before {
+    content: "\e02d";
+}
+.fui-arrow-left:before,.fui-arrow-right:before
+{
+    display: inline-block;
+    font-family: 'Flat-UI-Icons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+}
+.pager li > a:hover, .pager li > span:hover, .pager li > a:focus, .pager li > span:focus {
+    background-color: #2c3e50;
+}

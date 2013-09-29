@@ -1,50 +1,94 @@
+<script type="text/javascript">
+    ids = ['announce-month-current',
+        'announce-month-next',
+        'announce-month-afternext'];
+    var pos = 0;
+
+    $(document).ready(function () {
+        ids.forEach(function (id) {
+            hide(id);
+        });
+        console.log("hiding!");
+        showId(ids[pos]);
+
+    });
+
+    function goNextMonth() {
+        if (pos < ids.length - 1) {
+            hide(ids[pos]);
+            pos++;
+            showId(ids[pos]);
+        } else {
+            //no, dude, go away
+        }
+    }
+    function goPrevMonth() {
+        if (pos > 0) {
+            hide(ids[pos]);
+            pos--;
+            showId(ids[pos]);
+        } else {
+            //no, dude, go away
+        }
+    }
+    function showId(id) {
+        $('#' + id).removeClass('gone');
+    }
+    function hide(id) {
+        $('#' + id).addClass("gone")
+    }
+</script>
 <div>
+  <ul class="pager">
+    <li class="previous">
+      <a href="#fakelink" onclick="goPrevMonth()">
+        <i class="fui-arrow-left"></i>
+        <span>Prev</span>
+      </a>
+    </li>
+    <li class="next">
+      <a href="#fakelink" onclick="goNextMonth()">
+        <i class="fui-arrow-right"></i>
+      </a>
+    </li>
+  </ul>
   <div id="announce-month-current" class="inline-block">
-    <div class="search-calendar-top-button" style="visibility: hidden"></div>
     <%= calendar filter.options do |option| %>
         <% if option.active %>
             <div class="active calendar-cell-active">
-              <%= link_to '', option.cancel_url, :class => 'calendar-cell-active'  %>
-              <!--<div class="calendar-count-circle"></div>-->
+              <%= link_to '', option.cancel_url, :class => 'calendar-cell-active', :title => option.total.to_s+" "+t('announce') %>
             </div>
         <% else %>
             <div>
-              <%= link_to  option.apply_url, :class => 'calendar-cell-in-active' do %>
-                  <!--<div class="calendar-count-circle"></div>-->
+              <%= link_to option.apply_url, :class => 'calendar-cell-in-active', :title => option.total.to_s+" "+t('announce') do %>
               <% end %>
             </div>
         <% end %>
     <% end %>
-    <div class="search-calendar-bottom-button" onclick="$(this).parent().addClass('gone');$('#announce-month-next').removeClass('gone')"></div>
   </div>
-  <div id="announce-month-next" class="inline-block gone">
-    <div class="search-calendar-top-button" onclick="$(this).parent().addClass('gone');$('#announce-month-current').removeClass('gone')"></div>
+  <div id="announce-month-next" class="inline-block">
     <%= calendar filter.options, :month => Time.now.months_since(1).month do |option| %>
         <% if option.active %>
-            <div class="active">
-              <%= link_to 'X', option.cancel_url %>
+            <div class="active calendar-cell-active">
+              <%= link_to '', option.cancel_url, :class => 'calendar-cell-active', :title => option.total.to_s+" "+t('announce') %>
             </div>
         <% else %>
             <div>
-              <%= link_to option.apply_url do %>
-                  <div class="calendar-count-circle"><%= option.total %></div>
+              <%= link_to option.apply_url, :class => 'calendar-cell-in-active', :title => option.total.to_s+" "+t('announce') do %>
               <% end %>
             </div>
         <% end %>
     <% end %>
-    <div class="search-calendar-bottom-button"  onclick="$(this).parent().addClass('gone');$('#announce-month-afternext').removeClass('gone')"></div>
   </div>
-  <div id="announce-month-afternext" class="inline-block gone">
-    <div class="search-calendar-top-button"  onclick="$(this).parent().addClass('gone');$('#announce-month-next').removeClass('gone')" ></div>
+  <div id="announce-month-afternext" class="inline-block">
     <%= calendar filter.options, :month => Time.now.months_since(2).month do |option| %>
         <% if option.active %>
-            <div class="active">
-              <%= link_to 'X', option.cancel_url %>
+            <div class="active calendar-cell-active">
+              <%= link_to '', option.cancel_url, :class => 'calendar-cell-active', :title => option.total.to_s+" "+t('announce') %>
             </div>
         <% else %>
             <div>
-              <%= link_to option.apply_url do %>
-                  <div class="calendar-count-circle"><%= option.total %></div>
+              <%= link_to option.apply_url, :class => 'calendar-cell-in-active', :title => option.total.to_s+" "+t('announce') do %>
               <% end %>
             </div>
         <% end %>

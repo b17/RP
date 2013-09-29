@@ -31,6 +31,7 @@ en:
   menu:
     news: "News"
     announces: "Announces"
+  announce: "announce"
   error:
     access:
       login: "You need to login to perform an action."

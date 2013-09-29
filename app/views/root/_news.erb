@@ -1,7 +1,7 @@
 <div class="news inline-block">
   <% unless @news.nil? %>
       <% for item in @news %>
-          <%= render 'root/block', :item => item %>
+          <%= render 'root/news_simple_block', :item => item %>
       <% end %>
   <% end %>
 
