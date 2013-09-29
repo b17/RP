@@ -39,19 +39,21 @@
     }
 </script>
 <div>
-  <ul class="pager">
-    <li class="previous">
-      <a href="#fakelink" onclick="goPrevMonth()">
-        <i class="fui-arrow-left"></i>
-        <span>Prev</span>
-      </a>
-    </li>
-    <li class="next">
-      <a href="#fakelink" onclick="goNextMonth()">
-        <i class="fui-arrow-right"></i>
-      </a>
-    </li>
-  </ul>
+  <div class="wight-100 min-wight-125pt">
+    <ul class="pager wight-100">
+      <li class="previous">
+        <a href="#" onclick="goPrevMonth()">
+          <i class="fui-arrow-left"></i>
+          <span>Prev</span>
+        </a>
+      </li>
+      <li class="next">
+        <a href="#" onclick="goNextMonth()">
+          <i class="fui-arrow-right"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
   <div id="announce-month-current" class="inline-block">
     <%= calendar filter.options do |option| %>
         <% if option.active %>

@@ -49,14 +49,12 @@
     <img src="<%= @edit_item.image %>" class="image-gold-size">
     <input type="file" name="news[image]" title="100*100 preferred"> <br>
     <hr>
-    <label>
-      <input name="news[use_my_position]" type="checkbox" title="appear to my current location"> Use current position
+    <label class="margin-left-10pt">
+      <input name="news[use_my_position]" type="checkbox" title="appear to my current location">Use current position
     </label>
-    <br>
-
     <div class="margin-left-5pt">
-      <div class="inline-block ">
-        <input type="hidden" placeholder="longitude" id="announce[longitude]" name="news[longitude]" class="margin-left-5pt" value="<%= @longitude %>"><br>
+      <div class="inline-block gone ">
+        <input type="hidden" placeholder="longitude" id="announce[longitude]" name="news[longitude]" class="margin-left-5pt" value="<%= @longitude %>">
         <input type="hidden" placeholder="latitude" id="announce[latitude]" name="news[latitude]" class="margin-left-5pt" value="<%= @latitude %>">
         <br>
       </div>
@@ -67,35 +65,7 @@
     </div>
     <br>
 
-    <div class="margin-left-5pt">
-      <label>#1 <select name="news[tag_1]">
-        <option id="-1">none</option>
-        <% for tag in @tags %>
-            <option id="<%= tag.id %>" <%= if tag.name==@edit_item.tag_1
-                                             "selected"
-                                           end %>><%= tag.name %></option>
-        <% end %>
-      </select>
-      </label>
-      <label>#2 <select name="news[tag_2]">
-        <option id="-1">none</option>
-
-        <% for tag in @tags %>
-            <option id="<%= tag.id %>" <%= if tag.name==@edit_item.tag_2
-                                             "selected"
-                                           end %>><%= tag.name %></option>
-        <% end %>
-      </select>
-      </label>
-      <label>#3 <select name="news[tag_3]">
-        <option id="-1">none</option>
-        <% for tag in @tags %>
-            <option id="<%= tag.id %>" <%= if tag.name==@edit_item.tag_3
-                                             "selected"
-                                           end %>><%= tag.name %></option>
-        <% end %>
-      </select>
-      </label></div>
-
+    <%= render 'admin/tag_common' %>
+    <%= render 'admin/categories'  %>
     <input type="submit" value="Update">
 <% end %>

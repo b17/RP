@@ -36,3 +36,10 @@ en:
     access:
       login: "You need to login to perform an action."
       denied: "Access denied"
+  date_hour_format: "%d/%m/%Y %H:%m"
+  hour_date_format: "%H:%m"
+  announce:
+    announce_name: "Title"
+    id: "id"
+    creation_date: "Created at"
+    date: "Action"

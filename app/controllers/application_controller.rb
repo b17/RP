@@ -6,12 +6,10 @@ class ApplicationController < ActionController::Base
 
   #roles
   #guest,admin, core_admin
-  def is_administrator
-    unless session[:role].to_i>1
-      print session[:role]
-      redirect_to fail_path
-    end
-  end
+  #def is_administrator
+  #    print session[:role]
+  #    redirect_to fail_path
+  #end
 
   def user_has_role(role)
     if session[:role].name == :guest

@@ -176,28 +176,6 @@ class AdminController < ApplicationController
       #support only three tags
       tag_1 = params[:announce][:tag_1]
 
-      if tag_1=='none'
-        item.tag_1= nil
-      else
-        item.tag_1= tag_1
-      end
-
-      tag_2 = params[:announce][:tag_2]
-
-      if tag_2=='none'
-        item.tag_2= nil
-      else
-        item.tag_2= tag_2
-      end
-
-
-      tag_3 = params[:announce][:tag_3]
-
-      if tag_3=='none'
-        item.tag_3= nil
-      else
-        item.tag_3= tag_3
-      end
 
 
       item.desc=@params[:announce][:desc]

@@ -5,12 +5,33 @@
   <a href="<%= add_path %>">
     <div class="btn-info pull-left wight-100p add-button crackable">Add</div>
   </a><br>
+
+  <div class="announces-list text-align: left;">
+    <div class="announces-list-element">
+      <div class="list-element-text inline-block" title="<%= t 'announce.announce_name' %>">
+        <%= t 'announce.announce_name' %>
+      </div>
+
+      <div class="pull-right control-block-size inline-block">
+        <img class="selectable-image" src="images/delete-64.png"
+             alt="Editing" title="Disable it and move to trash folder">
+      </div>
+      <div class="pull-right control-block-size inline-block">
+        <img class="selectable-image" src="images/edit_property-64.png"
+             alt="Editing" title="Change this announce">
+      </div>
+      <div class="pull-right date fixed-size-60pt"><%= t 'announce.creation_date' %></div>
+      <div class="pull-right date fixed-size-60pt"><%= t 'announce.date' %></div>
+    </div>
+  </div>
+  <hr>
   <% unless @active.nil? %>
       <% for item in @active %>
 
           <div class="announces-list text-align: left;">
             <div class="announces-list-element">
-              <div class="list-element-text inline-block" title="<%= item.title%>"><a href="/info/<%= item.id %>"><%= item.title_resize 32 %></div>
+              <div class="list-element-text inline-block" title="<%= item.title %>">
+                <a href="/info/<%= item.id %>"><%= item.title_resize 32 %></div>
 
               <div class="pull-right control-block-size inline-block">
                 <a href="trash/<%= item.id %>"><img class="selectable-image" src="images/delete-64.png"
@@ -20,7 +41,8 @@
                 <a href="edit/<%= item.id %>"><img class="selectable-image" src="images/edit_property-64.png"
                                                    alt="Editing" title="Change this announce"></a>
               </div>
-              <div class="pull-right date ">30/06/2013 - 19:00</div>
+              <div class="pull-right date "><%= item.created_at_short %></div>
+              <div class="pull-right date  fixed-size-60pt"><%= item.action_date %></div>
 
 
             </div>
@@ -34,7 +56,8 @@
 
           <div class="announces-list text-align: left;">
             <div class="announces-list-element">
-              <div class="list-element-text inline-block" title="<%= item.title%>"><a href="/info/<%= item.id %>"><%= item.title_resize 32 %></div>
+              <div class="list-element-text inline-block" title="<%= item.title %>">
+                <a href="/info/<%= item.id %>"><%= item.title_resize 32 %></div>
               <div class="pull-right control-block-size inline-block">
                 <a href="activate/<%= item.id %>"><img class="selectable-image" src="/images/add-48.png"
                                                        alt="Editing" title="Activate it"></a>
@@ -43,7 +66,8 @@
                 <a href="edit/<%= item.id %>"><img class="selectable-image" src="/images/edit_property-64.png"
                                                    alt="Editing" title="Change this announce"></a>
               </div>
-              <div class="pull-right date">30/06/2013 - 19:00</div>
+              <div class="pull-right date fixed-size-60pt "><%= item.created_at_short %></div>
+              <div class="pull-right date fixed-size-60pt"><%= item.action_date %></div>
               <div title="Delete forever" class="inline-block close height-middle padding-right-big">
                 <a href="delete/<%= item.id %>">
                   <img src="images/delete_forever.png"

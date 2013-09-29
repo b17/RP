@@ -65,7 +65,9 @@ class Announce < ActiveRecord::Base
       end
     }
     contain
-
   end
 
+  def created_at_short
+    DateTimeFormatterHelper.date_time created_at
+  end
 end

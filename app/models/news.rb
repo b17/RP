@@ -1,5 +1,5 @@
 class News < ActiveRecord::Base
-  attr_accessible :short_info, :title, :disabled, :content, :image, :tag_1, :tag_3, :tag_2, :disabled, :user_id, :lg, :lt, :created_at
+  attr_accessible :short_info, :title, :disabled, :content, :image, :user_id, :lg, :lt, :created_at
 
   mount_uploader :image, NewsImageUploader
 
@@ -35,6 +35,9 @@ class News < ActiveRecord::Base
   end
 
 
+  def created_at_short
+    DateTimeFormatterHelper.date_time created_at
+  end
 
   private
   def shorter(length, field)

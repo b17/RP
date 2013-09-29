@@ -13,12 +13,14 @@
                                   id="btn-publish" value="PUBLISH">
 
     <hr>
-    <label>
-      <input name="news[use_my_position]" type="checkbox" title="appear to my current location"> Use current position
-    </label>
+    <input type="file" name="news[image]" title="100*100 preferred" class="margin-left-10pt" required="true" accept="image/*">
     <br>
+    <br>
+    <label class="margin-left-10pt">
+      <input name="news[use_my_position]" type="checkbox" title="appear to my current location">Use current position
+    </label>
     <div class="margin-left-5pt">
-      <div class="inline-block ">
+      <div class="inline-block gone ">
         <input type="hidden" placeholder="longitude" id="announce[longitude]" name="news[longitude]" class="margin-left-5pt" value="<%= @longitude %>"><br>
         <input type="hidden" placeholder="latitude" id="announce[latitude]" name="news[latitude]" class="margin-left-5pt" value="<%= @latitude %>">
         <br>
@@ -29,8 +31,8 @@
 
     </div>
     <div class="margin-left-5pt">
-     </div>            <%= render 'admin/tag_common' %>
-    <input type="file" name="news[image]" title="100*100 preferred"> <br>
+    </div>            <%= render 'admin/tag_common' %>
+
 
     <div id="desc-bot-border"></div>
 
