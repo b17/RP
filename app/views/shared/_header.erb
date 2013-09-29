@@ -21,12 +21,12 @@
       </div>
       <ul class="nav  pull-right">
         <% if is_granted :user %>
-            <%= is_granted :core_admin do %>
+            <% if is_granted :core_admin %>
                 <li><a class="nav-link" href="<%= manage_path %>"><b>core</b></a></li>
             <% end %>
 
-            <%= is_granted :admin do %>
-                <li><a class="nav-link" href="/admin"><b>admin</b></a></li>
+            <% if is_granted :admin %>
+                <li><a class="nav-link" href="/admin"><b>Admin</b></a></li>
             <% end %>
             <li><a class="nav-link" href="<%= logout_path %>" role="link">logout</a></li>
         <% else %>
