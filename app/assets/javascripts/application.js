@@ -51,7 +51,3 @@
         })
     }
 })(jQuery);
-
-$(function() {
-    var map = $('#test-map').geoMap();
-});
