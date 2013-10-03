@@ -1,60 +1,20 @@
-<script type="text/javascript">
-    ids = ['announce-month-current',
-        'announce-month-next',
-        'announce-month-afternext'];
-    var pos = 0;
-
-    $(document).ready(function () {
-        ids.forEach(function (id) {
-            hide(id);
-        });
-        console.log("hiding!");
-        showId(ids[pos]);
-
-    });
-
-    function goNextMonth() {
-        if (pos < ids.length - 1) {
-            hide(ids[pos]);
-            pos++;
-            showId(ids[pos]);
-        } else {
-            //no, dude, go away
-        }
-    }
-    function goPrevMonth() {
-        if (pos > 0) {
-            hide(ids[pos]);
-            pos--;
-            showId(ids[pos]);
-        } else {
-            //no, dude, go away
-        }
-    }
-    function showId(id) {
-        $('#' + id).removeClass('gone');
-    }
-    function hide(id) {
-        $('#' + id).addClass("gone")
-    }
-</script>
-<div>
+<div id="announce-filter-calendar">
   <div class="wight-100 min-wight-125pt">
     <ul class="pager wight-100">
       <li class="previous">
-        <a href="#" onclick="goPrevMonth()">
+        <a href="#" class="js-prev">
           <i class="fui-arrow-left"></i>
           <span>Prev</span>
         </a>
       </li>
       <li class="next">
-        <a href="#" onclick="goNextMonth()">
+        <a href="#" class="js-next">
           <i class="fui-arrow-right"></i>
         </a>
       </li>
     </ul>
   </div>
-  <div id="announce-month-current" class="inline-block">
+  <div class="inline-block js-item">
     <%= calendar filter.options do |option| %>
         <% if option.active %>
             <div class="active calendar-cell-active">
@@ -68,7 +28,7 @@
         <% end %>
     <% end %>
   </div>
-  <div id="announce-month-next" class="inline-block">
+  <div class="inline-block js-item">
     <%= calendar filter.options, :month => Time.now.months_since(1).month do |option| %>
         <% if option.active %>
             <div class="active calendar-cell-active">
@@ -82,7 +42,7 @@
         <% end %>
     <% end %>
   </div>
-  <div id="announce-month-afternext" class="inline-block">
+  <div class="inline-block js-item">
     <%= calendar filter.options, :month => Time.now.months_since(2).month do |option| %>
         <% if option.active %>
             <div class="active calendar-cell-active">
