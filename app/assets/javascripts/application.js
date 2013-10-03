@@ -45,7 +45,7 @@
                 $this.data('geomap', data);
             } else {
                 if (typeof options == 'string') {
-                    return data[options].apply(data, args.slice(1));
+                    return data[options].apply(data, Array.prototype.slice.call(args, 1));
                 }
             }
         })
@@ -118,7 +118,7 @@
                 $(this).data('calendar_controls', data);
             } else {
                 if (typeof options === 'string') {
-                    return data[options].apply(data, args.slice(1));
+                    return data[options].apply(data, Array.prototype.slice.call(args, 1));
                 }
             }
         });
