@@ -17,3 +17,8 @@
  *= require metrov-by-talkslab/bootstrap-fonts
  *= require flat-ui
  */
+
+// fixes map controls bug
+.map img {
+  max-width: none;
+}

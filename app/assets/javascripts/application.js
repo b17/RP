@@ -13,3 +13,45 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+(function($) {
+
+    GeoMap = function(el, options) {
+        this.$el = $(el);
+        this.options = options;
+        options.center = new google.maps.LatLng(options.center.lat, options.center.lon);
+        this.map = new google.maps.Map($(el)[0], options);
+    };
+
+    GeoMap.defaults = {
+        zoom: 14,
+        center: {lat: 0.0, lon: 0.0},
+        mapTypeId: 'roadmap'
+    };
+
+    GeoMap.prototype.map = function() {
+        return this.map;
+    }
+
+    $.fn.geoMap = function(options) {
+        var args = arguments;
+        return $(this).each(function() {
+            var $this = $(this);
+            var data = $(this).data('geomap');
+
+            if (!data) {
+                options = $.extend(GeoMap.defaults, options);
+                data = new GeoMap($this, options);
+                $this.data('geomap', data);
+            } else {
+                if (typeof options == 'string') {
+                    return data[options].apply(this, args.slice(1));
+                }
+            }
+        })
+    }
+})(jQuery);
+
+$(function() {
+    var map = $('#test-map').geoMap();
+});

@@ -11,6 +11,7 @@
         <%= "Places" %>
     <% end %>
   </title>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
   <%= stylesheet_link_tag 'application', :media => 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= render 'shared/js/validation' %>
@@ -20,6 +21,8 @@
 <%= render 'shared/header' %>
 <%= yield %>
 <hr class="amazing-style">
+
+<div id="test-map" style="width: 500px; height: 500px;" class="map"></div>
 
 <%= render 'shared/footer' %>
 </body>
