@@ -27,12 +27,14 @@ en:
       date_matched:
         one: "1 event"
         other: "%{count} events"
+      calendar:
+        title:
+          one: "One announce is registered at this day."
+          other: "%{count} announces are registered at this day."
     clear: "Clear all"
   menu:
     news: "News"
     announces: "Announces"
-  common:
-   announce_count: "announce"
   error:
     access:
       login: "You need to login to perform an action."
