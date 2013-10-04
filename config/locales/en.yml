@@ -21,6 +21,7 @@ en:
   filter_repeatable: "Repeatable"
   filter_repeatable_multi: "Multi"
   filter_repeatable_once: "Once"
+
   filter:
     announce:
       date: "Event Date"
@@ -32,17 +33,23 @@ en:
           one: "One announce is registered at this day."
           other: "%{count} announces are registered at this day."
     clear: "Clear all"
+
   menu:
     news: "News"
     announces: "Announces"
+
   error:
     access:
       login: "You need to login to perform an action."
       denied: "Access denied"
+
   date_hour_format: "%d/%m/%Y %H:%m"
   hour_date_format: "%H:%m"
+
   announce:
     announce_name: "Title"
     id: "id"
     creation_date: "Created at"
     date: "Action"
+    view:
+      title: "View details about '%{title}'"
