@@ -25,9 +25,6 @@ en:
   filter:
     announce:
       date: "Event Date"
-      date_matched:
-        one: "1 event"
-        other: "%{count} events"
       calendar:
         title:
           one: "One announce is registered at this day."
@@ -53,3 +50,7 @@ en:
     date: "Action"
     view:
       title: "View details about '%{title}'"
+    search:
+      total:
+        one: "Found one announce."
+        other: "Found %{count} announces."

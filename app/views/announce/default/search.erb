@@ -17,6 +17,8 @@
     </div>
   </ul>
 
+  <div><%= t('announce.search.total', :count => @announces.count) %></div>
+
     <%= render 'root/search_result_block', announces: @announces %>
 
   <%= will_paginate @announces, :renderer => Search::Announce::Paginate::LinkRenderer %>
